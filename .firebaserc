@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "temp": "temperature-monitor-pi",
+    "default": "temperature-monitor-pi"
+  }
+}
