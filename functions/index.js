@@ -9,6 +9,12 @@ var newFlag = 0;
 var logdate
 var logtime;
 var pidata = {};
+var minutes = Math.floor(time / 60);
+var seconds = time - minutes * 60;
+var hours = Math.floor(time / 3600);
+var time = time - hours * 3600;
+var timeractive = false;
+var tijd = 0;
 
 
 const admin = require('firebase-admin');
@@ -17,6 +23,7 @@ admin.initializeApp(functions.config().firebase);
 
 const inRangeString = 'Your temperatures are now back in range at ' ;
 const outOfRangeString = 'Your temperatures are out of range right now, please do something. The current temperature is ';
+const timeOutString = "Data has not been received from the pi for 5 minutes. A response timeout has occurred";
 const lowBound = 28;
 const upBound = 32;
 const downloadText = 'You can download a CSV log of the data captured by clicking on the link below: '
@@ -25,6 +32,48 @@ const piEmail = 'templogger9@gmail.com';
 const sendToEmail = 'pg705765@gmail.com';
 const emailPassword = 'ThinkBig';
 const transporter = nodemailer.createTransport('smtps://' + piEmail + ':' + emailPassword + '@smtp.gmail.com');
+
+// function str_pad_left(string,pad,length) {
+//     return (new Array(length+1).join(pad)+string).slice(-length);
+// }
+
+//var finalTime = str_pad_left(minutes,'0',2)+':'+str_pad_left(seconds,'0',2);
+
+function startTimer() {
+    console.log("Timer printing");
+    timeractive = true;
+    if (timeractive == true) {
+        var ticker = setInterval(function(){tijdTimer()},1000);
+        
+    }
+    resetTimer()
+}
+
+function stopTimer() {
+    timeractive = false;
+}
+
+function resetTimer(ticker) {
+    if (timeractive == true) {
+        console.log("Line 56");
+    } else {
+        console.log("Line 58");
+    }
+    tijdTimer()
+}
+
+function tijdTimer(ticker) {
+    tijd = tijd + 1;
+    //var tijdstring = tijd.toString();
+    console.log(tijd.toString());
+    if (tijd.toString() == 300) {
+        timeoutEmail()
+    } else {
+        return;
+        }
+    }
+
+
 
 
         //console.log("something on top")
@@ -59,6 +108,16 @@ function InRangeEmail () {
        sendTheEmail()
    };
 
+   function timeoutEmail() {
+    mailOptions = {
+        from: piEmail,
+        to: sendToEmail,
+        subject: 'System Time Out',
+        text: timeOutString}   
+
+        sendTheEmail()
+   };
+
 //some error handling. This is the code that actually sends the message.
 //info.response if returned by the SMTP transporter with info about the sent item.
 
@@ -85,6 +144,14 @@ const snapshotToArray = snapshot => {
     return returnArr;
 };
 
+exports.responseTimer= functions.database
+.ref('/temperature/{pushID}')
+.on('temp', function(snapshot) {
+startTimer()
+
+
+})
+
 
 // explains what we're going to be doing. Using functions, in the DB and calling the C.F. CheckVal
 //What we take from the DB.
@@ -100,6 +167,7 @@ exports.checkVal = functions.database
         gStatus = entry.status
         logdate = entry.date
         logtime = entry.time
+        //startTimer()
         // var pidata = {
         //     date:logdate,
         //     temp:gCurrTemp,
@@ -124,7 +192,7 @@ exports.checkVal = functions.database
         // console.log(hiddenElement.href)
     
         //getobj()
-        entry.temp = inrange()
+        //entry.temp = inrange()
 
     })
 
