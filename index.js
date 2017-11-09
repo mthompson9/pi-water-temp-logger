@@ -25,8 +25,6 @@ const outOfRangeString = 'Your temperatures are out of range right now, please d
 const nullTempString = "No temperature was received in the cloud storage. Please check the pi and your network connectivity";
 const lowBound = 28;
 const upBound = 32;
-const downloadText = 'You can download a CSV log of the data captured by clicking on the link below: '
-//const downloadLink = 'https://jsbase-5d117.firebaseapp.com/'
 const piEmail = 'templogger9@gmail.com';
 var sendToEmail = 'pg705765@gmail.com';
 const emailPassword = 'ThinkBig';
@@ -94,7 +92,7 @@ function inrange(){
 
 
 
-//controls the counter in the DB dependant on 
+//controls the counter in the DB dependant on status of the temperature
 function setFlag(status) { 
     //console.log('start of setcount') //debug line
     if (status == true) { 
