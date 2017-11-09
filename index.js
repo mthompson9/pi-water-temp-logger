@@ -1,12 +1,11 @@
 
 var gmail = require('gmail');
 var nodemailer = require('nodemailer');
-var mailingList = 'miahgt@gmail.com'
+var mailingList = 'miahgt@gmail.com' ; 'yatawo7@gmail.com'
 var outOfRange = false;
 var dontSend = true;
 var gCurrTemp;
 var objectpi; 
-var gStatus = 'OK';
 var newFlag = 0;
 var flagVal = 0;
 var logdate
@@ -19,7 +18,18 @@ var hours = Math.floor(time / 3600);
 var time = time - hours * 3600;
 var timeractive = false;
 var tijd = 0;
-
+var Firebase = require('firebase');
+var config = {
+  apiKey: "AIzaSyAIIV5RilYCz3Egtxd0ps-M_6iN2JgfEcU",
+  authDomain: "temperature-monitor-pi.firebaseapp.com",
+  databaseURL: 'https://temperature-monitor-pi.firebaseio.com/',
+  storageBucket: "<BUCKET>.appspot.com",
+};
+Firebase.initializeApp(config);
+var Counter = 10;
+var test;
+var currentCount;
+var firstRun = true;
 
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
@@ -40,7 +50,7 @@ const snapshotToArray = snapshot => {
 
     snapshot.forEach(childSnapshot => {
         let item = childSnapshot.val(); 
-        item.key = childSnapshot.key;
+ item.key = childSnapshot.key;
         returnArr.push(item);
     });
 
@@ -56,7 +66,7 @@ var  mailOptions = {
 };
 
 
-
+console.log('This is the start of Miah')
 //lol we were stuck on this for a while - it got frustrating
 //This line in a key one. We use SMTP as its very widely used by different protocols.
 //transport is just a MTA for the SMTP MHS.
@@ -65,77 +75,158 @@ var  mailOptions = {
 exports.checkVal = functions.database
     .ref('/temperature/{pushID}')
     .onCreate(event =>{
+        console.log('checkVal has started')
         const entry = event.data.val()
         //console.log(JSON.stringify(entry.temp))
         gCurrTemp = entry.temp
         gStatus = entry.status
         logdate = entry.date
         logtime = entry.time
+
+        = inrange()
         
     })
 
 
-    function setFlag() { 
-            admin.database().ref(`/Flag`).on('value', function(snapshot) {
-      console.log('setting flag')
-      newFlag = snapshot.exportVal()})
-      //console.log(snapshot.value.val()
-      flagVal = newFlag.value
-        if (gCurrTemp < lowBound || gCurrTemp > upBound){
-            if (dontSend == true && flagVal == 5) { 
-            console.log('im about to give up')
-            dontSend = false
-            return;
-        }   else if (flagVal != 5 && flagVal != 0){
-                console.log('were on line 132')
-                dontSend = true
-                flagVal = parseInt(flagVal) - 1
-                console.log(flagVal + ' @ line 136')
-                return admin.database().ref('/Flag').set({
-                value: (flagVal)
-                })
-            } else if (gCurrTemp > lowBound && gCurrTemp < upBound) {
-                if (flagVal != 5) { 
-                    dontSend = true
-                    flagVal = parseInt(flagVal) - 1
-                    return admin.database().ref('/Flag').set({
-                        value: (flagVal)
-                        })
-                } else if (flagVal == 0) { 
-                    dontSend = false; 
-                    return admin.database().ref('/Flag').set({
-                        value: (flagVal)
-                        })
+    function setFlag(status) { 
+        console.log(status)
+        console.log('start of setcount') //debug line
+        console.log('line 91 - ' + Counter);
+        
+        if (status == true) { 
+            plusOne()
+            console.log('line 98')
+            count = admin.database().ref('/Counter/KyQFZiBw-F_NF1NdstD/')
+            count.once('value', function(snapshot){
+                test = snapshot.val()
+                console.log('line 101 - ' + test + ' + ' + test.value)
+                if (test.value == 5) { 
+                    return dontSend = false; 
+                } else if (test.value > 5) {
+                    console.log('line 106') 
+                    return count.update({
+                        value: (5) })
+                } else { 
+                    return;
                 }
-                }           
-            }else { 
-                return console.log('Nothing Happened'); 
+            })
+            
+            
+        }else if (status == false) {
+            minusOne()
+            count = admin.database().ref('/Counter/KyQFZiBw-F_NF1NdstD/')
+            count.once('value', function(snapshot){
+                test = snapshot.val()
+                console.log('line 118 - ' + test + test.value)
+                if (test.value == 0) { 
+                    return dontSend = false;
+                } else if (test.value < 0) { 
+                    return count.update({
+                        value: (0) })
+                } else { 
+                    return;
                 }
-            }
+            })
+            }    
+            return ;
+                        }
+                    
+               
+
+    function plusOne (){ 
+        var count = admin.database().ref('/Counter/KyQFZiBw-F_NF1NdstD/value/')
+        count.transaction(function(currentCount) {
+                    return currentCount + 1; })
+    }
+
+    function minusOne(){ 
+        var count = admin.database().ref('/Counter/KyQFZiBw-F_NF1NdstD/value/')
+        count.transaction(function(currentCount) {
+                    return currentCount - 1; })
+    }
+    
+        // function setFlag(status) { 
+        //     console.log(status)
+        //     console.log('start of setcount') //debug line
+        //     var count = admin.database().ref('/').child('Counter').child('KyGXkz0uimfCX39ZLCW').child('value')
+        //     console.log('line 91 - ' + Counter);
+        //     if (status == true) { 
+        //         count.transaction(function(currentCount) {
+        //              return currentCount + 1; })
+        //             if (countVal == 5) { 
+        //                 return dontSend = false; 
+        //             } else if (countVal > 5){ 
+        //                 admin.database().ref('/Counter/').update({
+        //                     value: (5)
+        //                     })
+        //                     dontSend == true;
+        //             }
+        //         } else if (status == false) {
+        //             count.transaction(function(currentCount){
+        //                 return currentCount - 1;})
+        //          if (countVal == 0){
+        //              return dontSend = true;
+        //          } else {
+        //              console.log('line 111')
+        //                  if (countVal == 0) { 
+        //                      return dontSend = false;
+        //                  } else if (countVal < 0) { 
+        //                     return admin.database().ref('/Counter/').set({
+        //                         value: (0)
+        //                         })
+        //                      } else { 
+        //                          return ;
+        //                      }
+        //                  }
+        //          } else { 
+        //              return console.log('there is an error setting the status');
+        //          }
+    
+        //     }
+
+    //     count.set({
+    //         value: (test.getValue() + 1) })
+    // count.once('value', function(snapshot){ 
+    //     test = snapshot.val()})
+    //     console.log('line 102 - ' + test.value)
+        
+        
+    //     if (test.value == 5) {
+    //         dontSend = false;
+    //     } else if (test.value > 5){
+    //         count.set({
+    //             value: (5)})
+            
+    //           } else {
+    //               return; } } 
+              
 
 
 function inrange(){
-    setFlag()
-    if (gCurrTemp < lowBound) {
-        outOFRange = true
+    
+    if (gCurrTemp < lowBound || gCurrTemp > upBound) {
+        outOfRange = true
+        setFlag(outOfRange)  
+        console.log('back to inrange')  
         if (dontSend == false) {
             OutOfRangeEmail()
-            return;
+            return console.log('sent')
         } else {
-            gStatus = 'Temps are too low' 
-            return console.log("Temperature too low"); }}    
-    else if (gCurrTemp > upBound) { 
-        outOfRange = true
-        gStatus = 'Temps are too high'
-        if (dontSend == false) { 
-            OutOfRangeEmail() }
-        else {
-            return console.log("Temperature too high") }
-        }
-    else { 
+             } }   
+        else if (gCurrTemp > lowBound && gCurrTemp < upBound) { 
         outOfRange = false
-        gStatus = 'OK'
-        if (send)
+        setFlag(outOfRange)
+        if (dontSend == false){
+            return InRangeEmail()
+        } else if (dontSend == true) { 
+                return;
+        } else { 
+            return }
+        } else { 
+        console.log('There was an error reading the temperature')
+        nullTemperature()
+        }
+    }
 
 
     function tempCheck() {
@@ -202,42 +293,6 @@ transporter.sendMail(mailOptions, function(err, info){
 
 
 
-function startTimer() {
-    console.log("Timer printing");
-    timeractive = true;
-    if (timeractive == true) {
-        var ticker = setInterval(function(){tijdTimer()},1000);
-        
-    }
-    resetTimer()
-}
-
-
-function stopTimer() {
-    timeractive = false;
-}
-
-
-function resetTimer(ticker) {
-    if (timeractive == true) {
-        console.log("Line 179");
-    } else {
-        console.log("Line 181");
-    }
-    tijdTimer()
-}
-
-
-function tijdTimer(ticker) {
-    tijd = tijd + 1;
-    //var tijdstring = tijd.toString();
-    console.log(tijd.toString());
-    if (tijd.toString() == 300) {
-        timeoutEmail()
-    } else {
-        return;
-        }
-    }
 
     // exports.responseTimer= functions.database
     // .ref('/temperature/{pushID}')
@@ -245,19 +300,5 @@ function tijdTimer(ticker) {
     // //startTimer()
     
     
-    // })    
+    // })   
 
-function getobj() {
-    var pidata = {
-        date:logdate,
-         temp:gCurrTemp,
-        status:gStatus, 
-        time: logtime
-    };
- }
-}
-function newFunction() {
-    console.log('line 127');
-}
-
-}
