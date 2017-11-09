@@ -1,6 +1,6 @@
 var gmail = require('gmail');
 var nodemailer = require('nodemailer');
-var mailingList = 'miahgt@gmail.com' ; 'yatawo7@gmail.com'
+var mailingList = "miahgt@gmail.com,yatawo7@gmail.com,cameron.connolly93@gmail.com,asheesh.sangamneheri@gmail.com,pg705765@gmail.com"
 var outOfRange = false;
 var dontSend = true;
 var gCurrTemp;
