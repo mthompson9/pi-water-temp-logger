@@ -1,6 +1,6 @@
 var gmail = require('gmail');
 var nodemailer = require('nodemailer');
-var mailingList = 'miahgt@gmail.com' ; 'yatawo7@gmail.com'
+var mailingList = "pg705765@gmail.com,asheesh.sangamneheri@gmail.com,cameron.connolly93@gmail.com,miahgt@gmail.com,yatawo7@gmail.com"
 var math = require('mathjs');  //--Module to perform Math functions
 var ping = require('ping');  //--Module to perform ping functions
 var logMin;  //--Variable to log the current server time
