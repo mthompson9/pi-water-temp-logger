@@ -2,7 +2,7 @@ var gmail = require('gmail');
 var nodemailer = require('nodemailer');
 var mailingList = 'miahgt@gmail.com' ; 'yatawo7@gmail.com'
 var math = require('mathjs');  //--Module to perform Math functions
-var ping = require('ping);  //--Module to perform ping functions
+var ping = require('ping');  //--Module to perform ping functions
 var logMin;  //--Variable to log the current server time
 var outOfRange = false;
 var dontSend = true;
