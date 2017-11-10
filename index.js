@@ -157,6 +157,9 @@ exports.systemDownCheck = functions.https.onRequest((req, res) => {
     }); 
 
 
+  
+
+
 
 exports.checkVal = functions.database
     .ref('/temperature/{pushID}')
@@ -289,6 +292,8 @@ function OutOfRangeEmail () {
     } 
     sendTheEmail()
 };
+
+
 
 
 
