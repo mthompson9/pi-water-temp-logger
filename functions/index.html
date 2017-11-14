@@ -6,18 +6,19 @@
     <title>Welcome to Firebase Hosting</title>
 
     <!-- update the version number as needed -->
-    <script defer src="/__/firebase/4.6.0/firebase-app.js"></script>
+    <script defer src="/__/firebase/4.6.1/firebase-app.js"></script>
     <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/4.6.0/firebase-auth.js"></script>
-    <script defer src="/__/firebase/4.6.0/firebase-database.js"></script>
-    <script defer src="/__/firebase/4.6.0/firebase-messaging.js"></script>
-    <script defer src="/__/firebase/4.6.0/firebase-storage.js"></script>
+    <script defer src="/__/firebase/4.6.1/firebase-auth.js"></script>
+    <script defer src="/__/firebase/4.6.1/firebase-database.js"></script>
+    <script defer src="/__/firebase/4.6.1/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/4.6.1/firebase-storage.js"></script>
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
 
     <style media="screen">
       body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
       #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
+      #exportCSV {align-self: center}
       #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
       #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
       #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
@@ -29,54 +30,62 @@
         body { border-top: 16px solid #ffa100; }
       }
     </style>
-    <script type="text/javascript" src="helpers.js"></script>
-    <script type="text/javascript" src="index.js"></script>
   </head>
   <body>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="webapp.js"></script>
+      <script src="app.js"></script>
     <div id="message">
-      <script type = "text/javascript">
-      getobj()
-      </script>
-        <script type = "text/javascript">
-        var mws = "f"
-            var data = [
-               ['Date', mws],
-               ['Temp', '43.417'],
-               ['Status', 'high'],
-               ['Time', '17:40:51']
-            ];
-
-             
-             
-            function download_csv() {
-                var csv = 'Name,Title\n';
-                data.forEach(function(row) {
-                        csv += row.join(',');
-                        csv += "\n";
-                });
-             
-                console.log(csv);
-                var hiddenElement = document.createElement('a');
-                hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
-                hiddenElement.target = '_blank';
-                hiddenElement.download = 'temperature-log.csv';
-                hiddenElement.click();
-                console.log(hiddenElement.href)
-            }
-            </script>
-             
-            <button onclick="download_csv()";>Download CSV</button>
-
-              <script type="text/javascript" src="helpers.js">
-              alert(init.myMessage);
-              </script>
-              
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
+      <!-- <h2>Welcome</h2> -->
+      <h1>Download Cloud Database to CSV</h1>
+      <p>Hi Peter, please click the button below to download the data stored in the cloud in CSV format</p>
+      <!-- <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a> -->
+      <button id="exportCSV" onClick="clicker()">Export CSV</button>
+      <p><input type="text" maxlength="10" name="value" id="startFrom"/>
+        <input type="text" maxlength="10" name="value" id="endWith"/>
+        <input type="button" value="submit" onclick="extclicker(document.getElementById('startFrom').value, document.getElementById('endWith').value)" /></p>
+      
     </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
+
+  
+
+    
+<!-- <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDalSi3tvsWPI1oikUXJKAVeQoSTA7Z7BQ",
+    authDomain: "jsbase-5d117.firebaseapp.com",
+    databaseURL: "https://jsbase-5d117.firebaseio.com",
+    projectId: "jsbase-5d117",
+    storageBucket: "jsbase-5d117.appspot.com",
+    messagingSenderId: "941067890947"
+  };
+  firebase.initializeApp(config);
+</script> -->
+
+<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAIIV5RilYCz3Egtxd0ps-M_6iN2JgfEcU",
+    authDomain: "temperature-monitor-pi.firebaseapp.com",
+    databaseURL: "https://temperature-monitor-pi.firebaseio.com",
+    projectId: "temperature-monitor-pi",
+    storageBucket: "temperature-monitor-pi.appspot.com",
+    messagingSenderId: "647283396024"
+  };
+  firebase.initializeApp(config);
+</script>
+
+
+
+
+
+
+    
+
+
 
     <script>
       document.addEventListener('DOMContentLoaded', function() {
