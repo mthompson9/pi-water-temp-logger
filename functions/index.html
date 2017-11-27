@@ -40,11 +40,17 @@
       <h1>Download Cloud Database to CSV</h1>
       <p>Hi Peter, please click the button below to download the data stored in the cloud in CSV format</p>
       <!-- <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a> -->
-      <button id="exportCSV" onClick="clicker()">Export CSV</button>
-      <p><input type="text" maxlength="10" name="value" id="startFrom"/>
-        <input type="text" maxlength="10" name="value" id="endWith"/>
-        <input type="button" value="submit" onclick="extclicker(document.getElementById('startFrom').value, document.getElementById('endWith').value)" /></p>
-      
+      <div align=center></div><button id="exportCSV" onClick="clicker()">Export All Data</button>
+    </br></br>
+    <!-- <button id="textit" onClick="texter()">Text Me!</button> -->
+      <p>Please enter a start date in yyyy/mm/dd format in the upper field e.g. 2017/11/21 and a start time in hh:mm:ss format in the lower field e.g. 10:52:00</br></br>
+        <input type="text" maxlength="10" name="value" id="startFrom"/> &nbsp;<strong>Start Date</strong>&nbsp;
+        <input type="text" maxlength="10" name="value" id="startClock"/> &nbsp;<strong>Start Time</strong></br></br>
+        Now Enter an end date in yyyy/mm/dd format in the upper field and an end time in hh:mm:ss format in the lower field</br></br>
+        <input type="text" maxlength="10" name="value" id="endFrom"/> &nbsp;<strong>End Date</strong>&nbsp;
+        <input type="text" maxlength="10" name="value" id="endClock"/> &nbsp;<strong>End Time</strong></br></br>
+        <button id="texdat" value="submit" onclick="clicker(document.getElementById('startFrom').value, document.getElementById('startClock').value, document.getElementById('endFrom').value, document.getElementById('endClock').value)" />Download Range of Data</button></p>
+      </div>
     </div>
 
   

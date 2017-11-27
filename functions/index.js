@@ -1,277 +1,396 @@
-const functions = require('firebase-functions');
 var gmail = require('gmail');
 var nodemailer = require('nodemailer');
+// Twilio Credentials
+var twilio = require('twilio');
+var client = new twilio('AC512bca4596caf8748f215b08070970c4', '01cd65140acb5e6d8a19d32384a12704');
+cronJob = require('cron').CronJob;
+var mailingList = "pg705765@gmail.com,asheesh.sangamneheri@gmail.com,cameron.connolly93@gmail.com,miahgt@gmail.com,yatawo7@gmail.com"
+var linkText = "Click here to Download CSV";
+var linkRef = linkText.link("https://temperature-monitor-pi.firebaseapp.com");
+var math = require('mathjs');  //--Module to perform Math functions
+var ping = require('ping');  //--Module to perform ping functions
+var logMin;  //--Variable to log the current server time
 var outOfRange = false;
+var dontSend = true;
 var gCurrTemp;
-var objectpi;
-var gStatus = 'OK';
-var newFlag = 0;
-var logdate
+var tempp;
 var logtime;
-var pidata = {};
-var minutes = Math.floor(time / 60);
-var seconds = time - minutes * 60;
-var hours = Math.floor(time / 3600);
-var time = time - hours * 3600;
-var timeractive = false;
-var tijd = 0;
+var lastDBtimestamp;  //--Variable to log the time stamp of the last database entry
+var sysDown = true;  //--Boolean to determine whether or not the system is down
+var sysFlag;  //--Variable to determine if the system down/ok email has already sent once
+const Firebase = require('firebase');
+var config = {
+  apiKey: "AIzaSyAIIV5RilYCz3Egtxd0ps-M_6iN2JgfEcU",
+  authDomain: "temperature-monitor-pi.firebaseapp.com",
+  databaseURL: 'https://temperature-monitor-pi.firebaseio.com/',
+  storageBucket: "<BUCKET>.appspot.com",
+};
+Firebase.initializeApp(config);
+var test;
+var currentCount;
+var maildate = new Date();
+var mailhours = maildate.getHours();
+var mailminutes = maildate.getMinutes();
+var mailseconds = maildate.getSeconds();
+var mailStamp = mailhours + ':' + mailminutes + ':' + mailseconds
 
 
+const functions = require('firebase-functions');
 const admin = require('firebase-admin');
-admin.initializeApp(functions.config().firebase);
-
-
+    admin.initializeApp(functions.config().firebase);
 const inRangeString = 'Your temperatures are now back in range at ' ;
 const outOfRangeString = 'Your temperatures are out of range right now, please do something. The current temperature is ';
-const timeOutString = "Data has not been received from the pi for 5 minutes. A response timeout has occurred";
+const nullTempString = "No temperature was received in the cloud storage. Please check the pi and your network connectivity";
 const lowBound = 28;
 const upBound = 32;
-const downloadText = 'You can download a CSV log of the data captured by clicking on the link below: '
-const downloadLink = 'https://jsbase-5d117.firebaseapp.com/'
 const piEmail = 'templogger9@gmail.com';
-const sendToEmail = 'pg705765@gmail.com';
+var sendToEmail = 'pg705765@gmail.com';
 const emailPassword = 'ThinkBig';
 const transporter = nodemailer.createTransport('smtps://' + piEmail + ':' + emailPassword + '@smtp.gmail.com');
 
-// function str_pad_left(string,pad,length) {
-//     return (new Array(length+1).join(pad)+string).slice(-length);
-// }
 
-//var finalTime = str_pad_left(minutes,'0',2)+':'+str_pad_left(seconds,'0',2);
-
-function startTimer() {
-    console.log("Timer printing");
-    timeractive = true;
-    if (timeractive == true) {
-        var ticker = setInterval(function(){tijdTimer()},1000);
-        
-    }
-    resetTimer()
-}
-
-function stopTimer() {
-    timeractive = false;
-}
-
-function resetTimer(ticker) {
-    if (timeractive == true) {
-        console.log("Line 56");
-    } else {
-        console.log("Line 58");
-    }
-    tijdTimer()
-}
-
-function tijdTimer(ticker) {
-    tijd = tijd + 1;
-    //var tijdstring = tijd.toString();
-    console.log(tijd.toString());
-    if (tijd.toString() == 300) {
-        timeoutEmail()
-    } else {
-        return;
-        }
-    }
-
-
-
-
-        //console.log("something on top")
-
-//lol we were stuck on this for a while - it got frustrating
-//This line in a key one. We use SMTP as its very widely used by different protocols.
-//transport is just a MTA for the SMTP MHS.
-// setting the attributes of the email
 var  mailOptions = {
    from: piEmail,
    to: sendToEmail,
-   subject: 'Seed Spa Temperature',
-   text:  outOfRangeString + gCurrTemp  + '\n' + downloadText + '\n' + downloadLink , // plaintext body
+   subject: 'Temperature at ' + gCurrTemp + '°C',
+   text:  outOfRangeString + gCurrTemp , // plaintext body
 };
 
-function OutOfRangeEmail () {
- mailOptions = {
-   from: piEmail,
-   to: sendToEmail,
-   subject: 'Seed Spa Temperature',
-   text:  outOfRangeString + gCurrTemp  + '\n' + downloadText + '\n' + downloadLink} // plaintext body
-   sendTheEmail()
-};
+function sleep(milliseconds) {
+    var start = new Date().getTime();
+    for (var i = 0; i < 1e7; i++) {
+      if ((new Date().getTime() - start) > milliseconds){
+        break;
+      }
+    }
+  }
 
-function InRangeEmail () {
-    mailOptions = {
-       from: piEmail,
-       to: sendToEmail,
-       subject: 'Seed Spa Temperature',
-       text: inRangeString + gCurrTemp  + '\n' + downloadText + '\n' + downloadLink ,} // plaintext body
+//--SYSTEM DOWN CHECK--Check for last database entry every 5 minutes---------//
+//---------------------------------------------------------------------------//
 
-       sendTheEmail()
-   };
+//1. Take the last entry in the database under temperature  --------
+exports.systemDownCheck = functions.https.onRequest((req, res) => {
+    
+    var db = admin.database();
+    var ref = db.ref('/temperature');
+    ref.limitToLast(1).on('child_added', function(snapshot) {
+            
+            console.log('The last added value')
+            console.log(snapshot.val().time);
+            
+            
+            logmin = snapshot.val().time;
+    
+    //2. Get a current timestamp by joining getHours, getMinutes and getSeconds using Date  --------
+    
+    var d = new Date();
+    var h = d.getHours();
+    var m = d.getMinutes();
+    var s = d.getSeconds();
+            
+            console.log(h + ':' + m + ':' + s)
+    
+    //3. Map variables to the timestamp and minutes values of the database entry and server time --------
+    
+    var DBtimestamp = logmin.substr(3, 2);
+    var Servertimestamp = m       
+    var fullServerStamp = h + ':' + m + ':' + s
+            
+    //4. Calculate absolute value difference in minutes between the two timestamps  --------
+    
+        if (Math.abs(Servertimestamp - DBtimestamp) >= 5) 
+            {
+            console.log('Down')
+            sysDown = true;
+            } else 
+                {
+                console.log('fine')
+                sysDown = false;            
+                }
+    
+    //5. Obtain reference to sysdownflag which is used to verify if system is down  --------
+    
+    admin.database().ref('/').child('sysdownflag').child('KyMK50EnhKUQkhRVSb0').once('value', function(snapshot){
+    
+                console.log('QWERTTY')
+                console.log(sysDown)
+                console.log(snapshot.val().flag)
+                sysFlag = snapshot.val().flag
+    
+                var fruits = ["Banana", "Orange", "Apple", "Mango"];
+                
+                console.log('Array')
+                console.log(fruits);
+    
+    //6.    Uses value of sysDown to determine if the system is down and which email to send  --------
+    //      sysFlag is used to prevent duplicate emails sending, acting as an on/off gate  --------
+    //      NOTE: if you reverse the update values, you will receive emails every 5 minutes  --------
+    
+        if (sysDown == true && sysFlag == 1) 
+            {
+    
+            admin.database().ref('/').child('sysdownflag').child('KyMK50EnhKUQkhRVSb0').update({flag: '0'});
+                    
+            const sysDownEmail = 
+            {
+            from: piEmail,
+            to: mailingList,
+            subject: 'System Down at ' + fullServerStamp,
+            text: 'The system last recorded an entry at ' + logmin + ', the system is currently down.'
+            }
+        return transporter.sendMail(sysDownEmail).then(() => 
+        {
+        }).catch(error => 
+        {
+        res.send(error)
+        })
+                    
+        } else if (sysDown == false && sysFlag == 0) 
+            {
+    
+            admin.database().ref('/').child('sysdownflag').child('KyMK50EnhKUQkhRVSb0').update({flag: '1'});
+                    
+            const sysOKEmail = 
+            {
+            from: piEmail,
+            to: mailingList,
+            subject: 'System OK. Running at ' + fullServerStamp,
+            text: 'The system was previously down but is now running as expected again. The last entry was at ' + logmin
+            }
+        return transporter.sendMail(sysOKEmail).then(() => 
+        {
+        }).catch(error => 
+        {
+        res.send(error)
+        })
+        }
+        });
+    
+    //a. Cron is used to call this function every 5 minutes, no extra code is required here
+    //   It is setup at cron-job.org
+    //   On successful deploy, a function URL is given in command line to verify link with Cron
+    //   If this URL doesn't show, check the cron job is active and that this function was not re-named
+    
+    //--END--SYSTEM DOWN CHECK---------------------------------------------------//
+    //---------------------------------------------------------------------------//
+        });
+    }); 
 
-   function timeoutEmail() {
-    mailOptions = {
-        from: piEmail,
-        to: sendToEmail,
-        subject: 'System Time Out',
-        text: timeOutString}   
 
-        sendTheEmail()
-   };
+// exports.sendText = functions.https.onRequest((req, res) => {
 
-//some error handling. This is the code that actually sends the message.
-//info.response if returned by the SMTP transporter with info about the sent item.
+//     console.log('Starting sms')
 
-function sendTheEmail (){
-transporter.sendMail(mailOptions, function(error, info){
-  return console.log("sending email") })
-    if(error){
-        return console.log(error);
-    } else {
-    return console.log('Message sent: ' + info.response)}
+//     var db = admin.database();
+//     var ref = db.ref('/temperature/');
+//     ref.limitToLast(1).on('child_added', function(snapshot) {
+
+//     tempp = snapshot.val().temp;
+
+//     var db2 = admin.database();
+//     var ref2 = db.ref('/Text Number/Number/');
+//     ref2.once('value', function(snapshot) {
 
 
-};
+//         yournumber = snapshot.val().textthis;
 
-const snapshotToArray = snapshot => {
-    let returnArr = [];
+//         sleep(1000)
 
-    snapshot.forEach(childSnapshot => {
-        let item = childSnapshot.val(); 
-        item.key = childSnapshot.key;
-        returnArr.push(item);
-    });
+//         client.messages.create( { to:yournumber, from:'+447481343706', body:'The temperature is ' + tempp }, function( err, data ) {});
+//     },  null, true);
 
-    return returnArr;
-};
+//     sleep(1000)
 
-exports.responseTimer= functions.database
-.ref('/temperature/{pushID}')
-.on('temp', function(snapshot) {
-startTimer()
+//     console.log('Done')
+
+// })
+
+// })
 
 
-})
 
 
-// explains what we're going to be doing. Using functions, in the DB and calling the C.F. CheckVal
-//What we take from the DB.
-//event trigger to call our function
-//take the val from the snapshot that we get.
-//drop the temp section from it into our range comparison
+
 exports.checkVal = functions.database
     .ref('/temperature/{pushID}')
     .onCreate(event =>{
+        console.log('checkVal has started')
+        console.log(linkRef)
         const entry = event.data.val()
-        //console.log(JSON.stringify(entry.temp))
         gCurrTemp = entry.temp
         gStatus = entry.status
-        logdate = entry.date
+        //logdate = entry.date
         logtime = entry.time
-        //startTimer()
-        // var pidata = {
-        //     date:logdate,
-        //     temp:gCurrTemp,
-        //     status:gStatus, 
-        //     time: logtime
-        // };
+        = inrange()     
+})
 
-        // var csv = 'Name,Title\n';
 
-        // var textdate = logdate;
-        // // data.forEach(function(row) {
-        // //         csv += row.join(',');
-        // //         csv += "\n";
-        // // });
-     
-        // console.log(logdate);
-        // var hiddenElement = document.createElement('a');
-        // hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(logdate);
-        // hiddenElement.target = '_blank';
-        // hiddenElement.download = 'temperature-log.csv';
-        // hiddenElement.click();
-        // console.log(hiddenElement.href)
+
+
+//changes the temp status (out of range or in range) and calls set flag, to update our DB value based on that
+//then gets told wether to send the email or not (depends on dontSend[Boolean]) and which email to send (depends on status)
+function inrange(){
+    if (gCurrTemp < lowBound || gCurrTemp > upBound) {
+        outOfRange = true
+        setFlag(outOfRange)  
+        //console.log('back to inrange')  //debug line
+        if (dontSend == false) {
+            return OutOfRangeEmail()
+            //return console.log('sent') //debug line
+        } 
+        else { 
+            return; 
+        } 
+    }
+    else if (gCurrTemp > lowBound && gCurrTemp < upBound) { 
+        outOfRange = false
+        setFlag(outOfRange)
+        if (dontSend == false){
+            return InRangeEmail()
+        } 
+        else if (dontSend == true) { 
+            return;
+        } 
+        else { 
+            return 
+        }
+    } 
+    else { 
+        console.log('There was an error reading the temperature')
+        nullTemperature()
+    }
+}
+
+
+
+
+//controls the counter in the DB dependant on status of the temperature
+function setFlag(status) { 
+    //console.log('start of setcount') //debug line
+    if (status == true) { 
+        plusOne()
+        console.log('line 98')
+        count = admin.database().ref('/Counter/KyQFZiBw-F_NF1NdstD/')
+        count.once('value', function(snapshot){
+        test = snapshot.val()
+        //console.log('line 101 - ' + test + ' + ' + test.value) //debug line
+        if (test.value == 5) { 
+            return dontSend = false; } 
+        else if (test.value > 5) {
+            //console.log('line 106') //debug line
+            dontSend = true; 
+            return count.update({
+            value: (5) })} 
+        else { 
+            dontSend = true;
+            return;
+            }
+        }) 
+    }
+    else if (status == false) {
+        minusOne()
+        count = admin.database().ref('/Counter/KyQFZiBw-F_NF1NdstD/')
+        count.once('value', function(snapshot){
+        test = snapshot.val()
+        //console.log('line 118 - ' + test + test.value) //debug line
+        if (test.value == 0) { 
+            return dontSend = false;}
+        else if (test.value < 0) { 
+            dontSend = true;
+            return count.update({
+            value: (0) })}
+            else { 
+                dontSend = true;
+                return;
+            }
+        })
+    }    
+    return ;
+}
+                    
+ 
+
+
+//These functions control the value of the counter in the DB 
+function plusOne (){ 
+    var count = admin.database().ref('/Counter/KyQFZiBw-F_NF1NdstD/value/')
+    count.transaction(function(currentCount) {
+    return currentCount + 1; 
+    })
+}
+
+
+
+
+function minusOne(){ 
+    var count = admin.database().ref('/Counter/KyQFZiBw-F_NF1NdstD/value/')
+    count.transaction(function(currentCount) {
+    return currentCount - 1; 
+    })
+}
     
-        //getobj()
-        //entry.temp = inrange()
-
-    })
+    
 
 
-
-
-
-
-
-
-    // firebase.database().ref('/Flag').on('value', function(snapshot) {
-    //   console.log(snapshot);
-    // });;
-
-//     admin.database().ref(`/Flag`).on('value', function(snapshot) {
-//
-//       // Object.keys(results).forEach(function(item){ console.log(item)});
-//
-//
-//       console.log('This is the flag functions working ' + snapshot)
-//        newFlag = snapshot.val()
-//       console.log(newFlag)
-//
-// console.log(JSON.stringify({
-//   value: (newFlag.value + 1)
-// }))
+//Each of these email functions just change the mail options and calls sendmail()
+function OutOfRangeEmail () {
+    //console.log('sending the email') //debug line
+    mailOptions = {
+        from: piEmail,
+        to: mailingList,
+        subject: 'Temperature at ' + gCurrTemp  + '°C' ,
+        text:  outOfRangeString + gCurrTemp + '°C @ ' + mailStamp  + '\n' + '\n' + linkRef
+    } 
+    sendTheEmail()
+};
 
 
 
 
-    function setFlag() {
-      admin.database().ref(`/Flag`).on('value', function(snapshot) {
-      console.log('setting flag')
-      newFlag = snapshot.val()
-      admin.database().ref('/Flag').set({
-        value: (newFlag.value + 1)
-      })
-    })
-  }
 
 
+function InRangeEmail () {
+    mailOptions = {
+        from: piEmail,
+        to: mailingList,
+        subject: 'Temperature at ' + gCurrTemp  + '°C' ,
+        text: inRangeString + gCurrTemp + '°C @ ' + mailStamp + '\n' + '\n' + linkRef
+    } 
+    sendTheEmail() 
+};
+
+
+
+
+function nullTemperature() {
+    mailOptions = {
+        from: piEmail,
+        to: mailingList,
+        subject: 'System Down: Temperature not received',
+        text:  nullTempString
+    } 
+    sendTheEmail()    
+}
+
+
+
+
+//some error handling. This is the code that actually sends the message.
+//info.response if returned by the SMTP transporter with info about the sent item.
   //call our tricky function when you are out of range
   //outOfRange boolean is for our flag trigger to stop multiple emails for the same temperature event.
   //perhaps later we can use this as an indicator to duplicate the snapshot to a separate tble for event log
-  function inrange(){
-    if (gCurrTemp < lowBound) {
-      setFlag()
-      exports.checkVal = functions.database
-        .ref('/WarningSent/').once('value').then(function(snapshot){console.log(snapshot)})
-        const flag = data.val()
-        console.log(flag)
+function sendTheEmail (){
+    transporter.sendMail(mailOptions, function(err, info){
+        if(err){
+            return console.log(err);
+        } 
+        else {
+            return console.log('Message sent: ' + info.response)
+        }
+    })
+};
 
-        OutOfRangeEmail()
-        outOfRange = true;
-        gStatus = 'Temps are too high'
-
-        return console.log("Temperature too low");
-       } else if (gCurrTemp > upBound) {
-        setFlag()
-        OutOfRangeEmail()
-        outOfRange = true
-        gStatus = 'Temps are too low'
-        return console.log("Temperature too high") }
-     else {
-        outOfRange = false
-        gStatus = 'OK'
-        setFlag()
-        InRangeEmail()
-        return console.log('temp in range')
-    }}
-
-    function getobj() {
-        var pidata = {
-            date:logdate,
-            temp:gCurrTemp,
-            status:gStatus, 
-            time: logtime
-        };
-    }
-
-
-
+var textJob = new cronJob( '02 00 * * *', function(){
+    client.messages.create( { to:'+447756692445', from:'+447481343706', body:'Hello! Hope you’re having a good day!' }, function( err, data ) {});
+  },  null, true);
