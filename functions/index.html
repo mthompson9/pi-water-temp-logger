@@ -38,18 +38,94 @@
     <div id="message">
       <!-- <h2>Welcome</h2> -->
       <h1>Download Cloud Database to CSV</h1>
-      <p>Hi Peter, please click the button below to download the data stored in the cloud in CSV format</p>
+      <!-- <div data-bind="foreach: thetemp">
+      <h1>Current Temperature:</h1>
+      <p data-bind='text: $data[0]' />></p>
+
+      </br></br>
+      <h2>Lower Probe:</h2>
+      <p data-bind='text: $data[1]' />></p>
+
+      </br></br>
+      <h2>Upper Probe:</h2>
+      <p data-bind='text: $data[2]' />></p>
+    </div>
+    
+
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+
+      <script>
+      var table = document.getElementById("tp");
+
+      function ViewModel() {
+        var self = this;
+        self.thetemp = ko.observable();
+
+        var viewModel = new ViewModel();
+        ko.applyBindings(viewModel, table);
+
+        const config2 = {
+        apiKey: "AIzaSyDalSi3tvsWPI1oikUXJKAVeQoSTA7Z7BQ",
+        authDomain: "jsbase-5d117.firebaseapp.com",
+        databaseURL: "https://jsbase-5d117.firebaseio.com",
+        projectId: "jsbase-5d117",
+        storageBucket: "jsbase-5d117.appspot.com",
+        messagingSenderId: "941067890947"
+        };
+        firebase.initializeApp(config2);
+
+        const dbRefObject = firebase.database().ref();
+
+        dbRefObject.on('value', snap => {
+          var ourDbObject = snap.val();
+          var outputArray = [];
+              Object.keys(ourDbObject).forEach(function(key){
+                  if (key.startsWith("probe")) {
+                      outputArray.push(ourDbObject[key]);
+                    }
+                    });
+                    console.log(outputArray);
+              viewModel.thetemp(outputArray);
+              });
+
+
+      }
+
+
+      </script> -->
+      <p id="testy">!</p>
+
+      <script>
+
+      const dbRefObject = firebase.database().ref();
+
+      dbRefObject.on('value', snap => {
+
+        var ourDbObject = snap.val();
+        console.log(snap.val())
+
+      })
+      
+      </script>
+
+      <p id="pra-temp">Average Temperature: </p>
+      <p id="pru-temp">Upper Probe Temperature: </p>
+      <p id="prl-temp">Lower Probe Temperature: </p>
+
+      <p>>Hi Peter, please click the button below to download the data stored in the cloud in CSV format</p>
       <!-- <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a> -->
-      <div align=center></div><button id="exportCSV" onClick="clicker()">Export All Data</button>
+      <div align=center></div><button id="exportCSV" onClick="alldata()">Export All Data</button>
     </br></br>
-    <!-- <button id="textit" onClick="texter()">Text Me!</button> -->
+    <input type="text" maxlength="16" name="value" id="txter"/></br>
+    <button id="textit" onClick="texter(document.getElementById('txter').value)">Text Me!</button>
       <p>Please enter a start date in yyyy/mm/dd format in the upper field e.g. 2017/11/21 and a start time in hh:mm:ss format in the lower field e.g. 10:52:00</br></br>
-        <input type="text" maxlength="10" name="value" id="startFrom"/> &nbsp;<strong>Start Date</strong>&nbsp;
+        <input type="text" maxlength="10" name="value" id="startFrom"/> &nbsp;<strong>Start Date</strong></br>
         <input type="text" maxlength="10" name="value" id="startClock"/> &nbsp;<strong>Start Time</strong></br></br>
         Now Enter an end date in yyyy/mm/dd format in the upper field and an end time in hh:mm:ss format in the lower field</br></br>
-        <input type="text" maxlength="10" name="value" id="endFrom"/> &nbsp;<strong>End Date</strong>&nbsp;
+        <input type="text" maxlength="10" name="value" id="endFrom"/> &nbsp;<strong>End Date</strong></br>>
         <input type="text" maxlength="10" name="value" id="endClock"/> &nbsp;<strong>End Time</strong></br></br>
-        <button id="texdat" value="submit" onclick="clicker(document.getElementById('startFrom').value, document.getElementById('startClock').value, document.getElementById('endFrom').value, document.getElementById('endClock').value)" />Download Range of Data</button></p>
+        <button id="texdat" value="submit" onclick="clicker(document.getElementById('startClock').value, document.getElementById('endFrom').value, document.getElementById('endClock').value)" />Download Range of Data</button></p>
       </div>
     </div>
 
@@ -57,7 +133,21 @@
 
     
 <!-- <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+  
 <script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDalSi3tvsWPI1oikUXJKAVeQoSTA7Z7BQ",
+    authDomain: "jsbase-5d117.firebaseapp.com",
+    databaseURL: "https://jsbase-5d117.firebaseio.com",
+    projectId: "jsbase-5d117",
+    storageBucket: "jsbase-5d117.appspot.com",
+    messagingSenderId: "941067890947"
+  };
+  firebase.initializeApp(config);
+</script> -->
+
+<!-- <script>
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyDalSi3tvsWPI1oikUXJKAVeQoSTA7Z7BQ",
