@@ -13,12 +13,24 @@ var logMin;  //--Variable to log the current server time
 var outOfRange = false;
 var dontSend = true;
 var gCurrTemp;
+var gUpperTemp;
+var gLowerTemp;
 var tempp;
 var logtime;
 var lastDBtimestamp;  //--Variable to log the time stamp of the last database entry
 var sysDown = true;  //--Boolean to determine whether or not the system is down
 var sysFlag;  //--Variable to determine if the system down/ok email has already sent once
 const Firebase = require('firebase');
+// Initialize Firebase
+// var config = {
+//   apiKey: "AIzaSyDalSi3tvsWPI1oikUXJKAVeQoSTA7Z7BQ",
+//   authDomain: "jsbase-5d117.firebaseapp.com",
+//   databaseURL: "https://jsbase-5d117.firebaseio.com",
+//   projectId: "jsbase-5d117",
+//   storageBucket: "jsbase-5d117.appspot.com",
+//   messagingSenderId: "941067890947"
+// };
+// Firebase.initializeApp(config);
 var config = {
   apiKey: "AIzaSyAIIV5RilYCz3Egtxd0ps-M_6iN2JgfEcU",
   authDomain: "temperature-monitor-pi.firebaseapp.com",
@@ -177,35 +189,35 @@ exports.systemDownCheck = functions.https.onRequest((req, res) => {
     }); 
 
 
-// exports.sendText = functions.https.onRequest((req, res) => {
+exports.sendText = functions.https.onRequest((req, res) => {
 
-//     console.log('Starting sms')
+    console.log('Starting sms')
 
-//     var db = admin.database();
-//     var ref = db.ref('/temperature/');
-//     ref.limitToLast(1).on('child_added', function(snapshot) {
+    var db = admin.database();
+    var ref = db.ref('/temperature/');
+    ref.limitToLast(1).on('child_added', function(snapshot) {
 
-//     tempp = snapshot.val().temp;
+    tempp = snapshot.val().temp;
 
-//     var db2 = admin.database();
-//     var ref2 = db.ref('/Text Number/Number/');
-//     ref2.once('value', function(snapshot) {
+    var db2 = admin.database();
+    var ref2 = db.ref('/Text Number/Number/');
+    ref2.once('value', function(snapshot) {
 
 
-//         yournumber = snapshot.val().textthis;
+        yournumber = snapshot.val().textthis;
 
-//         sleep(1000)
+        sleep(1000)
 
-//         client.messages.create( { to:yournumber, from:'+447481343706', body:'The temperature is ' + tempp }, function( err, data ) {});
-//     },  null, true);
+        client.messages.create( { to:yournumber, from:'+447481343706', body:'The temperature is ' + tempp }, function( err, data ) {});
+    },  null, true);
 
-//     sleep(1000)
+    sleep(1000)
 
-//     console.log('Done')
+    console.log('Done')
 
-// })
+})
 
-// })
+})
 
 
 
@@ -218,9 +230,12 @@ exports.checkVal = functions.database
         console.log(linkRef)
         const entry = event.data.val()
         gCurrTemp = entry.temp
+        gUpperTemp = entry.upperprobe;
+        gLowerTemp = entry.lowerprobe;
         gStatus = entry.status
         //logdate = entry.date
         logtime = entry.time
+        document.getElementById('pra-temp').innerHTML = here.Spray.ApplicationHeight
         = inrange()     
 })
 
@@ -340,6 +355,21 @@ function OutOfRangeEmail () {
         to: mailingList,
         subject: 'Temperature at ' + gCurrTemp  + '°C' ,
         text:  outOfRangeString + gCurrTemp + '°C @ ' + mailStamp  + '\n' + '\n' + linkRef
+    } 
+    sendTheEmail()
+};
+
+//Each of these email functions just change the mail options and calls sendmail()
+function sampleEmail () {
+    //console.log('sending the email') //debug line
+    mailOptions = {
+        from: piEmail,
+        to: mailingList,
+        subject: 'Average Temperature at ' + gCurrTemp  + '°C' ,
+        text:  'The temperature in the seed spa has fallen out of range.'
+        + '\n' + 'The Upper Probe reported a temperature of ' + gUpperTemp + '°C'
+        + '\n' + 'The Lower Probe reported a temperature of ' + gLowerTemp + '°C'
+        + '\n' + '\n' + 'These values were reported at ' + mailStamp  + '. You may download the data captured by clicking the link below' + '\n' + '\n' + linkRef
     } 
     sendTheEmail()
 };
