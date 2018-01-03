@@ -1,0 +1,383 @@
+[debug] [2018-01-03T15:54:25.629Z] ----------------------------------------------------------------------
+[debug] [2018-01-03T15:54:25.636Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\user\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase deploy
+[debug] [2018-01-03T15:54:25.637Z] CLI Version:   3.16.0
+[debug] [2018-01-03T15:54:25.637Z] Platform:      win32
+[debug] [2018-01-03T15:54:25.637Z] Node Version:  v8.5.0
+[debug] [2018-01-03T15:54:25.640Z] Time:          Wed Jan 03 2018 15:54:25 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-03T15:54:25.641Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-01-03T15:54:25.745Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-01-03T15:54:25.747Z] > authorizing via signed-in user
+[debug] [2018-01-03T15:54:25.754Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-01-03T15:54:25.754Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/1Jmq1GKhMfdgSylY3ZQlFKFlxit2DSY1IWdVtRXjbs0',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Wed Jan 03 2018 15:54:25 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-03T15:54:26.031Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-03T15:54:26.075Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/jsbase-5d117  
+  
+ Wed Jan 03 2018 15:54:26 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-03T15:54:26.748Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-03T15:54:26.750Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/jsbase-5d117/tokens  
+  
+ Wed Jan 03 2018 15:54:26 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-03T15:54:27.302Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'jsbase-5d117'...
+[info] 
+[info] i  deploying functions, hosting
+[debug] [2018-01-03T15:54:27.974Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "dependencies": {
+    "cron": "^1.3.0",
+    "es6-promise-pool": "^2.5.0",
+    "firebase": "^4.6.1",
+    "firebase-admin": "^5.6.0",
+    "firebase-functions": "^0.7.5",
+    "fusioncharts": "^3.12.2",
+    "gmail": "^0.5.0",
+    "mathjs": "^3.16.5",
+    "node-cron": "^1.2.1",
+    "nodemailer": "^4.3.1",
+    "ping": "^0.2.2",
+    "plotly.js": "^1.31.2",
+    "request-promise": "^4.2.2",
+    "secure-compare": "^3.0.1",
+    "twilio": "^3.10.0",
+    "uniq": "^1.0.1"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[debug] [2018-01-03T15:54:27.978Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/jsbase-5d117?view=CONSUMER_VIEW  
+  
+ Wed Jan 03 2018 15:54:27 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-03T15:54:27.979Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/jsbase-5d117?view=CONSUMER_VIEW  
+  
+ Wed Jan 03 2018 15:54:27 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-03T15:54:29.094Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-03T15:54:29.423Z] <<< HTTP RESPONSE 200
+[info] +  functions: all necessary APIs are enabled
+[debug] [2018-01-03T15:54:29.429Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/jsbase-5d117  
+  
+ Wed Jan 03 2018 15:54:29 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-03T15:54:29.430Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/jsbase-5d117/apiKeys  
+  
+ Wed Jan 03 2018 15:54:29 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-03T15:54:30.277Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-03T15:54:30.286Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-03T15:58:16.498Z] ----------------------------------------------------------------------
+[debug] [2018-01-03T15:58:16.505Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\user\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase deploy
+[debug] [2018-01-03T15:58:16.506Z] CLI Version:   3.16.0
+[debug] [2018-01-03T15:58:16.506Z] Platform:      win32
+[debug] [2018-01-03T15:58:16.506Z] Node Version:  v8.5.0
+[debug] [2018-01-03T15:58:16.509Z] Time:          Wed Jan 03 2018 15:58:16 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-03T15:58:16.509Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-01-03T15:58:16.557Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-01-03T15:58:16.559Z] > authorizing via signed-in user
+[debug] [2018-01-03T15:58:16.565Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/jsbase-5d117  
+  
+ Wed Jan 03 2018 15:58:16 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-03T15:58:17.303Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-03T15:58:17.305Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/jsbase-5d117/tokens  
+  
+ Wed Jan 03 2018 15:58:17 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-03T15:58:17.994Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'jsbase-5d117'...
+[info] 
+[info] i  deploying functions, hosting
+[debug] [2018-01-03T15:58:18.636Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "dependencies": {
+    "cron": "^1.3.0",
+    "es6-promise-pool": "^2.5.0",
+    "firebase": "^4.6.1",
+    "firebase-admin": "^5.6.0",
+    "firebase-functions": "^0.7.5",
+    "fusioncharts": "^3.12.2",
+    "gmail": "^0.5.0",
+    "mathjs": "^3.16.5",
+    "node-cron": "^1.2.1",
+    "nodemailer": "^4.3.1",
+    "ping": "^0.2.2",
+    "plotly.js": "^1.31.2",
+    "request-promise": "^4.2.2",
+    "secure-compare": "^3.0.1",
+    "twilio": "^3.10.0",
+    "uniq": "^1.0.1"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[debug] [2018-01-03T15:58:18.641Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/jsbase-5d117?view=CONSUMER_VIEW  
+  
+ Wed Jan 03 2018 15:58:18 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-03T15:58:18.643Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/jsbase-5d117?view=CONSUMER_VIEW  
+  
+ Wed Jan 03 2018 15:58:18 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-03T15:58:19.801Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-03T15:58:20.286Z] <<< HTTP RESPONSE 200
+[info] +  functions: all necessary APIs are enabled
+[debug] [2018-01-03T15:58:20.292Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/jsbase-5d117  
+  
+ Wed Jan 03 2018 15:58:20 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-03T15:58:20.293Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/jsbase-5d117/apiKeys  
+  
+ Wed Jan 03 2018 15:58:20 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-03T15:58:21.047Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-03T15:58:21.052Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-03T16:02:44.730Z] ----------------------------------------------------------------------
+[debug] [2018-01-03T16:02:44.738Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\user\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase deploy
+[debug] [2018-01-03T16:02:44.738Z] CLI Version:   3.16.0
+[debug] [2018-01-03T16:02:44.739Z] Platform:      win32
+[debug] [2018-01-03T16:02:44.739Z] Node Version:  v8.5.0
+[debug] [2018-01-03T16:02:44.742Z] Time:          Wed Jan 03 2018 16:02:44 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-03T16:02:44.742Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-01-03T16:02:44.791Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-01-03T16:02:44.793Z] > authorizing via signed-in user
+[debug] [2018-01-03T16:02:44.801Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/jsbase-5d117  
+  
+ Wed Jan 03 2018 16:02:44 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-03T16:02:45.567Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-03T16:02:45.569Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/jsbase-5d117/tokens  
+  
+ Wed Jan 03 2018 16:02:45 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-03T16:02:46.073Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'jsbase-5d117'...
+[info] 
+[info] i  deploying functions, hosting
+[debug] [2018-01-03T16:02:46.779Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "dependencies": {
+    "cron": "^1.3.0",
+    "es6-promise-pool": "^2.5.0",
+    "firebase": "^4.6.1",
+    "firebase-admin": "^5.6.0",
+    "firebase-functions": "^0.7.5",
+    "fusioncharts": "^3.12.2",
+    "gmail": "^0.5.0",
+    "mathjs": "^3.16.5",
+    "node-cron": "^1.2.1",
+    "nodemailer": "^4.3.1",
+    "ping": "^0.2.2",
+    "plotly.js": "^1.31.2",
+    "request-promise": "^4.2.2",
+    "secure-compare": "^3.0.1",
+    "twilio": "^3.10.0",
+    "uniq": "^1.0.1"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[debug] [2018-01-03T16:02:46.783Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/jsbase-5d117?view=CONSUMER_VIEW  
+  
+ Wed Jan 03 2018 16:02:46 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-03T16:02:46.784Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/jsbase-5d117?view=CONSUMER_VIEW  
+  
+ Wed Jan 03 2018 16:02:46 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-03T16:02:47.881Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-03T16:02:48.004Z] <<< HTTP RESPONSE 200
+[info] +  functions: all necessary APIs are enabled
+[debug] [2018-01-03T16:02:48.008Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/jsbase-5d117  
+  
+ Wed Jan 03 2018 16:02:48 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-03T16:02:48.019Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/jsbase-5d117/apiKeys  
+  
+ Wed Jan 03 2018 16:02:48 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-03T16:02:48.737Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-03T16:02:48.793Z] <<< HTTP RESPONSE 200
+[info] i  functions: preparing functions directory for uploading...
+[debug] [2018-01-03T16:07:26.351Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/jsbase-5d117/configs  
+  
+ Wed Jan 03 2018 16:07:26 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-03T16:07:26.702Z] <<< HTTP RESPONSE 200
+[info] i  functions: packaged functions (810.38 KB) for uploading
+[debug] [2018-01-03T16:13:01.988Z] >>> HTTP REQUEST GET https://www.googleapis.com/storage/v1/b/staging.jsbase-5d117.appspot.com  
+  
+ Wed Jan 03 2018 16:13:01 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-03T16:13:02.301Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-03T16:13:02.303Z] >>> HTTP REQUEST POST https://www.googleapis.com/upload/storage/v1/b/staging.jsbase-5d117.appspot.com/o?uploadType=media&name=firebase-functions-source  
+ ReadStream {
+  _readableState: 
+   ReadableState {
+     objectMode: false,
+     highWaterMark: 65536,
+     buffer: BufferList { head: [Object], tail: [Object], length: 1 },
+     length: 65536,
+     pipes: null,
+     pipesCount: 0,
+     flowing: null,
+     ended: false,
+     endEmitted: false,
+     reading: false,
+     sync: false,
+     needReadable: false,
+     emittedReadable: true,
+     readableListening: false,
+     resumeScheduled: false,
+     destroyed: false,
+     defaultEncoding: 'utf8',
+     awaitDrain: 0,
+     readingMore: false,
+     decoder: null,
+     encoding: null },
+  readable: true,
+  domain: null,
+  _events: { end: [Function] },
+  _eventsCount: 1,
+  _maxListeners: undefined,
+  path: 'C:\\Users\\user\\AppData\\Local\\Temp\\firebase-functions-4160rvt7xUijYjVw.zip',
+  fd: 5,
+  flags: 'r',
+  mode: 438,
+  start: undefined,
+  end: undefined,
+  autoClose: true,
+  pos: undefined,
+  bytesRead: 65536 } 
+ Wed Jan 03 2018 16:13:02 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-03T16:13:03.072Z] <<< HTTP RESPONSE 200
+[info] +  functions: functions folder uploaded successfully
+[info] i  hosting: preparing functions directory for upload...
+[debug] [2018-01-03T16:13:03.398Z] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/jsbase-5d117/uploads/-L1wkflVXMrIkKy2SHpJ?fileCount=14&message=  
+  
+ Wed Jan 03 2018 16:13:03 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-03T16:13:06.024Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-03T16:13:06.024Z] [hosting] .tgz uploaded successfully, waiting for extraction
+[info] +  hosting: 14 files uploaded successfully
+[debug] [2018-01-03T16:13:07.160Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/projects/jsbase-5d117/locations/us-central1/functions  
+  
+ Wed Jan 03 2018 16:13:07 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-03T16:13:07.432Z] <<< HTTP RESPONSE 200
+[info] i  functions: updating function systemDownCheck...
+[debug] [2018-01-03T16:13:07.438Z] Trigger is:  {"httpsTrigger":{}}
+[info] i  functions: updating function sendText...
+[debug] [2018-01-03T16:13:07.440Z] Trigger is:  {"httpsTrigger":{}}
+[info] i  functions: updating function checkVal...
+[debug] [2018-01-03T16:13:07.441Z] Trigger is:  {"eventTrigger":{"resource":"projects/_/instances/jsbase-5d117/refs/temperature/{pushID}","eventType":"providers/google.firebase.database/eventTypes/ref.create"}}
+[debug] [2018-01-03T16:13:07.447Z] >>> HTTP REQUEST PATCH https://cloudfunctions.googleapis.com/v1/projects/jsbase-5d117/locations/us-central1/functions/systemDownCheck 
+query params: {"updateMask":"sourceArchiveUrl,name,labels,httpsTrigger"} 
+ { sourceArchiveUrl: 'gs://staging.jsbase-5d117.appspot.com/firebase-functions-source',
+  name: 'projects/jsbase-5d117/locations/us-central1/functions/systemDownCheck',
+  labels: { 'deployment-tool': 'cli-firebase' },
+  httpsTrigger: {} } 
+ Wed Jan 03 2018 16:13:07 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-03T16:13:07.453Z] >>> HTTP REQUEST PATCH https://cloudfunctions.googleapis.com/v1/projects/jsbase-5d117/locations/us-central1/functions/sendText 
+query params: {"updateMask":"sourceArchiveUrl,name,labels,httpsTrigger"} 
+ { sourceArchiveUrl: 'gs://staging.jsbase-5d117.appspot.com/firebase-functions-source',
+  name: 'projects/jsbase-5d117/locations/us-central1/functions/sendText',
+  labels: { 'deployment-tool': 'cli-firebase' },
+  httpsTrigger: {} } 
+ Wed Jan 03 2018 16:13:07 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-03T16:13:07.455Z] >>> HTTP REQUEST PATCH https://cloudfunctions.googleapis.com/v1/projects/jsbase-5d117/locations/us-central1/functions/checkVal 
+query params: {"updateMask":"sourceArchiveUrl,name,labels,eventTrigger.resource,eventTrigger.eventType"} 
+ { sourceArchiveUrl: 'gs://staging.jsbase-5d117.appspot.com/firebase-functions-source',
+  name: 'projects/jsbase-5d117/locations/us-central1/functions/checkVal',
+  labels: { 'deployment-tool': 'cli-firebase' },
+  eventTrigger: 
+   { resource: 'projects/_/instances/jsbase-5d117/refs/temperature/{pushID}',
+     eventType: 'providers/google.firebase.database/eventTypes/ref.create' } } 
+ Wed Jan 03 2018 16:13:07 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-03T16:13:07.693Z] <<< HTTP RESPONSE 400
+[debug] [2018-01-03T16:13:07.694Z] <<< HTTP RESPONSE BODY
+[warn] !  functions: failed to update function sendText
+[info] HTTP Error: 400, An operation on function sendText in region us-central1 in project jsbase-5d117 is already in progress. Please try again later.
+[debug] [2018-01-03T16:13:07.706Z] <<< HTTP RESPONSE 400
+[debug] [2018-01-03T16:13:07.707Z] <<< HTTP RESPONSE BODY
+[warn] !  functions: failed to update function checkVal
+[info] HTTP Error: 400, An operation on function checkVal in region us-central1 in project jsbase-5d117 is already in progress. Please try again later.
+[debug] [2018-01-03T16:13:07.727Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-03T16:13:07.731Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/projects/jsbase-5d117/locations/us-central1/functions  
+  
+ Wed Jan 03 2018 16:13:07 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-03T16:13:07.936Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-03T16:13:07.939Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/anNiYXNlLTVkMTE3L3VzLWNlbnRyYWwxL3N5c3RlbURvd25DaGVjay8xZVMxYlVpazUySQ  
+  
+ Wed Jan 03 2018 16:13:07 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-03T16:13:08.144Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-03T16:13:10.147Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/anNiYXNlLTVkMTE3L3VzLWNlbnRyYWwxL3N5c3RlbURvd25DaGVjay8xZVMxYlVpazUySQ  
+  
+ Wed Jan 03 2018 16:13:10 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-03T16:13:10.370Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-03T16:13:12.371Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/anNiYXNlLTVkMTE3L3VzLWNlbnRyYWwxL3N5c3RlbURvd25DaGVjay8xZVMxYlVpazUySQ  
+  
+ Wed Jan 03 2018 16:13:12 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-03T16:13:12.567Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-03T16:14:56.766Z] ----------------------------------------------------------------------
+[debug] [2018-01-03T16:14:56.773Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\user\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase deploy
+[debug] [2018-01-03T16:14:56.774Z] CLI Version:   3.16.0
+[debug] [2018-01-03T16:14:56.774Z] Platform:      win32
+[debug] [2018-01-03T16:14:56.774Z] Node Version:  v8.5.0
+[debug] [2018-01-03T16:14:56.777Z] Time:          Wed Jan 03 2018 16:14:56 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-03T16:14:56.777Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-01-03T16:14:56.824Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-01-03T16:14:56.826Z] > authorizing via signed-in user
+[debug] [2018-01-03T16:14:56.834Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/jsbase-5d117  
+  
+ Wed Jan 03 2018 16:14:56 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-03T16:14:57.533Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-03T16:14:57.535Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/jsbase-5d117/tokens  
+  
+ Wed Jan 03 2018 16:14:57 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-03T16:14:58.223Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'jsbase-5d117'...
+[info] 
+[info] i  deploying functions, hosting
+[debug] [2018-01-03T16:14:58.875Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "dependencies": {
+    "cron": "^1.3.0",
+    "es6-promise-pool": "^2.5.0",
+    "firebase": "^4.6.1",
+    "firebase-admin": "^5.6.0",
+    "firebase-functions": "^0.7.5",
+    "fusioncharts": "^3.12.2",
+    "gmail": "^0.5.0",
+    "mathjs": "^3.16.5",
+    "node-cron": "^1.2.1",
+    "nodemailer": "^4.3.1",
+    "ping": "^0.2.2",
+    "plotly.js": "^1.31.2",
+    "request-promise": "^4.2.2",
+    "secure-compare": "^3.0.1",
+    "twilio": "^3.10.0",
+    "uniq": "^1.0.1"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[debug] [2018-01-03T16:14:58.881Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/jsbase-5d117?view=CONSUMER_VIEW  
+  
+ Wed Jan 03 2018 16:14:58 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-03T16:14:58.883Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/jsbase-5d117?view=CONSUMER_VIEW  
+  
+ Wed Jan 03 2018 16:14:58 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-03T16:14:59.876Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-03T16:15:00.098Z] <<< HTTP RESPONSE 200
+[info] +  functions: all necessary APIs are enabled
+[debug] [2018-01-03T16:15:00.104Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/jsbase-5d117  
+  
+ Wed Jan 03 2018 16:15:00 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-03T16:15:00.106Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/jsbase-5d117/apiKeys  
+  
+ Wed Jan 03 2018 16:15:00 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-03T16:15:00.808Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-03T16:15:00.876Z] <<< HTTP RESPONSE 200
+[info] i  functions: preparing functions directory for uploading...
+[debug] [2018-01-03T16:17:56.747Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/jsbase-5d117/configs  
+  
+ Wed Jan 03 2018 16:17:56 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-03T16:17:57.062Z] <<< HTTP RESPONSE 200
