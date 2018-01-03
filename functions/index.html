@@ -15,9 +15,18 @@
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
 
+    <script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.6/firebase.js'></script>     
+    <script type="text/javascript" language="javascript" src="jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" language="javascript" src="jquery.flot.js"></script>
+
+    <script src="charttt.js"></script>
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
     <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
+      body { background-image: url('../images/bg.png');; font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
+      /* #message { background: rgb(156, 75, 75); max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; } */
       #exportCSV {align-self: center}
       #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
       #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
@@ -29,15 +38,122 @@
         body, #message { margin-top: 0; background: white; box-shadow: none; }
         body { border-top: 16px solid #ffa100; }
       }
+      #testy {
+        font-size: 42px;
+      }
+      #mmn {
+        font-size: 42px;
+      }
+      #minimn {
+        font-size: 30px;
+      }
     </style>
+         <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+      <script>
+        // Initialize Firebase
+        var config = {
+          apiKey: "AIzaSyDalSi3tvsWPI1oikUXJKAVeQoSTA7Z7BQ",
+          authDomain: "jsbase-5d117.firebaseapp.com",
+          databaseURL: "https://jsbase-5d117.firebaseio.com",
+          projectId: "jsbase-5d117",
+          storageBucket: "jsbase-5d117.appspot.com",
+          messagingSenderId: "941067890947"
+        };
+        firebase.initializeApp(config);
+      </script>
+            <!-- including FusionCharts core package JS files --> 
+            <script src="fusioncharts.js"></script>
+            <script src="fusioncharts.charts.js"></script>
+
+            <script>
+                            function genFunction(data) {
+                  var cdata = [];
+                  var len = data.length;
+                  for(var i=1; i<len; i++) {
+                    cdata.push({
+                      label: data[i]['temp'],
+                      value: data[i]['time']
+                      
+                    });
+                    console.log("cdata is" + cdata);
+                  }
+              window.addEventListener("load", getData(genFunction));
+              function getData(callbackIN) {
+                var db4 = firebase.database();
+                var ref4 = db4.ref('/temperature');
+                ref4.limitToLast(200).on('child_added', function(snapshot) {
+                  // console.log("Heres snapshot" + snapshot.val().temp)
+                  genFunction(snapshot.val())
+                });
+              }
+            
+
+            
+                  var firebaseChart = new FusionCharts({
+                    type: 'area2d',
+                    renderAt: 'chart-container',
+                    width: '650',
+                    height: '400',
+                    dataFormat: 'json',
+                    dataSource: {
+                        "chart": {
+                            "caption": "Website Visitors Trend",
+                            "subCaption": "Last 7 Days{br}ACME Inc.",
+                            "subCaptionFontBold": "0",
+                            "captionFontSize": "20",
+                            "subCaptionFontSize": "17",
+                            "captionPadding": "15",
+                            "captionFontColor": "#8C8C8C",
+                            "baseFontSize": "14",
+                            "baseFont": "Barlow",
+                            "canvasBgAlpha": "0",
+                            "bgColor": "#FFFFFF",
+                            "bgAlpha": "100",
+                            "showBorder": "0",
+                            "showCanvasBorder": "0",
+                            "showPlotBorder": "0",
+                            "showAlternateHGridColor": "0",
+                            "usePlotGradientColor": "0",
+                            "paletteColors": "#6AC1A5",
+                            "showValues": "0",
+                            "divLineAlpha": "5",
+                            "showAxisLines": "1",
+                            "drawAnchors": "0",
+                            "xAxisLineColor": "#8C8C8C",
+                            "xAxisLineThickness": "0.7",
+                            "xAxisLineAlpha": "50",
+                            "yAxisLineColor": "#8C8C8C",
+                            "yAxisLineThickness": "0.7",
+                            "yAxisLineAlpha": "50",
+                            "baseFontColor": "#8C8C8C",
+                            "toolTipBgColor": "#FA8D67",
+                            "toolTipPadding": "10",
+                            "toolTipColor": "#FFFFFF",
+                            "toolTipBorderRadius": "3",
+                            "toolTipBorderAlpha": "0",
+                            "drawCrossLine": "1",
+                            "crossLineColor": "#8C8C8C",
+                            "crossLineAlpha": "60",
+                            "crossLineThickness": "0.7",
+                            "alignCaptionWithCanvas": "1"
+                        },
+                        "data": cdata
+                    }
+                });
+                firebaseChart.render();
+                }
+              </script>
   </head>
   <body>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script src="webapp.js"></script>
       <script src="app.js"></script>
+      <!-- <p id="apptitle">Seed Spa</p> -->
     <div id="message">
       <!-- <h2>Welcome</h2> -->
+      <div class="appheader">
       <h1>Download Cloud Database to CSV</h1>
+    </div>
       <!-- <div data-bind="foreach: thetemp">
       <h1>Current Temperature:</h1>
       <p data-bind='text: $data[0]' />></p>
@@ -94,28 +210,17 @@
 
 
       </script> -->
-      <p id="testy">!</p>
-
-      <script>
-
-      const dbRefObject = firebase.database().ref();
-
-      dbRefObject.on('value', snap => {
-
-        var ourDbObject = snap.val();
-        console.log(snap.val())
-
-      })
-      
-      </script>
-
-      <p id="pra-temp">Average Temperature: </p>
-      <p id="pru-temp">Upper Probe Temperature: </p>
-      <p id="prl-temp">Lower Probe Temperature: </p>
-
-      <p>>Hi Peter, please click the button below to download the data stored in the cloud in CSV format</p>
-      <!-- <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a> -->
-      <div align=center></div><button id="exportCSV" onClick="alldata()">Export All Data</button>
+      <div class="temp-section">
+          <div align="center">
+              <p>Average Temperature: </p>
+              <p id="testy" style="text-shadow:1px 1px 1px rgba(0,0,0,1);font-weight:normal;color:#FFFFFF;letter-spacing:0pt;word-spacing:2pt;font-size:95px;text-align:center;font-family:arial black, sans-serif;line-height:1;">35*C</p>
+              <p>Upper Probe Temperature: </p>
+              <p id="pru-temp" color="green" class="minimn" size="200%"></p>
+              <p>Lower Probe Temperature: </p>
+              <p id="prl-temp" color="green" class="minimn" size="200%"></p>
+            </div>
+      </div>
+      <div class="dl-section">      <div align=center></div><button id="exportCSV" onClick="alldata()">Export All Data</button>
     </br></br>
     <input type="text" maxlength="16" name="value" id="txter"/></br>
     <button id="textit" onClick="texter(document.getElementById('txter').value)">Text Me!</button>
@@ -126,8 +231,94 @@
         <input type="text" maxlength="10" name="value" id="endFrom"/> &nbsp;<strong>End Date</strong></br>>
         <input type="text" maxlength="10" name="value" id="endClock"/> &nbsp;<strong>End Time</strong></br></br>
         <button id="texdat" value="submit" onclick="clicker(document.getElementById('startClock').value, document.getElementById('endFrom').value, document.getElementById('endClock').value)" />Download Range of Data</button></p>
-      </div>
+      </div></div>
+      <div class="chart-sect"> <div id="chart-container"><svg width="90px"  height="90px"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-rolling" style="background: none;"><circle cx="50" cy="50" fill="none" ng-attr-stroke="{{config.color}}" ng-attr-stroke-width="{{config.width}}" ng-attr-r="{{config.radius}}" ng-attr-stroke-dasharray="{{config.dasharray}}" stroke="#6ac1a5" stroke-width="9" r="33" stroke-dasharray="155.50883635269477 53.83627878423159" transform="rotate(324 50 50)"><animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform></circle></svg></div></div>
+
+      <div id="container" style="width:100%; height:400px;"></div> 
+      <script src="https://cdn.firebase.com/v0/firebase.js"></script> 
+      <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script> 
+      <script src="http://code.highcharts.com/highcharts.js"></script> 
+      <script> 
+          var fb = new Firebase("https://jsbase-5d117.firebaseio.com/temperature"); 
+          fb.on("value", function(data) { 
+              var model = data.val(); 
+                $('#container').highcharts({ 
+                  chart: { type: 'column' }, 
+                  title: { text: 'Sales' }, 
+                  xAxis: { 
+                      categories: model.Categories 
+                  }, 
+                  yAxis: { title: { text: 'Quantity' } }, 
+                  series: model.Series.map(function(element) { 
+                      return { 
+                          name: element.Name, 
+                          data: element.Data 
+                      } 
+                  })                        
+              });                
+          }); 
+      </script>
+
+<!-- 
+      <p id="pru-temp" color="green" class="minimn">Upper Probe Temperature: </p>
+      <p id="prl-temp" color="green" class="minimn">Lower Probe Temperature: </p> -->
+
+      <script>
+        
+        var db = firebase.database();
+        var ref = db.ref('/temperature');
+        ref.limitToLast(1).on('child_added', function(snapshot) {
+        
+                var obk = snapshot.val().temp;
+                var upprtemp = snapshot.val().upperprobe;
+                var lowrtemp = snapshot.val().lowerprobe;
+                console.log(obk);
+                document.getElementById('testy').innerHTML = obk;
+                if (obk <= 28 || obk >= 32) {
+                   document.getElementById('testy').style.color = "red";
+                }
+                document.getElementById('pru-temp').innerHTML = upprtemp;
+                if (upprtemp <= 28 || upprtemp >= 32) {
+                  document.getElementById('pru-temp').style.color = "red";
+                }
+                document.getElementById('prl-temp').innerHTML = lowrtemp;
+                if (lowrtemp <= 28 || lowrtemp >= 32) {
+                  document.getElementById('prl-temp').style.color = "red";
+                }
+                if (obk > 28 && obk < 32) {
+                   document.getElementById('testy').style.color = "red";
+                }
+                document.getElementById('pru-temp').innerHTML = upprtemp;
+                if (upprtemp > 28 && upprtemp < 32) {
+                  document.getElementById('pru-temp').style.color = "red";
+                }
+                document.getElementById('prl-temp').innerHTML = lowrtemp;
+                if (lowrtemp > 28 && lowrtemp < 32) {
+                  document.getElementById('prl-temp').style.color = "red";
+                }
+        
+        
+              })
+              
+              </script>
+
+      <p>>Hi Peter, please click the button below to download the data stored in the cloud in CSV format</p>
+      <!-- <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a> -->
+      <!-- <div align=center></div><button id="exportCSV" onClick="alldata()">Export All Data</button>
+    </br></br>
+    <input type="text" maxlength="16" name="value" id="txter"/></br>
+    <button id="textit" onClick="texter(document.getElementById('txter').value)">Text Me!</button>
+      <p>Please enter a start date in yyyy/mm/dd format in the upper field e.g. 2017/11/21 and a start time in hh:mm:ss format in the lower field e.g. 10:52:00</br></br>
+        <input type="text" maxlength="10" name="value" id="startFrom"/> &nbsp;<strong>Start Date</strong></br>
+        <input type="text" maxlength="10" name="value" id="startClock"/> &nbsp;<strong>Start Time</strong></br></br>
+        Now Enter an end date in yyyy/mm/dd format in the upper field and an end time in hh:mm:ss format in the lower field</br></br>
+        <input type="text" maxlength="10" name="value" id="endFrom"/> &nbsp;<strong>End Date</strong></br>>
+        <input type="text" maxlength="10" name="value" id="endClock"/> &nbsp;<strong>End Time</strong></br></br>
+        <button id="texdat" value="submit" onclick="clicker(document.getElementById('startClock').value, document.getElementById('endFrom').value, document.getElementById('endClock').value)" />Download Range of Data</button></p>
+      </div> -->
     </div>
+
+   
 
   
 
@@ -160,8 +351,8 @@
   firebase.initializeApp(config);
 </script> -->
 
-<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
-<script>
+
+<!-- <script>
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyAIIV5RilYCz3Egtxd0ps-M_6iN2JgfEcU",
@@ -172,7 +363,7 @@
     messagingSenderId: "647283396024"
   };
   firebase.initializeApp(config);
-</script>
+</script> -->
 
 
 
@@ -205,5 +396,9 @@
         }
       });
     </script>
+
+
+
+  
   </body>
 </html>
