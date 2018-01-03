@@ -22,22 +22,22 @@ var sysDown = true;  //--Boolean to determine whether or not the system is down
 var sysFlag;  //--Variable to determine if the system down/ok email has already sent once
 const Firebase = require('firebase');
 // Initialize Firebase
-// var config = {
-//   apiKey: "AIzaSyDalSi3tvsWPI1oikUXJKAVeQoSTA7Z7BQ",
-//   authDomain: "jsbase-5d117.firebaseapp.com",
-//   databaseURL: "https://jsbase-5d117.firebaseio.com",
-//   projectId: "jsbase-5d117",
-//   storageBucket: "jsbase-5d117.appspot.com",
-//   messagingSenderId: "941067890947"
-// };
-// Firebase.initializeApp(config);
 var config = {
-  apiKey: "AIzaSyAIIV5RilYCz3Egtxd0ps-M_6iN2JgfEcU",
-  authDomain: "temperature-monitor-pi.firebaseapp.com",
-  databaseURL: 'https://temperature-monitor-pi.firebaseio.com/',
-  storageBucket: "<BUCKET>.appspot.com",
+  apiKey: "AIzaSyDalSi3tvsWPI1oikUXJKAVeQoSTA7Z7BQ",
+  authDomain: "jsbase-5d117.firebaseapp.com",
+  databaseURL: "https://jsbase-5d117.firebaseio.com",
+  projectId: "jsbase-5d117",
+  storageBucket: "jsbase-5d117.appspot.com",
+  messagingSenderId: "941067890947"
 };
 Firebase.initializeApp(config);
+// var config = {
+//   apiKey: "AIzaSyAIIV5RilYCz3Egtxd0ps-M_6iN2JgfEcU",
+//   authDomain: "temperature-monitor-pi.firebaseapp.com",
+//   databaseURL: 'https://temperature-monitor-pi.firebaseio.com/',
+//   storageBucket: "<BUCKET>.appspot.com",
+// };
+// Firebase.initializeApp(config);
 var test;
 var currentCount;
 var maildate = new Date();
@@ -59,7 +59,7 @@ const piEmail = 'templogger9@gmail.com';
 var sendToEmail = 'pg705765@gmail.com';
 const emailPassword = 'ThinkBig';
 const transporter = nodemailer.createTransport('smtps://' + piEmail + ':' + emailPassword + '@smtp.gmail.com');
-
+const htmref = Firebase.database().ref().child('temperature');
 
 var  mailOptions = {
    from: piEmail,
@@ -188,6 +188,15 @@ exports.systemDownCheck = functions.https.onRequest((req, res) => {
         });
     }); 
 
+    htmref.on('value', snap => {
+
+        hh = snap.val().temp;
+        console.log("VFNJFNJVF" + hh)
+        document.getElementById('pra-temp').innerHTML = hh
+
+    })
+
+
 
 exports.sendText = functions.https.onRequest((req, res) => {
 
@@ -235,7 +244,7 @@ exports.checkVal = functions.database
         gStatus = entry.status
         //logdate = entry.date
         logtime = entry.time
-        document.getElementById('pra-temp').innerHTML = here.Spray.ApplicationHeight
+        document.getElementById('pra-temp').innerHTML = gCurrTemp
         = inrange()     
 })
 
