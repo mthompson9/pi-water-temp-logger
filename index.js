@@ -1,26 +1,50 @@
 var gmail = require('gmail');
 var nodemailer = require('nodemailer');
+// Twilio Credentials
+var twilio = require('twilio');
+var client = new twilio('AC512bca4596caf8748f215b08070970c4', '01cd65140acb5e6d8a19d32384a12704');
+cronJob = require('cron').CronJob;
 var mailingList = "pg705765@gmail.com,asheesh.sangamneheri@gmail.com,cameron.connolly93@gmail.com,miahgt@gmail.com,yatawo7@gmail.com"
+var linkText = "Click here to Download CSV";
+var linkRef = linkText.link("https://temperature-monitor-pi.firebaseapp.com");
 var math = require('mathjs');  //--Module to perform Math functions
 var ping = require('ping');  //--Module to perform ping functions
 var logMin;  //--Variable to log the current server time
 var outOfRange = false;
 var dontSend = true;
 var gCurrTemp;
+var gUpperTemp;
+var gLowerTemp;
+var tempp;
 var logtime;
 var lastDBtimestamp;  //--Variable to log the time stamp of the last database entry
 var sysDown = true;  //--Boolean to determine whether or not the system is down
 var sysFlag;  //--Variable to determine if the system down/ok email has already sent once
-var Firebase = require('firebase');
+const Firebase = require('firebase');
+// Initialize Firebase
 var config = {
-  apiKey: "AIzaSyAIIV5RilYCz3Egtxd0ps-M_6iN2JgfEcU",
-  authDomain: "temperature-monitor-pi.firebaseapp.com",
-  databaseURL: 'https://temperature-monitor-pi.firebaseio.com/',
-  storageBucket: "<BUCKET>.appspot.com",
+  apiKey: "AIzaSyDalSi3tvsWPI1oikUXJKAVeQoSTA7Z7BQ",
+  authDomain: "jsbase-5d117.firebaseapp.com",
+  databaseURL: "https://jsbase-5d117.firebaseio.com",
+  projectId: "jsbase-5d117",
+  storageBucket: "jsbase-5d117.appspot.com",
+  messagingSenderId: "941067890947"
 };
 Firebase.initializeApp(config);
+// var config = {
+//   apiKey: "AIzaSyAIIV5RilYCz3Egtxd0ps-M_6iN2JgfEcU",
+//   authDomain: "temperature-monitor-pi.firebaseapp.com",
+//   databaseURL: 'https://temperature-monitor-pi.firebaseio.com/',
+//   storageBucket: "<BUCKET>.appspot.com",
+// };
+// Firebase.initializeApp(config);
 var test;
 var currentCount;
+var maildate = new Date();
+var mailhours = maildate.getHours();
+var mailminutes = maildate.getMinutes();
+var mailseconds = maildate.getSeconds();
+var mailStamp = mailhours + ':' + mailminutes + ':' + mailseconds
 
 
 const functions = require('firebase-functions');
@@ -35,7 +59,7 @@ const piEmail = 'templogger9@gmail.com';
 var sendToEmail = 'pg705765@gmail.com';
 const emailPassword = 'ThinkBig';
 const transporter = nodemailer.createTransport('smtps://' + piEmail + ':' + emailPassword + '@smtp.gmail.com');
-
+const htmref = Firebase.database().ref().child('temperature');
 
 var  mailOptions = {
    from: piEmail,
@@ -44,6 +68,14 @@ var  mailOptions = {
    text:  outOfRangeString + gCurrTemp , // plaintext body
 };
 
+function sleep(milliseconds) {
+    var start = new Date().getTime();
+    for (var i = 0; i < 1e7; i++) {
+      if ((new Date().getTime() - start) > milliseconds){
+        break;
+      }
+    }
+  }
 
 //--SYSTEM DOWN CHECK--Check for last database entry every 5 minutes---------//
 //---------------------------------------------------------------------------//
@@ -156,8 +188,47 @@ exports.systemDownCheck = functions.https.onRequest((req, res) => {
         });
     }); 
 
+    htmref.on('value', snap => {
 
-  
+        hh = snap.val().temp;
+        console.log("VFNJFNJVF" + hh)
+        document.getElementById('pra-temp').innerHTML = hh
+
+    })
+
+
+
+exports.sendText = functions.https.onRequest((req, res) => {
+
+    console.log('Starting sms')
+
+    var db = admin.database();
+    var ref = db.ref('/temperature/');
+    ref.limitToLast(1).on('child_added', function(snapshot) {
+
+    tempp = snapshot.val().temp;
+
+    var db2 = admin.database();
+    var ref2 = db.ref('/Text Number/Number/');
+    ref2.once('value', function(snapshot) {
+
+
+        yournumber = snapshot.val().textthis;
+
+        sleep(1000)
+
+        client.messages.create( { to:yournumber, from:'+447481343706', body:'The temperature is ' + tempp }, function( err, data ) {});
+    },  null, true);
+
+    sleep(1000)
+
+    console.log('Done')
+
+})
+
+})
+
+
 
 
 
@@ -165,11 +236,15 @@ exports.checkVal = functions.database
     .ref('/temperature/{pushID}')
     .onCreate(event =>{
         console.log('checkVal has started')
+        console.log(linkRef)
         const entry = event.data.val()
         gCurrTemp = entry.temp
+        gUpperTemp = entry.upperprobe;
+        gLowerTemp = entry.lowerprobe;
         gStatus = entry.status
         //logdate = entry.date
         logtime = entry.time
+        document.getElementById('pra-temp').innerHTML = gCurrTemp
         = inrange()     
 })
 
@@ -288,7 +363,22 @@ function OutOfRangeEmail () {
         from: piEmail,
         to: mailingList,
         subject: 'Temperature at ' + gCurrTemp  + '°C' ,
-        text:  outOfRangeString + gCurrTemp + '°C @ ' + logtime
+        text:  outOfRangeString + gCurrTemp + '°C @ ' + mailStamp  + '\n' + '\n' + linkRef
+    } 
+    sendTheEmail()
+};
+
+//Each of these email functions just change the mail options and calls sendmail()
+function sampleEmail () {
+    //console.log('sending the email') //debug line
+    mailOptions = {
+        from: piEmail,
+        to: mailingList,
+        subject: 'Average Temperature at ' + gCurrTemp  + '°C' ,
+        text:  'The temperature in the seed spa has fallen out of range.'
+        + '\n' + 'The Upper Probe reported a temperature of ' + gUpperTemp + '°C'
+        + '\n' + 'The Lower Probe reported a temperature of ' + gLowerTemp + '°C'
+        + '\n' + '\n' + 'These values were reported at ' + mailStamp  + '. You may download the data captured by clicking the link below' + '\n' + '\n' + linkRef
     } 
     sendTheEmail()
 };
@@ -303,7 +393,7 @@ function InRangeEmail () {
         from: piEmail,
         to: mailingList,
         subject: 'Temperature at ' + gCurrTemp  + '°C' ,
-        text: inRangeString + gCurrTemp + '°C @ ' + logtime
+        text: inRangeString + gCurrTemp + '°C @ ' + mailStamp + '\n' + '\n' + linkRef
     } 
     sendTheEmail() 
 };
@@ -339,3 +429,7 @@ function sendTheEmail (){
         }
     })
 };
+
+var textJob = new cronJob( '02 00 * * *', function(){
+    client.messages.create( { to:'+447756692445', from:'+447481343706', body:'Hello! Hope you’re having a good day!' }, function( err, data ) {});
+  },  null, true);
