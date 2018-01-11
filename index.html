@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -15,7 +16,7 @@
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
 
-    <script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.6/firebase.js'></script>     
+    <script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.6/firebase.js'></script>
     <script type="text/javascript" language="javascript" src="jquery-1.7.2.min.js"></script>
     <script type="text/javascript" language="javascript" src="jquery.flot.js"></script>
 
@@ -25,7 +26,9 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
 
     <style media="screen">
-      body { background-image: url('../images/bg.png');; font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
+      body {
+        /* background-image: url('../images/bg.png'); */
+      background-color: #252525; font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
       /* #message { background: rgb(156, 75, 75); max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; } */
       #exportCSV {align-self: center}
       #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
@@ -47,7 +50,6 @@
       #minimn {
         font-size: 30px;
       }
-
       .line {
  fill: none;
  stroke: steelblue;
@@ -67,7 +69,7 @@
         };
         firebase.initializeApp(config);
       </script>
-            <!-- including FusionCharts core package JS files --> 
+            <!-- including FusionCharts core package JS files -->
             <script src="fusioncharts.js"></script>
             <script src="fusioncharts.charts.js"></script>
 
@@ -79,7 +81,7 @@
                     cdata.push({
                       label: data[i]['temp'],
                       value: data[i]['time']
-                      
+
                     });
                     console.log("cdata is" + cdata);
                   }
@@ -92,9 +94,8 @@
                   genFunction(snapshot.val())
                 });
               }
-            
 
-            
+
                   var firebaseChart = new FusionCharts({
                     type: 'area2d',
                     renderAt: 'chart-container',
@@ -161,37 +162,43 @@
       <!-- <h2>Welcome</h2> -->
       <div class="appheader">
       <h1>Download Cloud Database to CSV</h1>
-      <div id="Example">hover</div>
-      
+      <div id="Example"></br><p id="lpbadge" style="text-shadow:3px 3px 3px rgb(22, 22, 22);font-weight:100;color:#FFFFFF;letter-spacing:0pt;word-spacing:2pt;font-size:75px;text-align:center;font-family:Avenir Next LT Pro Condensed rgb(24, 24, 24), sans-serif;line-height:0.85;">31.31</p>
+        <p id="lpname" style="text-shadow:3px 3px 3px rgb(24, 24, 24);font-weight:bold;color:#FFFFFF;letter-spacing:1pt;word-spacing:2pt;font-size:16px;text-align:center; font-style:italic; font-family:Avenir Next LT Pro Condensed rgb(21, 21, 21), sans-serif;line-height:0.3;">Lower Probe</p>
+        <p id="lpstat" style="text-shadow:3px 3px 3px rgb(21, 21, 21);font-weight:normal;color:#FFFFFF;letter-spacing:0pt;word-spacing:2pt;font-size:16px;text-align:center;font-family:Avenir Next LT Pro Condensed rgb(21, 21, 21), sans-serif;line-height:0.3;">High</p></div>
+
     </div>
-    
+    <div id="secoo"></br><p id="lpbadge" style="text-shadow:3px 3px 3px rgb(22, 22, 22);font-weight:100;color:#FFFFFF;letter-spacing:0pt;word-spacing:2pt;font-size:75px;text-align:center;font-family:Avenir Next LT Pro Condensed rgb(24, 24, 24), sans-serif;line-height:0.85;">31.31</p>
+      <p id="lpname" style="text-shadow:3px 3px 3px rgb(24, 24, 24);font-weight:bold;color:#FFFFFF;letter-spacing:1pt;word-spacing:2pt;font-size:16px;text-align:center; font-style:italic; font-family:Avenir Next LT Pro Condensed rgb(21, 21, 21), sans-serif;line-height:0.3;">Lower Probe</p>
+      <p id="lpstat" style="text-shadow:3px 3px 3px rgb(21, 21, 21);font-weight:normal;color:#FFFFFF;letter-spacing:0pt;word-spacing:2pt;font-size:16px;text-align:center;font-family:Avenir Next LT Pro Condensed rgb(21, 21, 21), sans-serif;line-height:0.3;">High</p></div>
+
+
+
+  <div id="jankbag"></br><p id="lpbadge" style="text-shadow:3px 3px 3px rgb(22, 22, 22);font-weight:100;color:#FFFFFF;letter-spacing:0pt;word-spacing:2pt;font-size:75px;text-align:center;font-family:Avenir Next LT Pro Condensed rgb(24, 24, 24), sans-serif;line-height:0.85;">31.37</p>
+    <p id="lpname" style="text-shadow:3px 3px 3px rgb(24, 24, 24);font-weight:bold;color:#FFFFFF;letter-spacing:1pt;word-spacing:2pt;font-size:16px;text-align:center; font-style:italic; font-family:Avenir Next LT Pro Condensed rgb(21, 21, 21), sans-serif;line-height:0.3;">Upper Probe</p>
+    <p id="lpstat" style="text-shadow:3px 3px 3px rgb(21, 21, 21);font-weight:normal;color:#FFFFFF;letter-spacing:0pt;word-spacing:2pt;font-size:16px;text-align:center;font-family:Avenir Next LT Pro Condensed rgb(21, 21, 21), sans-serif;line-height:0.3;">High</p></div>
+
+</div>
+
       <!-- <div data-bind="foreach: thetemp">
       <h1>Current Temperature:</h1>
       <p data-bind='text: $data[0]' />></p>
-
       </br></br>
       <h2>Lower Probe:</h2>
       <p data-bind='text: $data[1]' />></p>
-
       </br></br>
       <h2>Upper Probe:</h2>
       <p data-bind='text: $data[2]' />></p>
     </div>
-    
 
-      
+
       <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
-
       <script>
       var table = document.getElementById("tp");
-
       function ViewModel() {
         var self = this;
         self.thetemp = ko.observable();
-
         var viewModel = new ViewModel();
         ko.applyBindings(viewModel, table);
-
         const config2 = {
         apiKey: "AIzaSyDalSi3tvsWPI1oikUXJKAVeQoSTA7Z7BQ",
         authDomain: "jsbase-5d117.firebaseapp.com",
@@ -201,9 +208,7 @@
         messagingSenderId: "941067890947"
         };
         firebase.initializeApp(config2);
-
         const dbRefObject = firebase.database().ref();
-
         dbRefObject.on('value', snap => {
           var ourDbObject = snap.val();
           var outputArray = [];
@@ -215,65 +220,12 @@
                     console.log(outputArray);
               viewModel.thetemp(outputArray);
               });
-
-
       }
-
-
       </script> -->
-      <script>
-      function checkRek() {
-        document.getElementById('startClock').value = "Filler";
-        if(document.getElementById('selbox').value == "allsel") {
-           
-           var d = new Date();
-           var h = d.getHours();
-           var m = d.getMinutes();
-           var s = d.getSeconds();
-           var pl = d.getDay();
-           var pm = d.getMonth();
-           var pm2 = pm+1;
-           var pl2 = pl-1;
-           var pn = d.getFullYear();
-           var c = h + ':' + m + ':' + s;
-           var cm = (pn + '/' + pm2 + '/' + pl);
-           var cm2 = (pn + '/' + pm2 + '/' + pl2);
-           var ts = Math.round((new Date()).getTime() / 1000);
-           var tshour = ts - 86400;
-           var sd = new Date(ts*1000);
 
-           var rf = sd.getDay();
-           var rg = sd.getMonth();
-           var rg2 = rg+1;
-           var rf2 = rf-1;
-           var rh = sd.getFullYear();
-
-           var gt = (rh + '/' + rg2 + '/' + rf);
-           var gtfore = (rh + '/' + rg2 + '/' + rf2);
-
-           console.log("first " + gt)
-           console.log("prior " + gtfore)
-
-           console.log("unix " + ts)
-            
-            console.log(h + ':' + m + ':' + s)
-            console.log(pn + '/' + pm2 + '/' + pl)
-            document.getElementById('startFrom').value = gt;
-            document.getElementById('startClock').value = c;
-            document.getElementById('endFrom').value = gtfore;
-            document.getElementById('endClock').value = c;
-      }
-      if(document.getElementById('selbox').value == "daysel") {
-           document.getElementById('startClock').value = "24 hour";
-      }
-      if(document.getElementById('selbox').value == "weeksel") {
-           document.getElementById('startClock').value = "week";
-      }
-      if(document.getElementById('selbox').value == "custsel") {
-           document.getElementById('startClock').value = "own";
-      }
-      }
-      </script>
+            <div id="graph-section">
+                  </div>
+            </div>
       <div class="temp-section">
           <div align="center">
               <p>Average Temperature: </p>
@@ -310,56 +262,55 @@
           <table style="width:100%" id="ex-table" border="1">
               <tr id="tr">
                 <th>Time</th>
-                <th>Average Temp</th> 
+                <th>Average Temp</th>
                 <th>Average Status</th>
                 <th>Upper Probe Temp</th>
                 <th>Upper Probe Status</th>
                 <th>Lower Probe Temp</th>
                 <th>Lower Probe Status</th>
-             </table> 
+             </table>
          <!-- <div id="chart-container"><svg width="90px"  height="90px"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-rolling" style="background: none;"><circle cx="50" cy="50" fill="none" ng-attr-stroke="{{config.color}}" ng-attr-stroke-width="{{config.width}}" ng-attr-r="{{config.radius}}" ng-attr-stroke-dasharray="{{config.dasharray}}" stroke="#6ac1a5" stroke-width="9" r="33" stroke-dasharray="155.50883635269477 53.83627878423159" transform="rotate(324 50 50)"><animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform></circle></svg></div> -->
         </div>
-        
 
 
 
-      <div id="container" style="width:100%; height:400px;"></div> 
-      <script src="https://cdn.firebase.com/v0/firebase.js"></script> 
-      <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script> 
-      <script src="http://code.highcharts.com/highcharts.js"></script> 
-      <script> 
-          var fb = new Firebase("https://jsbase-5d117.firebaseio.com/temperature"); 
-          fb.on("value", function(data) { 
-              var model = data.val(); 
-                $('#container').highcharts({ 
-                  chart: { type: 'column' }, 
-                  title: { text: 'Sales' }, 
-                  xAxis: { 
-                      categories: model.Categories 
-                  }, 
-                  yAxis: { title: { text: 'Quantity' } }, 
-                  series: model.Series.map(function(element) { 
-                      return { 
-                          name: element.Name, 
-                          data: element.Data 
-                      } 
-                  })                        
-              });                
-          }); 
+
+      <div id="container" style="width:100%; height:400px;"></div>
+      <script src="https://cdn.firebase.com/v0/firebase.js"></script>
+      <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+      <script src="http://code.highcharts.com/highcharts.js"></script>
+      <script>
+          var fb = new Firebase("https://jsbase-5d117.firebaseio.com/temperature");
+          fb.on("value", function(data) {
+              var model = data.val();
+                $('#container').highcharts({
+                  chart: { type: 'column' },
+                  title: { text: 'Sales' },
+                  xAxis: {
+                      categories: model.Categories
+                  },
+                  yAxis: { title: { text: 'Quantity' } },
+                  series: model.Series.map(function(element) {
+                      return {
+                          name: element.Name,
+                          data: element.Data
+                      }
+                  })
+              });
+          });
       </script>
 
-<!-- 
+<!--
       <p id="pru-temp" color="green" class="minimn">Upper Probe Temperature: </p>
       <p id="prl-temp" color="green" class="minimn">Lower Probe Temperature: </p> -->
 
       <script>
-        
+
         var db = firebase.database();
         var ref = db.ref('/temperature');
         ref.limitToLast(1).on('child_added', function(snapshot) {
           console.log(snapshot.val().time);
 
-        
                 var obk = snapshot.val().temp;
                 var upprtemp = snapshot.val().upperprobe;
                 var lowrtemp = snapshot.val().lowerprobe;
@@ -367,6 +318,20 @@
                 document.getElementById('testy').innerHTML = obk;
                 if (obk <= 28 || obk >= 32) {
                    document.getElementById('testy').style.color = "red";
+                } else if (obk > 28 && obk < 32) {
+                  document.getElementById('testy').style.color = "green";
+                }
+                if (obk <= 28 || obk >= 32) {
+                   document.getElementById('lpbadge').style.color = "#E35050";
+                  //  document.getElementById('lpname').style.color = "red";
+                  //  document.getElementById('lpstat').style.color = "red";
+                   document.getElementById('Example').style.border = "5px solid #E35050";
+
+                } else if (obk > 28 && obk < 32) {
+                  document.getElementById('lpbadge').style.color = "green";
+                  //  document.getElementById('lpname').style.color = "red";
+                  //  document.getElementById('lpstat').style.color = "red";
+                   document.getElementById('Example').style.border = "5px solid green";
                 }
                 document.getElementById('pru-temp').innerHTML = upprtemp;
                 if (upprtemp <= 28 || upprtemp >= 32) {
@@ -387,114 +352,120 @@
                 if (lowrtemp > 28 && lowrtemp < 32) {
                   document.getElementById('prl-temp').style.color = "red";
                 }
-        
-        
+
+
               })
-              
+
               </script>
 
-      <p>>Hi Peter, please click the button below to download the data stored in the cloud in CSV format</p>
-      <div id="tester" style="width:600px;height:250px;"></div>
-      <script>
-                var firebaseRef = firebase.database().ref();
-    
-        var ref = firebase.database().ref('/temperature')
-        ref.limitToLast(1000).on('value', function(snapshot) {
-    
-        var getDatax = [];
-        var getDatay = [];
-        
-        snapshot.forEach(function(childSnapshot) {
-            
-            logmin = childSnapshot.val().time;
-            logtemp = childSnapshot.val().temp;
-            logstatus = childSnapshot.val().status;
-            logdate = childSnapshot.val().date;
-    
-            
-            //....    
-            var item = ('\n' + logdate + ',' + logmin + ',' + logtemp + ',' + logstatus);
-            // push each new item to array
-            getDatax.push(logmin);
-            getDatay.push(logtemp);
-       });
-    
-       console.log(getDatax)
-       console.log(getDatay)
 
-       TESTER = document.getElementById('tester');
-          Plotly.plot( TESTER, [{
-          x: getDatax,
-          y: getDatay }], {
-          margin: { t: 0 } } );
-    
+                    <div id="lineChart" style="width:1000px;height:500px;"></div>
+                    <script>
 
-    
-    });
+
+
+                              var firebaseRef = firebase.database().ref();
+
+                      var ref = firebase.database().ref('/temperature')
+                      ref.limitToLast(100).on('value', function(snapshot) {
+
+
+
+                      var getDatax = [];
+                      var getAvgT = [];
+                      var getLowT = [];
+                      var getHighT = [];
+
+
+
+
+
+                      snapshot.forEach(function(childSnapshot) {
+
+                          logmin = childSnapshot.val().time;
+                          logtemp = childSnapshot.val().temp;
+                          logstatus = childSnapshot.val().status;
+                          logdate = childSnapshot.val().date;
+                          loglowerprobe= childSnapshot.val().lowerprobe;
+                          logupperprobe = childSnapshot.val().upperprobe;
+
+                          //....
+                          var item = ('\n' + logdate + ',' + logmin + ',' + logtemp + ',' + logstatus + ',' + loglowerprobe + ',' + logupperprobe);
+                          // push each new item to array
+                          getDatax.push(logmin);
+                          getAvgT.push(logtemp);
+                          getLowT.push(loglowerprobe);
+                          getHighT.push(logupperprobe);
+
+                     });
+
+                     console.log(getDatax)
+                     console.log(getAvgT)
+                     console.log(getLowT)
+                     console.log(getHighT)
+
+
+                        var plot1 = {
+                          type: 'scatter',
+                          x: getDatax,
+                          y: getAvgT,
+                          name: 'Average Temperature',
+                          mode: 'lines',
+                          line: {
+                            dash: 'dot',
+                            color: 'rgb(0,128,0)',
+                            width: 3
+                          }
+
+                        };
+
+
+                        var plot2 = {
+                          type: 'scatter',
+                          x: getDatax,
+                          y: getLowT,
+                          name: 'Lower Probe Temperature',
+                          mode: 'lines',
+                          line: {
+                          color:'rgb(219, 64, 82)' ,
+                          width: 2
+
+                        }
+                      };
+
+                        var plot3 = {
+                          type: 'scatter',
+                          x: getDatax,
+                          y: getHighT,
+                          name: 'Upper Probe Temperature',
+                          mode: 'lines',
+                          line: {
+                              dash: 'dashdot',
+                          color: 'rgb(55, 128, 191)',
+                          width: 1
+                        }
+                      };
+
+                      var layout = {
+            title: 'Line Graph',
+            showlegend: true,
+            paper_bgcolor: 'rgba(245,246,249,1)',
+            plot_bgcolor: 'rgba(245,246,249,1)' ,
+
+
+        };
+
+                  
+
+                        var datab = [plot1, plot2 , plot3];
+                        Plotly.newPlot('lineChart', datab, layout, {displayModeBar: false});
+                  });
 
 
         </script>
-      <script>
 
-// function alldata() {
-    
-//         // var userInputStart = startDate + " " + startTime;
-//         // var userInputEnd = endDate + " " + endTime;
-    
-//         // var userUnixStart = Math.round(new Date(userInputStart).getTime()/1000);
-//         // var userUnixEnd = Math.round(new Date(userInputEnd).getTime()/1000);
-    
-//         // var startPoint = String(userUnixStart);
-//         // var endPoint = String(userUnixEnd);
-    
-//         // window.alert("Linked");
-//         var firebaseRef = firebase.database().ref();
-    
-//         var ref = firebase.database().ref('/temperature')
-//         ref.limitToLast(100).on('value', function(snapshot) {
-    
-//         var getDatax = [];
-//         var getDatay = [];
-        
-//         snapshot.forEach(function(childSnapshot) {
-            
-//             logmin = childSnapshot.val().time;
-//             logtemp = childSnapshot.val().temp;
-//             logstatus = childSnapshot.val().status;
-//             logdate = childSnapshot.val().date;
-    
-            
-//             //....    
-//             var item = ('\n' + logdate + ',' + logmin + ',' + logtemp + ',' + logstatus);
-//             // push each new item to array
-//             getDatax.push(logmin);
-//             getDatay.push(logtemp);
-//        });
-    
-//        console.log(getData)
 
-//        var trace1 = {
-//         x: [getDatax], 
-//             y: [getDatay], 
-//   type: 'scatter'
-// };
-    
-//     });
-    
-        
-        var trace1 = {
-  x: [1, 2, 3, 4], 
-  y: [10, 15, 13, 17], 
-  type: 'scatter'
-};
-var trace2 = {
-  x: [1, 2, 3, 4], 
-  y: [16, 5, 11, 9], 
-  type: 'scatter'
-};
-var data = [trace1];
-Plotly.newPlot('myDiv', data);
-      </script>
+
       <!-- <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a> -->
       <!-- <div align=center></div><button id="exportCSV" onClick="alldata()">Export All Data</button>
     </br></br>
@@ -508,15 +479,15 @@ Plotly.newPlot('myDiv', data);
         <input type="text" maxlength="10" name="value" id="endClock"/> &nbsp;<strong>End Time</strong></br></br>
         <button id="texdat" value="submit" onclick="clicker(document.getElementById('startClock').value, document.getElementById('endFrom').value, document.getElementById('endClock').value)" />Download Range of Data</button></p>
       </div> -->
-    </div>
 
-   
 
-  
 
-    
+
+
+
+
 <!-- <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
-  
+
 <script>
   // Initialize Firebase
   var config = {
@@ -581,7 +552,10 @@ Plotly.newPlot('myDiv', data);
     </script>
 
     <!-- load the d3.js library -->
+
 <script src="https://d3js.org/d3.v4.min.js"></script>
+
+
 <!-- <script>
 
 // set the dimensions and margins of the graph
@@ -668,7 +642,7 @@ d3.json("chartdata.json", function(error, data) {
 
 
 
-    
+
 
 
 
@@ -697,6 +671,6 @@ d3.json("chartdata.json", function(error, data) {
 
 
 
-  
+
   </body>
 </html>
