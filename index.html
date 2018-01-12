@@ -56,19 +56,19 @@
  stroke-width: 2px;
 }
     </style>
-         <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
-      <script>
-        // Initialize Firebase
-        var config = {
-          apiKey: "AIzaSyDalSi3tvsWPI1oikUXJKAVeQoSTA7Z7BQ",
-          authDomain: "jsbase-5d117.firebaseapp.com",
-          databaseURL: "https://jsbase-5d117.firebaseio.com",
-          projectId: "jsbase-5d117",
-          storageBucket: "jsbase-5d117.appspot.com",
-          messagingSenderId: "941067890947"
-        };
-        firebase.initializeApp(config);
-      </script>
+<script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyA2KN956I62JxtNLqp1oz-8qkHDCpe51vQ",
+    authDomain: "tempdb-98448.firebaseapp.com",
+    databaseURL: "https://tempdb-98448.firebaseio.com",
+    projectId: "tempdb-98448",
+    storageBucket: "tempdb-98448.appspot.com",
+    messagingSenderId: "317998823956"
+  };
+  firebase.initializeApp(config);
+</script>
             <!-- including FusionCharts core package JS files --> 
             <script src="fusioncharts.js"></script>
             <script src="fusioncharts.charts.js"></script>
@@ -162,7 +162,7 @@
     <div id="message">
       <!-- <h2>Welcome</h2> -->
       <div class="appheader">
-      <h1>Download Cloud Database to CSV</h1>
+      <h1 style="color: #171718">Download Cloud Database to CSV</h1>
       <!-- <div id="Example"></br><p id="lpbadge" style="text-shadow:3px 3px 3px rgb(22, 22, 22);font-weight:100;color:#FFFFFF;letter-spacing:0pt;word-spacing:2pt;font-size:75px;text-align:center;font-family:Avenir Next LT Pro Condensed rgb(24, 24, 24), sans-serif;line-height:0.85;">31.31</p>
         <p id="lpname" style="text-shadow:3px 3px 3px rgb(24, 24, 24);font-weight:bold;color:#FFFFFF;letter-spacing:1pt;word-spacing:2pt;font-size:16px;text-align:center; font-style:italic; font-family:Avenir Next LT Pro Condensed rgb(21, 21, 21), sans-serif;line-height:0.3;">Lower Probe</p>
         <p id="lpstat" style="text-shadow:3px 3px 3px rgb(21, 21, 21);font-weight:normal;color:#FFFFFF;letter-spacing:0pt;word-spacing:2pt;font-size:16px;text-align:center;font-family:Avenir Next LT Pro Condensed rgb(21, 21, 21), sans-serif;line-height:0.3;">High</p> -->
@@ -772,7 +772,7 @@
       <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script> 
       <script src="http://code.highcharts.com/highcharts.js"></script> 
       <script> 
-          var fb = new Firebase("https://jsbase-5d117.firebaseio.com/temperature"); 
+          var fb = new Firebase("https://tempdb-98448.firebaseio.com/temperature"); 
           fb.on("value", function(data) { 
               var model = data.val(); 
                 $('#container').highcharts({ 
@@ -1122,18 +1122,18 @@
 //     });
     
         
-        var trace1 = {
-  x: [1, 2, 3, 4], 
-  y: [10, 15, 13, 17], 
-  type: 'scatter'
-};
-var trace2 = {
-  x: [1, 2, 3, 4], 
-  y: [16, 5, 11, 9], 
-  type: 'scatter'
-};
-var data = [trace1];
-Plotly.newPlot('myDiv', data);
+//         var trace1 = {
+//   x: [1, 2, 3, 4], 
+//   y: [10, 15, 13, 17], 
+//   type: 'scatter'
+// };
+// var trace2 = {
+//   x: [1, 2, 3, 4], 
+//   y: [16, 5, 11, 9], 
+//   type: 'scatter'
+// };
+// var data = [trace1];
+// Plotly.newPlot('myDiv', data);
       </script>
       <!-- <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a> -->
       <!-- <div align=center></div><button id="exportCSV" onClick="alldata()">Export All Data</button>
