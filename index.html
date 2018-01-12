@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -16,7 +15,7 @@
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
 
-    <script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.6/firebase.js'></script>
+    <script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.6/firebase.js'></script>     
     <script type="text/javascript" language="javascript" src="jquery-1.7.2.min.js"></script>
     <script type="text/javascript" language="javascript" src="jquery.flot.js"></script>
 
@@ -26,7 +25,7 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
 
     <style media="screen">
-      body {
+      body { 
         /* background-image: url('../images/bg.png'); */
       background-color: #252525; font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
       /* #message { background: rgb(156, 75, 75); max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; } */
@@ -50,6 +49,7 @@
       #minimn {
         font-size: 30px;
       }
+
       .line {
  fill: none;
  stroke: steelblue;
@@ -69,7 +69,7 @@
         };
         firebase.initializeApp(config);
       </script>
-            <!-- including FusionCharts core package JS files -->
+            <!-- including FusionCharts core package JS files --> 
             <script src="fusioncharts.js"></script>
             <script src="fusioncharts.charts.js"></script>
 
@@ -81,7 +81,7 @@
                     cdata.push({
                       label: data[i]['temp'],
                       value: data[i]['time']
-
+                      
                     });
                     console.log("cdata is" + cdata);
                   }
@@ -94,8 +94,9 @@
                   genFunction(snapshot.val())
                 });
               }
+            
 
-
+            
                   var firebaseChart = new FusionCharts({
                     type: 'area2d',
                     renderAt: 'chart-container',
@@ -162,43 +163,327 @@
       <!-- <h2>Welcome</h2> -->
       <div class="appheader">
       <h1>Download Cloud Database to CSV</h1>
-      <div id="Example"></br><p id="lpbadge" style="text-shadow:3px 3px 3px rgb(22, 22, 22);font-weight:100;color:#FFFFFF;letter-spacing:0pt;word-spacing:2pt;font-size:75px;text-align:center;font-family:Avenir Next LT Pro Condensed rgb(24, 24, 24), sans-serif;line-height:0.85;">31.31</p>
+      <!-- <div id="Example"></br><p id="lpbadge" style="text-shadow:3px 3px 3px rgb(22, 22, 22);font-weight:100;color:#FFFFFF;letter-spacing:0pt;word-spacing:2pt;font-size:75px;text-align:center;font-family:Avenir Next LT Pro Condensed rgb(24, 24, 24), sans-serif;line-height:0.85;">31.31</p>
         <p id="lpname" style="text-shadow:3px 3px 3px rgb(24, 24, 24);font-weight:bold;color:#FFFFFF;letter-spacing:1pt;word-spacing:2pt;font-size:16px;text-align:center; font-style:italic; font-family:Avenir Next LT Pro Condensed rgb(21, 21, 21), sans-serif;line-height:0.3;">Lower Probe</p>
-        <p id="lpstat" style="text-shadow:3px 3px 3px rgb(21, 21, 21);font-weight:normal;color:#FFFFFF;letter-spacing:0pt;word-spacing:2pt;font-size:16px;text-align:center;font-family:Avenir Next LT Pro Condensed rgb(21, 21, 21), sans-serif;line-height:0.3;">High</p></div>
+        <p id="lpstat" style="text-shadow:3px 3px 3px rgb(21, 21, 21);font-weight:normal;color:#FFFFFF;letter-spacing:0pt;word-spacing:2pt;font-size:16px;text-align:center;font-family:Avenir Next LT Pro Condensed rgb(21, 21, 21), sans-serif;line-height:0.3;">High</p> -->
+      <p id="circle-text" style="    display: table-cell;
+      height: 250px; /*change this and the width
+      for the size of your initial circle*/
+      width: 250px;
+      text-align: center;
+      vertical-align: middle;
+      border-radius: 50%;
+      border: 5px solid rgb(238, 238, 238);
+      text-shadow:3px 3px 3px rgb(22, 22, 22);
+      
+      /*make it pretty*/
+      background: #171717;
+      box-shadow:  0px 0px 0px 20px #171717;
+      color: #E35050;
+      letter-spacing:1pt;
+      word-spacing:2pt;
+      font-size:65px;
+      position: absolute;
+      margin:auto;
+      left: 39%;
+      font-family:Avenir Next LT Pro Condensed;
+      text-align:center;
+      line-height:0.65;">
+      <br/><br/><br/><p id="ghtr" style = "      text-shadow:3px 3px 3px rgb(22, 22, 22);
+      
+      /*make it pretty*/
+      
+      color: rgb(255, 255, 255);
+      letter-spacing:2pt;
+      word-spacing:1pt;
+      font-size:20px;
+      position: absolute;
+      margin-left: 61px;
+      margin-top: 165px;
+      left: 39%;
+      font-family:Avenir Next LT Pro Demi Condensed Italic;
+      text-align:center;
+      line-height:0.65;">Average Temp</p><p id="avstat" style = "      text-shadow:3px 3px 3px rgb(22, 22, 22);
+      
+      /*make it pretty*/
+      
+      color: rgb(255, 255, 255);;
+      letter-spacing:2pt;
+      word-spacing:1pt;
+      font-size:20px;
+      position: absolute;
+      margin-left: 108px;
+      margin-top: 195px;
+      left: 39%;
+      font-family:Avenir Next LT Pro Condensed;
+      text-align:center;
+      line-height:0.65;">--/--</p></p>
 
-    </div>
-    <div id="secoo"></br><p id="lpbadge" style="text-shadow:3px 3px 3px rgb(22, 22, 22);font-weight:100;color:#FFFFFF;letter-spacing:0pt;word-spacing:2pt;font-size:75px;text-align:center;font-family:Avenir Next LT Pro Condensed rgb(24, 24, 24), sans-serif;line-height:0.85;">31.31</p>
+      <!-- THIS IS THE SECOND CIRCLE WHICH IS ON THE RIGHT -->
+
+      <p id="circle-text2" style="    display: table-cell;
+      height: 200px; /*change this and the width
+      for the size of your initial circle*/
+      width: 200px;
+      text-align: center;
+      vertical-align: middle;
+      border-radius: 50%;
+      border: 5px solid rgb(255, 255, 255);
+      text-shadow:3px 3px 3px rgb(22, 22, 22);
+      
+      /*make it pretty*/
+      background: #171717;
+      box-shadow:  0px 0px 0px 20px #171717;
+      color: #E35050;
+      letter-spacing:0pt;
+      word-spacing:2pt;
+      font-size:50px;
+      position: absolute;
+      margin:auto;
+      left: 63%;
+      font-family:Avenir Next LT Pro Condensed;
+      text-align:center;
+      line-height:0.65;">
+      <p id="ghtr" style = "      text-shadow:3px 3px 3px rgb(22, 22, 22);
+      
+      /*make it pretty*/
+      
+      color: rgb(255, 255, 255);
+      letter-spacing:2pt;
+      word-spacing:1pt;
+      font-size:15px;
+      position: absolute;
+      margin-left: 355px;
+      margin-top: 130px;
+      left: 39%;
+      font-family:Avenir Next LT Pro Demi Condensed Italic;
+      text-align:center;
+      line-height:0.65;">Upper Probe Temp</p><p id="histat" style = "      text-shadow:3px 3px 3px rgb(22, 22, 22);
+      
+      /*make it pretty*/
+      
+      color: rgb(255, 255, 255);;
+      letter-spacing:2pt;
+      word-spacing:1pt;
+      font-size:15px;
+      position: absolute;
+      margin-left: 415px;
+      margin-top: 155px;
+      left: 39%;
+      font-family:Avenir Next LT Pro Condensed;
+      text-align:center;
+      line-height:0.65;">--/--</p></p>
+
+      <p id="circle-text3" style="    display: table-cell;
+      height: 200px; /*change this and the width
+      for the size of your initial circle*/
+      width: 200px;
+      text-align: center;
+      vertical-align: middle;
+      border-radius: 50%;
+      border: 5px solid rgb(255, 255, 255);
+      text-shadow:3px 3px 3px rgb(22, 22, 22);
+      
+      /*make it pretty*/
+      background: #171717;
+      box-shadow:  0px 0px 0px 20px #171717;
+      color: #E35050;
+      letter-spacing:0pt;
+      word-spacing:2pt;
+      font-size:50px;
+      position: absolute;
+      margin:auto;
+      left: 19%;
+      font-family:Avenir Next LT Pro Condensed;
+      text-align:center;
+      line-height:0.65;">     
+      
+      <p id="cbmn" style = "            text-shadow:3px 3px 3px rgb(22, 22, 22);
+      
+      /*make it pretty*/
+      color: rgb(255, 255, 255);
+      letter-spacing:0pt;
+      word-spacing:2pt;
+      font-size:50px;
+      position: absolute;
+      margin-left: 895px;
+      margin-top: 75px;
+      font-family:Avenir Next LT Pro Condensed;
+      text-align:center;
+      line-height:0.65;">30.5°C</p>
+      
+      <p id="ghtr" style = "      text-shadow:3px 3px 3px rgb(22, 22, 22);
+      
+      /*make it pretty*/
+      
+      color: rgb(255, 255, 255);
+      letter-spacing:2pt;
+      word-spacing:1pt;
+      font-size:15px;
+      position: absolute;
+      margin-left: -240px;
+      margin-top: 130px;
+      left: 39%;
+      font-family:Avenir Next LT Pro Demi Condensed Italic;
+      text-align:center;
+      line-height:0.65;">Lower Probe Temp</p>
+      <p id="wrty" style = "            text-shadow:3px 3px 3px rgb(22, 22, 22);
+      
+      /*make it pretty*/
+      color: rgb(255, 255, 255);
+      letter-spacing:0pt;
+      word-spacing:2pt;
+      font-size:50px;
+      position: absolute;
+      margin-left: 300px;
+      margin-top: 70px;
+      font-family:Avenir Next LT Pro Condensed;
+      text-align:center;
+      line-height:0.65;">30.5°C</p>
+      <p id="ljpo" style = "                  text-shadow:3px 3px 3px rgb(22, 22, 22);
+      
+      /*make it pretty*/
+      color: rgb(255, 255, 255);
+      letter-spacing:1pt;
+      word-spacing:2pt;
+      font-size:65px;
+      position: absolute;
+      margin-left: 572px;
+      margin-top: 75px;
+      font-family:Avenir Next LT Pro Condensed;
+      text-align:center;
+      line-height:0.65;">30.5°C</p>
+      <p id="lwstat" style = "      text-shadow:3px 3px 3px rgb(22, 22, 22);
+      
+      /*make it pretty*/
+      
+      color: rgb(255, 255, 255);;
+      letter-spacing:2pt;
+      word-spacing:1pt;
+      font-size:15px;
+      position: absolute;
+      margin-left: -180px;
+      margin-top: 155px;
+      left: 39%;
+      font-family:Avenir Next LT Pro Condensed;
+      text-align:center;
+      line-height:0.65;">--/--</p></p>
+
+      <p id="nextbit" style="    display: table-cell;
+      height: 64px; /*change this and the width
+      for the size of your initial circle*/
+      width: 64px;
+      text-align: center;
+      vertical-align: middle;
+      border-radius: 50%;
+      border: 5px solid rgb(238, 238, 238);
+      text-shadow:3px 3px 3px rgb(22, 22, 22);
+      
+      /*make it pretty*/
+      color: rgb(255, 255, 255);
+      letter-spacing:1pt;
+      word-spacing:2pt;
+      font-size:65px;
+      position: absolute;
+      margin-left: 1130px;
+      margin-top: 415px;
+      font-family:Avenir Next LT Pro Condensed;
+      text-align:center;
+      line-height:0.65;"></p>
+
+      <p id="arrdown" style = "                  text-shadow:3px 3px 3px rgb(22, 22, 22);
+      
+      /*make it pretty*/
+      color: rgb(255, 255, 255);
+      letter-spacing:1pt;
+      word-spacing:2pt;
+      font-size:45px;
+      position: absolute;
+      margin-left: 1147px;
+      margin-top: 440px;
+      font-family:Avenir Next LT Pro Condensed;
+      text-align:center;
+      line-height:0.65;">▽</p>
+
+      <p id="dtabd" style = "                  text-shadow:3px 3px 3px rgb(22, 22, 22);
+      
+      /*make it pretty*/
+      color: rgb(255, 255, 255);
+      letter-spacing:2pt;
+      word-spacing:2pt;
+      font-size:20px;
+      position: absolute;
+      margin-left: 1105px;
+      margin-top: 505px;
+      font-family:Avenir Next LT Pro Condensed;
+      text-align:center;
+      line-height:0.65;">To Data Table</p>
+
+      <a href="#temp-section" id="nextbit" style="    display: table-cell;
+      height: 30px; /*change this and the width
+      for the size of your initial circle*/
+      width: 30px;
+      text-align: center;
+      vertical-align: middle;
+      border-radius: 50%;
+      border: none;
+      text-shadow:3px 3px 3px rgb(22, 22, 22);
+      
+      /*make it pretty*/
+      color: rgb(255, 255, 255);
+      background-color: transparent;
+      letter-spacing:1pt;
+      word-spacing:2pt;
+      font-size:65px;
+      outline : none;
+      position: absolute;
+      margin-left: 1131px;
+      margin-top: 416px;
+      font-family:Avenir Next LT Pro Condensed;
+      text-align:center;
+      line-height:0.65;"></a>
+  </div>
+      
+    <!-- </div> -->
+    <!-- <div id="secoo"></br><p id="lpbadge" style="text-shadow:3px 3px 3px rgb(22, 22, 22);font-weight:100;color:#FFFFFF;letter-spacing:0pt;word-spacing:2pt;font-size:75px;text-align:center;font-family:Avenir Next LT Pro Condensed rgb(24, 24, 24), sans-serif;line-height:0.85;">31.31</p>
       <p id="lpname" style="text-shadow:3px 3px 3px rgb(24, 24, 24);font-weight:bold;color:#FFFFFF;letter-spacing:1pt;word-spacing:2pt;font-size:16px;text-align:center; font-style:italic; font-family:Avenir Next LT Pro Condensed rgb(21, 21, 21), sans-serif;line-height:0.3;">Lower Probe</p>
-      <p id="lpstat" style="text-shadow:3px 3px 3px rgb(21, 21, 21);font-weight:normal;color:#FFFFFF;letter-spacing:0pt;word-spacing:2pt;font-size:16px;text-align:center;font-family:Avenir Next LT Pro Condensed rgb(21, 21, 21), sans-serif;line-height:0.3;">High</p></div>
+      <p id="lpstat" style="text-shadow:3px 3px 3px rgb(21, 21, 21);font-weight:normal;color:#FFFFFF;letter-spacing:0pt;word-spacing:2pt;font-size:16px;text-align:center;font-family:Avenir Next LT Pro Condensed rgb(21, 21, 21), sans-serif;line-height:0.3;">High</p></div> -->
+    
+  
 
-
-
-  <div id="jankbag"></br><p id="lpbadge" style="text-shadow:3px 3px 3px rgb(22, 22, 22);font-weight:100;color:#FFFFFF;letter-spacing:0pt;word-spacing:2pt;font-size:75px;text-align:center;font-family:Avenir Next LT Pro Condensed rgb(24, 24, 24), sans-serif;line-height:0.85;">31.37</p>
+  <!-- <div id="jankbag"></br><p id="lpbadge" style="text-shadow:3px 3px 3px rgb(22, 22, 22);font-weight:100;color:#FFFFFF;letter-spacing:0pt;word-spacing:2pt;font-size:75px;text-align:center;font-family:Avenir Next LT Pro Condensed rgb(24, 24, 24), sans-serif;line-height:0.85;">31.37</p>
     <p id="lpname" style="text-shadow:3px 3px 3px rgb(24, 24, 24);font-weight:bold;color:#FFFFFF;letter-spacing:1pt;word-spacing:2pt;font-size:16px;text-align:center; font-style:italic; font-family:Avenir Next LT Pro Condensed rgb(21, 21, 21), sans-serif;line-height:0.3;">Upper Probe</p>
-    <p id="lpstat" style="text-shadow:3px 3px 3px rgb(21, 21, 21);font-weight:normal;color:#FFFFFF;letter-spacing:0pt;word-spacing:2pt;font-size:16px;text-align:center;font-family:Avenir Next LT Pro Condensed rgb(21, 21, 21), sans-serif;line-height:0.3;">High</p></div>
-
+    <p id="lpstat" style="text-shadow:3px 3px 3px rgb(21, 21, 21);font-weight:normal;color:#FFFFFF;letter-spacing:0pt;word-spacing:2pt;font-size:16px;text-align:center;font-family:Avenir Next LT Pro Condensed rgb(21, 21, 21), sans-serif;line-height:0.3;">High</p></div> -->
+  
 </div>
-
+    
       <!-- <div data-bind="foreach: thetemp">
       <h1>Current Temperature:</h1>
       <p data-bind='text: $data[0]' />></p>
+
       </br></br>
       <h2>Lower Probe:</h2>
       <p data-bind='text: $data[1]' />></p>
+
       </br></br>
       <h2>Upper Probe:</h2>
       <p data-bind='text: $data[2]' />></p>
     </div>
+    
 
-
+      
       <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+
       <script>
       var table = document.getElementById("tp");
+
       function ViewModel() {
         var self = this;
         self.thetemp = ko.observable();
+
         var viewModel = new ViewModel();
         ko.applyBindings(viewModel, table);
+
         const config2 = {
         apiKey: "AIzaSyDalSi3tvsWPI1oikUXJKAVeQoSTA7Z7BQ",
         authDomain: "jsbase-5d117.firebaseapp.com",
@@ -208,7 +493,9 @@
         messagingSenderId: "941067890947"
         };
         firebase.initializeApp(config2);
+
         const dbRefObject = firebase.database().ref();
+
         dbRefObject.on('value', snap => {
           var ourDbObject = snap.val();
           var outputArray = [];
@@ -220,37 +507,248 @@
                     console.log(outputArray);
               viewModel.thetemp(outputArray);
               });
+
+
       }
+
+
       </script> -->
 
-            <div id="graph-section">
-                  </div>
-            </div>
-      <div class="temp-section">
-          <div align="center">
+      <div id="graph-section">
+          
+                            
+                        
+                            
+ 
+              <p id="cbhj" style="
+              
+              /*make it pretty*/
+              
+              color: rgb(255, 255, 255);
+              letter-spacing:1pt;
+              word-spacing:1pt;
+              font-size:20px;
+              position: absolute;
+              margin-left: 50px;
+              margin-top: 120px;
+              left: 39%;
+              font-family:Avenir Next LT Pro Condensed Italic;
+              text-align:center;
+              line-height:0.65;">Day</p>
+
+              <p id="cklp" style="
+              
+              /*make it pretty*/
+              
+              color: rgb(255, 255, 255);
+              letter-spacing:1pt;
+              word-spacing:1pt;
+              font-size:20px;
+              position: absolute;
+              margin-left: 100px;
+              margin-top: 120px;
+              left: 39%;
+              font-family:Avenir Next LT Pro Condensed Italic;
+              text-align:center;
+              line-height:0.65;">Week</p>
+
+              <p id="cklp" style="
+              
+              /*make it pretty*/
+              
+              color: rgb(255, 255, 255);
+              letter-spacing:1pt;
+              word-spacing:1pt;
+              font-size:20px;
+              position: absolute;
+              margin-left: 165px;
+              margin-top: 120px;
+              left: 39%;
+              font-family:Avenir Next LT Pro Condensed Italic;
+              text-align:center;
+              line-height:0.65;">Month</p>
+
+              
+    </div>
+
+    
+
+  </div>
+
+    
+  <div id="lineChart" style="width:750px;height:220px;
+  margin-top:280px;
+  margin-left:300px;"></div>
+
+  <p id="cklp" style="
+  
+  /*make it pretty*/
+  
+  color: rgb(255, 255, 255);
+  letter-spacing:4pt;
+  word-spacing:1pt;
+  font-size:40px;
+  position: absolute;
+  margin-left: -255px;
+  visibility: hidden;
+  margin-top: 90px;
+  left: 39%;
+  font-family:Avenir Next LT Pro Condensed Italic;
+  text-align:center;
+  line-height:0.65;">Temp</p>
+
+
+                  
+
+            
+       <div id="temp-section">
+         <p id = "xdatab"></p>
+         <p id = "xdatatt">Export Data</p>
+         <p id = "rdatab"></p>
+         <p id = "rdatatt">Recent</p>
+         <p id="tablr" style = "            text-shadow:3px 3px 3px rgb(22, 22, 22);
+         
+         /*make it pretty*/
+         color: rgb(255, 255, 255);
+         letter-spacing:1pt;
+         word-spacing:2pt;
+         font-size:50px;
+         position: absolute;
+         margin-left: 480px;
+         margin-top: -60px;
+         font-family:Avenir Next LT Pro Condensed;
+         text-align:center;
+         line-height:0.65;">Data Table</p>
+         <p id="dispinfo" style = "      
+         
+         /*make it pretty*/
+         
+         color: rgb(255, 255, 255);
+         letter-spacing:1pt;
+         word-spacing:1pt;
+         font-size:24px;
+         position: absolute;
+         margin-left: 375px;
+         margin-top: 35px;
+         font-family:Avenir Next LT Pro Ultra Light Condensed Italic;
+         text-align:center;
+         line-height:0.65;">Displaying the last 1,000 Temperature entries</p>
+          <p id="theads" style = "      text-shadow:3px 3px 3px rgb(22, 22, 22);
+          
+          /*make it pretty*/
+          
+          color: rgb(255, 255, 255);
+          letter-spacing:2pt;
+          word-spacing:1pt;
+          font-size:28px;
+          position: absolute;
+          margin-left: 260px;
+          margin-top: 95px;
+          font-family:Avenir Next LT Pro Condensed Italic;
+          text-align:center;
+          line-height:0.65;">Time</p>
+
+          <p id="tuphd" style = "      text-shadow:3px 3px 3px rgb(22, 22, 22);
+          
+          /*make it pretty*/
+          
+          color: rgb(255, 255, 255);
+          letter-spacing:2pt;
+          word-spacing:1pt;
+          font-size:28px;
+          position: absolute;
+          margin-left: 390px;
+          margin-top: 95px;
+          font-family:Avenir Next LT Pro Condensed Italic;
+          text-align:center;
+          line-height:0.65;">Upper Probe</p>
+
+          <p id="tavhd" style = "      text-shadow:3px 3px 3px rgb(22, 22, 22);
+          
+          /*make it pretty*/
+          
+          color: rgb(255, 255, 255);
+          letter-spacing:2pt;
+          word-spacing:1pt;
+          font-size:28px;
+          position: absolute;
+          margin-left: 600px;
+          margin-top: 95px;
+          font-family:Avenir Next LT Pro Condensed Italic;
+          text-align:center;
+          line-height:0.65;">Average</p>
+
+          <p id="tlwhd" style = "      text-shadow:3px 3px 3px rgb(22, 22, 22);
+          
+          /*make it pretty*/
+          
+          color: rgb(255, 255, 255);
+          letter-spacing:2pt;
+          word-spacing:1pt;
+          font-size:28px;
+          position: absolute;
+          margin-left: 745px;
+          margin-top: 95px;
+          font-family:Avenir Next LT Pro Condensed Italic;
+          text-align:center;
+          line-height:0.65;">Lower Probe</p>
+
+          <table style="width:100%" id="ex-table"  style="
+          
+          /*make it pretty*/
+          
+          color: rgb(255, 255, 255);
+          letter-spacing:4pt;
+          word-spacing:1pt;
+          font-size:20px;
+          font-family:Avenir Next LT Pro Condensed Italic;">
+              <tr id="tr" style="
+              
+              /*make it pretty*/
+              
+              color: rgb(255, 255, 255);
+              letter-spacing:4pt;
+              word-spacing:1pt;
+              font-size:20px;
+              font-family:Avenir Next LT Pro Condensed Italic;
+              border-color: transparent;
+              outline : none;">
+                <th id="tabletxt" >Time</th>
+                <th id="tabletxt">Average Temp</th> 
+                <th id="tabletxt">Average Status</th>
+                <th id="tabletxt">Upper Probe Temp</th>
+                <th id="tabletxt">Upper Probe Status</th>
+                <th id="tabletxt">Lower Probe Temp</th>
+                <th id="tabletxt">Lower Probe Status</th>
+        
+                
+             </table> 
+          
+          <!-- <div align="center">
               <p>Average Temperature: </p>
               <p id="testy" style="text-shadow:1px 1px 1px rgba(0,0,0,1);font-weight:normal;color:#FFFFFF;letter-spacing:0pt;word-spacing:2pt;font-size:95px;text-align:center;font-family:Avenir Next LT Pro Condensed black, sans-serif;line-height:1;">35*C</p>
               <p>Upper Probe Temperature: </p>
               <p id="pru-temp" color="green" class="minimn" size="200%"></p>
               <p>Lower Probe Temperature: </p>
               <p id="prl-temp" color="green" class="minimn" size="200%"></p>
-            </div>
+            </div> -->
       </div>
-      <div class="dl-section">      <div align=center></div><button id="exportCSV" onClick='"alldata()"'>Export All Data</button>
+      <div class="dl-section">      
+        <!-- <div align=center></div><button id="exportCSV" onClick='"alldata()"'>Export All Data</button>
       <a href="graph.html"></a>
-    </br></br>
+    </br></br> -->
     <!-- <input type="text" maxlength="16" name="value" id="txter"/></br>
     <button id="textit" onClick="texter(document.getElementById('txter').value)">Text Me!</button> -->
-      <p>Please enter a start date in yyyy/mm/dd format in the upper field e.g. 2017/11/21 and a start time in hh:mm:ss format in the lower field e.g. 10:52:00</br></br>
+      <!-- <p>Please enter a start date in yyyy/mm/dd format in the upper field e.g. 2017/11/21 and a start time in hh:mm:ss format in the lower field e.g. 10:52:00</br></br>
         <input type="text" maxlength="10" name="value" id="startFrom"/> &nbsp;<strong>Start Date</strong></br>
         <input type="text" maxlength="10" name="value" id="startClock"/> &nbsp;<strong>Start Time</strong></br></br>
         Now Enter an end date in yyyy/mm/dd format in the upper field and an end time in hh:mm:ss format in the lower field</br></br>
         <input type="text" maxlength="10" name="value" id="endFrom"/> &nbsp;<strong>End Date</strong></br>>
         <input type="text" maxlength="10" name="value" id="endClock"/> &nbsp;<strong>End Time</strong></br></br>
         <button id="texdat" value="submit" onclick="clicker(document.getElementById('startClock').value, document.getElementById('endFrom').value, document.getElementById('endClock').value)" />Download Range of Data</button></p>
-      </div></div>
+      </div></div> -->
       <div class="newdl-sect">
-          <select id="selbox" onchange="checkRek()">
+          <select id="selbox" onchange="checkRek()" style="margin-top: 600px;">
               <option value="allsel" id="optt">All Data</option>
               <option value="daysel" id="optt">Past 24 Hours</option>
               <option value="weeksel" id="optt">Past Week</option>
@@ -258,214 +756,385 @@
             </select>
         <!-- <button id="exportCSV" onClick="alldata()">Export Data</button> -->
       </div>
+
+      <!-- THIS CODE SHOULD DRAW A CIRCLE ELEMENT -->
+
       <div class="chart-sect">
-          <table style="width:100%" id="ex-table" border="1">
-              <tr id="tr">
-                <th>Time</th>
-                <th>Average Temp</th>
-                <th>Average Status</th>
-                <th>Upper Probe Temp</th>
-                <th>Upper Probe Status</th>
-                <th>Lower Probe Temp</th>
-                <th>Lower Probe Status</th>
-             </table>
+
          <!-- <div id="chart-container"><svg width="90px"  height="90px"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-rolling" style="background: none;"><circle cx="50" cy="50" fill="none" ng-attr-stroke="{{config.color}}" ng-attr-stroke-width="{{config.width}}" ng-attr-r="{{config.radius}}" ng-attr-stroke-dasharray="{{config.dasharray}}" stroke="#6ac1a5" stroke-width="9" r="33" stroke-dasharray="155.50883635269477 53.83627878423159" transform="rotate(324 50 50)"><animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform></circle></svg></div> -->
         </div>
+        
 
 
 
-
-      <div id="container" style="width:100%; height:400px;"></div>
-      <script src="https://cdn.firebase.com/v0/firebase.js"></script>
-      <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-      <script src="http://code.highcharts.com/highcharts.js"></script>
-      <script>
-          var fb = new Firebase("https://jsbase-5d117.firebaseio.com/temperature");
-          fb.on("value", function(data) {
-              var model = data.val();
-                $('#container').highcharts({
-                  chart: { type: 'column' },
-                  title: { text: 'Sales' },
-                  xAxis: {
-                      categories: model.Categories
-                  },
-                  yAxis: { title: { text: 'Quantity' } },
-                  series: model.Series.map(function(element) {
-                      return {
-                          name: element.Name,
-                          data: element.Data
-                      }
-                  })
-              });
-          });
+      <div id="container" style="width:100%; height:400px;"></div> 
+      <script src="https://cdn.firebase.com/v0/firebase.js"></script> 
+      <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script> 
+      <script src="http://code.highcharts.com/highcharts.js"></script> 
+      <script> 
+          var fb = new Firebase("https://jsbase-5d117.firebaseio.com/temperature"); 
+          fb.on("value", function(data) { 
+              var model = data.val(); 
+                $('#container').highcharts({ 
+                  chart: { type: 'column' }, 
+                  title: { text: 'Sales' }, 
+                  xAxis: { 
+                      categories: model.Categories 
+                  }, 
+                  yAxis: { title: { text: 'Quantity' } }, 
+                  series: model.Series.map(function(element) { 
+                      return { 
+                          name: element.Name, 
+                          data: element.Data 
+                      } 
+                  })                        
+              });                
+          }); 
       </script>
 
-<!--
+<script>
+    
+    
+          var db = firebase.database();
+          var ref = db.ref('/temperature');
+          ref.limitToLast(10).on('value', function(snapshot) {
+                if(snapshot.exists()){
+                    var content = '';
+                    snapshot.forEach(function(data){
+                        var val = data.val();
+                        var thtime = "Time";
+                        var thavtmp = "Average Temp";
+                        content +='<tr>';
+                        content += '<td id="torn">' + val.time + '</td>';
+                        content += '<td id="torn">' + val.upperprobe + '</td>';
+                        content += '<td id="torn">' + val.temp + '</td>';
+                        content += '<td id="torn">' + val.lowerprobe + '</td>';
+                        content += '</tr>';
+                    });
+                    $('#ex-table').html(content);
+                }
+            });
+        </script>
+
+<!-- 
       <p id="pru-temp" color="green" class="minimn">Upper Probe Temperature: </p>
       <p id="prl-temp" color="green" class="minimn">Lower Probe Temperature: </p> -->
 
       <script>
-
+        
         var db = firebase.database();
         var ref = db.ref('/temperature');
         ref.limitToLast(1).on('child_added', function(snapshot) {
           console.log(snapshot.val().time);
 
+        
                 var obk = snapshot.val().temp;
                 var upprtemp = snapshot.val().upperprobe;
                 var lowrtemp = snapshot.val().lowerprobe;
+                var avstts = snapshot.val().averagestatus;
+                var upstts = snapshot.val().upperprobestatus;
+                var lwstts = snapshot.val().lowerprobestatus;
+                var avtmp = obk.substr(0, 4);
+                var uptmp = upprtemp.substr(0, 4);
+                var lwtmp = lowrtemp.substr(0, 4);
                 console.log(obk);
-                document.getElementById('testy').innerHTML = obk;
+                // document.getElementById('testy').innerHTML = obk;
+                document.getElementById('ljpo').innerHTML = avtmp +"°C";
+                document.getElementById('cbmn').innerHTML = uptmp+"°C";
+                document.getElementById('wrty').innerHTML = lwtmp+"°C";
+                document.getElementById('avstat').innerHTML = avstts;
+                document.getElementById('lwstat').innerHTML = lwstts;
+                document.getElementById('histat').innerHTML = upstts;
                 if (obk <= 28 || obk >= 32) {
-                   document.getElementById('testy').style.color = "red";
+                   document.getElementById('ljpo').style.color = "#E35050";
+                   document.getElementById('circle-text').style.border = "5px solid #E35050";
                 } else if (obk > 28 && obk < 32) {
-                  document.getElementById('testy').style.color = "green";
+                  document.getElementById('ljpo').style.color = "#50E3C2";
+                  document.getElementById('circle-text').style.border = "5px solid #50E3C2";
                 }
-                if (obk <= 28 || obk >= 32) {
-                   document.getElementById('lpbadge').style.color = "#E35050";
-                  //  document.getElementById('lpname').style.color = "red";
-                  //  document.getElementById('lpstat').style.color = "red";
-                   document.getElementById('Example').style.border = "5px solid #E35050";
 
-                } else if (obk > 28 && obk < 32) {
-                  document.getElementById('lpbadge').style.color = "green";
-                  //  document.getElementById('lpname').style.color = "red";
-                  //  document.getElementById('lpstat').style.color = "red";
-                   document.getElementById('Example').style.border = "5px solid green";
-                }
-                document.getElementById('pru-temp').innerHTML = upprtemp;
                 if (upprtemp <= 28 || upprtemp >= 32) {
-                  document.getElementById('pru-temp').style.color = "red";
+                   document.getElementById('cbmn').style.color = "#E35050";
+                   document.getElementById('circle-text2').style.border = "5px solid #E35050";
+                } else if (upprtemp > 28 && upprtemp < 32) {
+                  document.getElementById('cbmn').style.color = "#50E3C2";
+                  document.getElementById('circle-text2').style.border = "5px solid #50E3C2";
                 }
-                document.getElementById('prl-temp').innerHTML = lowrtemp;
+
                 if (lowrtemp <= 28 || lowrtemp >= 32) {
-                  document.getElementById('prl-temp').style.color = "red";
-                }
-                if (obk > 28 && obk < 32) {
-                   document.getElementById('testy').style.color = "red";
-                }
-                document.getElementById('pru-temp').innerHTML = upprtemp;
-                if (upprtemp > 28 && upprtemp < 32) {
-                  document.getElementById('pru-temp').style.color = "red";
-                }
-                document.getElementById('prl-temp').innerHTML = lowrtemp;
-                if (lowrtemp > 28 && lowrtemp < 32) {
-                  document.getElementById('prl-temp').style.color = "red";
+                   document.getElementById('wrty').style.color = "#E35050";
+                   document.getElementById('circle-text3').style.border = "5px solid #E35050";
+                } else if (lowrtemp > 28 && lowrtemp < 32) {
+                  document.getElementById('wrty').style.color = "#50E3C2";
+                  document.getElementById('circle-text3').style.border = "5px solid #50E3C2";
                 }
 
+                if (avstts == 'high' || avstts == 'low') {
+                   document.getElementById('avstat').style.color = "#E35050";
+                } else if (avstts == 'OK') {
+                  document.getElementById('avstat').style.color = "#50E3C2";
+                }
 
+                if (lwstts == 'high' || lwstts == 'low') {
+                   document.getElementById('lwstat').style.color = "#E35050";
+                } else if (lwstts == 'OK') {
+                  document.getElementById('lwstat').style.color = "#50E3C2";
+                }
+
+                if (upstts == 'high' || upstts == 'low') {
+                   document.getElementById('histat').style.color = "#E35050";
+                } else if (upstts == 'OK') {
+                  document.getElementById('histat').style.color = "#50E3C2";
+                }
+
+                // if (obk <= 28 || obk >= 32) {
+                //   //  document.getElementById('lpbadge').style.color = "#E35050";
+                //   // //  document.getElementById('lpname').style.color = "red";
+                //   // //  document.getElementById('lpstat').style.color = "red";
+                //   //  document.getElementById('Example').style.border = "5px solid #E35050";
+                   
+                // } else if (obk > 28 && obk < 32) {
+                //   // document.getElementById('lpbadge').style.color = "green";
+                //   // //  document.getElementById('lpname').style.color = "red";
+                //   // //  document.getElementById('lpstat').style.color = "red";
+                //   //  document.getElementById('Example').style.border = "5px solid green";
+                // }
+                // document.getElementById('pru-temp').innerHTML = upprtemp;
+                // if (upprtemp <= 28 || upprtemp >= 32) {
+                //   document.getElementById('pru-temp').style.color = "red";
+                // }
+                // document.getElementById('prl-temp').innerHTML = lowrtemp;
+                // if (lowrtemp <= 28 || lowrtemp >= 32) {
+                //   document.getElementById('prl-temp').style.color = "red";
+                // }
+                // if (obk > 28 && obk < 32) {
+                //    document.getElementById('testy').style.color = "red";
+                // }
+                // document.getElementById('pru-temp').innerHTML = upprtemp;
+                // if (upprtemp > 28 && upprtemp < 32) {
+                //   document.getElementById('pru-temp').style.color = "red";
+                // }
+                // document.getElementById('prl-temp').innerHTML = lowrtemp;
+                // if (lowrtemp > 28 && lowrtemp < 32) {
+                //   document.getElementById('prl-temp').style.color = "red";
+                // }
+        
+        
               })
-
+              
               </script>
 
+      <p>>Hi Peter, please click the button below to download the data stored in the cloud in CSV format</p>
+      
+      <script>
+    function mll(startDate, startTime, endDate, endTime) {
 
-                    <div id="lineChart" style="width:1000px;height:500px;"></div>
-                    <script>
+    var userInputStart = startDate + " " + startTime;
+    var userInputEnd = endDate + " " + endTime;
+
+    var userUnixStart = Math.round(new Date(userInputStart).getTime()/1000);
+    var userUnixEnd = Math.round(new Date(userInputEnd).getTime()/1000);
+
+    var startPoint = String(userUnixStart);
+    var endPoint = String(userUnixEnd);
+
+    console.log("starts"+startDate);
+    console.log("ends"+endTime);
+
+    var ref = firebase.database().ref('/temperature')
+    ref.orderByChild('unixstamp')
+    .startAt(startPoint)
+    .endAt(endPoint)
+    .on('value', function(snapshot) {
+                
+    
+        // var firebaseRef = firebase.database().ref();
+    
+        // var ref = firebase.database().ref('/temperature')
+        // ref.limitToLast(1000).once('value', function(snapshot) {
+        // ref.orderByChild('unixstamp')
+        // .startAt(startPoint)
+        //  .endAt(endPoint).once
+         
+    
+        var getDatax = [];
+        var getDatay = [];
+        var getDatx = [];
+        var getDaty = [];
+        var gethrr = [];
+        
+        snapshot.forEach(function(childSnapshot) {
+            
+            logmin = childSnapshot.val().time;
+            logtemp = childSnapshot.val().temp;
+            logstatus = childSnapshot.val().status;
+            logdate = childSnapshot.val().date;
+            unixus = childSnapshot.val().unixstamp;
+            
+            
+    
+            
+            //....    
+            var item = ('\n' + logdate + ',' + logmin + ',' + logtemp + ',' + logstatus);
+            // push each new item to array
+            var d = new Date();
+            var h = d.getHours();
+            var m = d.getMinutes();
+            var s = d.getSeconds();
+            
+            var logl = logmin.substr(0, 2);
+            var logg = logmin.substr(3, 2);
+
+//           if (logg === 0 || logg == 1) {
+//             switch(logl) {
+//               case 15:
+//                 console.log("pu1");
+//               break;
+//               case 16:
+//                 console.log("pu2");
+//               break;
+//               case 17:
+//                 console.log("pu3");
+//               break;
+//               default:
+//               console.log("gr");
+// }
+//           }
+
+          var adfs = getDatax.length;
+
+           var pl = d.getDay();
+           var pm = d.getMonth();
+           var pm2 = pm+1;
+           var pl2 = pl-1;
+           var pn = d.getFullYear();
+           var c = h + ':' + m + ':' + s;
+           var cm = (pn + '/' + pm2 + '/' + pl);
+           var cm2 = (pn + '/' + pm2 + '/' + pl2);
+           var ts = Math.round((new Date()).getTime() / 1000);
+           var tshour = ts - 86400;
+           var sd = new Date(ts*1000);
+
+          if (logg == 0) {
+            var plotter = logl+":00:00";
+            // console.log("pup"+adfs)
+            // console.log("hour"+logl);
+            console.log("min"+logg);
+            console.log("its"+logmin);
+            console.log("hour"+logl);
+            console.log("timenow"+c);
+            // console.log("rah"+unixus)
+            getDatx.push(logmin);
+            getDaty.push(logtemp);
+            gethrr.push(plotter);
+          }
+
+          getDatax.push(logmin);
+          getDatay.push(logtemp);
+
+          // console.log(getDatax.length);
+          
+       });
 
 
+    
+      //  console.log(getDatax)
+      //  console.log(getDatay)
+       thour = ["00:00:00", "01:00:00", "02:00:00"]
 
-                              var firebaseRef = firebase.database().ref();
+       var layout = {
+  autosize: false,
+  width: 750,
+  height: 220,
+  margin: {
+    l: 50,
+    r: 50,
+    b: 100,
+    t: 0,
+    pad: 4
+  },
+  paper_bgcolor: '#252525',
+  plot_bgcolor: '#252525'
+};
 
-                      var ref = firebase.database().ref('/temperature')
-                      ref.limitToLast(100).on('value', function(snapshot) {
+       TESTER = document.getElementById('tester');
+       var fk = ["00:00:00", "01:00:00", "02:00:00", "03:00:00"];
+          Plotly.plot( TESTER, [{
+          x: gethrr,
+          y: getDaty, }],layout );
 
+          
+    
 
+    
+    });
+    
+  }
 
-                      var getDatax = [];
-                      var getAvgT = [];
-                      var getLowT = [];
-                      var getHighT = [];
-
-
-
-
-
-                      snapshot.forEach(function(childSnapshot) {
-
-                          logmin = childSnapshot.val().time;
-                          logtemp = childSnapshot.val().temp;
-                          logstatus = childSnapshot.val().status;
-                          logdate = childSnapshot.val().date;
-                          loglowerprobe= childSnapshot.val().lowerprobe;
-                          logupperprobe = childSnapshot.val().upperprobe;
-
-                          //....
-                          var item = ('\n' + logdate + ',' + logmin + ',' + logtemp + ',' + logstatus + ',' + loglowerprobe + ',' + logupperprobe);
-                          // push each new item to array
-                          getDatax.push(logmin);
-                          getAvgT.push(logtemp);
-                          getLowT.push(loglowerprobe);
-                          getHighT.push(logupperprobe);
-
-                     });
-
-                     console.log(getDatax)
-                     console.log(getAvgT)
-                     console.log(getLowT)
-                     console.log(getHighT)
-
-
-                        var plot1 = {
-                          type: 'scatter',
-                          x: getDatax,
-                          y: getAvgT,
-                          name: 'Average Temperature',
-                          mode: 'lines',
-                          line: {
-                            dash: 'dot',
-                            color: 'rgb(0,128,0)',
-                            width: 3
-                          }
-
-                        };
-
-
-                        var plot2 = {
-                          type: 'scatter',
-                          x: getDatax,
-                          y: getLowT,
-                          name: 'Lower Probe Temperature',
-                          mode: 'lines',
-                          line: {
-                          color:'rgb(219, 64, 82)' ,
-                          width: 2
-
-                        }
-                      };
-
-                        var plot3 = {
-                          type: 'scatter',
-                          x: getDatax,
-                          y: getHighT,
-                          name: 'Upper Probe Temperature',
-                          mode: 'lines',
-                          line: {
-                              dash: 'dashdot',
-                          color: 'rgb(55, 128, 191)',
-                          width: 1
-                        }
-                      };
-
-                      var layout = {
-            title: 'Line Graph',
-            showlegend: true,
-            paper_bgcolor: 'rgba(245,246,249,1)',
-            plot_bgcolor: 'rgba(245,246,249,1)' ,
-
-
-        };
-
-                  
-
-                        var datab = [plot1, plot2 , plot3];
-                        Plotly.newPlot('lineChart', datab, layout, {displayModeBar: false});
-                  });
-
+  document.getElementById('cklp').style.visibility = "visible";
 
         </script>
+      <script>
 
+// function alldata() {
+    
+//         // var userInputStart = startDate + " " + startTime;
+//         // var userInputEnd = endDate + " " + endTime;
+    
+//         // var userUnixStart = Math.round(new Date(userInputStart).getTime()/1000);
+//         // var userUnixEnd = Math.round(new Date(userInputEnd).getTime()/1000);
+    
+//         // var startPoint = String(userUnixStart);
+//         // var endPoint = String(userUnixEnd);
+    
+//         // window.alert("Linked");
+//         var firebaseRef = firebase.database().ref();
+    
+//         var ref = firebase.database().ref('/temperature')
+//         ref.limitToLast(100).on('value', function(snapshot) {
+    
+//         var getDatax = [];
+//         var getDatay = [];
+        
+//         snapshot.forEach(function(childSnapshot) {
+            
+//             logmin = childSnapshot.val().time;
+//             logtemp = childSnapshot.val().temp;
+//             logstatus = childSnapshot.val().status;
+//             logdate = childSnapshot.val().date;
+    
+            
+//             //....    
+//             var item = ('\n' + logdate + ',' + logmin + ',' + logtemp + ',' + logstatus);
+//             // push each new item to array
+//             getDatax.push(logmin);
+//             getDatay.push(logtemp);
+//        });
+    
+//        console.log(getData)
 
-
+//        var trace1 = {
+//         x: [getDatax], 
+//             y: [getDatay], 
+//   type: 'scatter'
+// };
+    
+//     });
+    
+        
+        var trace1 = {
+  x: [1, 2, 3, 4], 
+  y: [10, 15, 13, 17], 
+  type: 'scatter'
+};
+var trace2 = {
+  x: [1, 2, 3, 4], 
+  y: [16, 5, 11, 9], 
+  type: 'scatter'
+};
+var data = [trace1];
+Plotly.newPlot('myDiv', data);
+      </script>
       <!-- <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a> -->
       <!-- <div align=center></div><button id="exportCSV" onClick="alldata()">Export All Data</button>
     </br></br>
@@ -479,15 +1148,174 @@
         <input type="text" maxlength="10" name="value" id="endClock"/> &nbsp;<strong>End Time</strong></br></br>
         <button id="texdat" value="submit" onclick="clicker(document.getElementById('startClock').value, document.getElementById('endFrom').value, document.getElementById('endClock').value)" />Download Range of Data</button></p>
       </div> -->
+    </div>
+
+   
+    <script>
+        
+        
+        
+                                      var firebaseRef = firebase.database().ref();
+        
+                              var ref = firebase.database().ref('/temperature')
+                              ref.limitToLast(100).on('value', function(snapshot) {
+        
+        
+        
+                              var getDatax = [];
+                              var getAvgT = [];
+                              var getLowT = [];
+                              var getHighT = [];
+        
+        
+        
+        
+        
+                              snapshot.forEach(function(childSnapshot) {
+        
+                                  logmin = childSnapshot.val().time;
+                                  logtemp = childSnapshot.val().temp;
+                                  logstatus = childSnapshot.val().status;
+                                  logdate = childSnapshot.val().date;
+                                  loglowerprobe= childSnapshot.val().lowerprobe;
+                                  logupperprobe = childSnapshot.val().upperprobe;
+        
+                                  //....
+                                  var item = ('\n' + logdate + ',' + logmin + ',' + logtemp + ',' + logstatus + ',' + loglowerprobe + ',' + logupperprobe);
+                                  // push each new item to array
+                                  getDatax.push(logmin);
+                                  getAvgT.push(logtemp);
+                                  getLowT.push(loglowerprobe);
+                                  getHighT.push(logupperprobe);
+        
+                             });
+        
+                             console.log(getDatax)
+                             console.log(getAvgT)
+                             console.log(getLowT)
+                             console.log(getHighT)
+        
+        
+                                var plot1 = {
+                                  type: 'scatter',
+                                  x: getDatax,
+                                  y: getAvgT,
+                                  name: 'Average Temperature',
+                                  mode: 'lines',
+                                  line: {
+                                    dash: 'dot',
+                                    color: 'rgb(0,128,0)',
+                                    width: 3
+                                  }
+        
+                                };
+        
+        
+                                var plot2 = {
+                                  type: 'scatter',
+                                  x: getDatax,
+                                  y: getLowT,
+                                  name: 'Lower Probe Temperature',
+                                  mode: 'lines',
+                                  line: {
+                                  color:'rgb(219, 64, 82)' ,
+                                  width: 2
+        
+                                }
+                              };
+        
+                                var plot3 = {
+                                  type: 'scatter',
+                                  x: getDatax,
+                                  y: getHighT,
+                                  name: 'Upper Probe Temperature',
+                                  mode: 'lines',
+                                  line: {
+                                      dash: 'dashdot',
+                                  color: 'rgb(55, 128, 191)',
+                                  width: 1
+                                }
+                              };
+        
+                              var layout = {
+                    title: 'Line Graph',
+                    showlegend: true,
+                    xaxis: {
+                      title: 'Time',
+                      color: '#FF0000',
+                    },
+                    yaxis: {
+                      title: 'Temperature',
+                      color: '#FF0000',
+                    },
+                   
+                    paper_bgcolor: '#252525',
+                    plot_bgcolor: '#252525' ,
+                    // paper_bgcolor: 'rgba(245,246,249,1)',
+                    // plot_bgcolor: 'rgba(245,246,249,1)' ,
+                    margin: {
+    l: 50,
+    r: 50,
+    b: 85,
+    t: 40,
+    pad:4
+  },
+        
+        
+                };
+        
+                          
+        
+                                var datab = [plot1, plot2 , plot3];
+                                Plotly.newPlot('lineChart', datab, layout, {displayModeBar: false});
+                          });
+        
+        
+                </script>
 
 
 
+    <script>// Select all links with hashes
+        $('a[href*="#"]')
+          // Remove links that don't actually link to anything
+          .not('[href="#"]')
+          .not('[href="#0"]')
+          .click(function(event) {
+            // On-page links
+            if (
+              location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
+              && 
+              location.hostname == this.hostname
+            ) {
+              // Figure out element to scroll to
+              var target = $(this.hash);
+              target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+              // Does a scroll target exist?
+              if (target.length) {
+                // Only prevent default if animation is actually gonna happen
+                event.preventDefault();
+                $('html, body').animate({
+                  scrollTop: target.offset().top
+                }, 1000, function() {
+                  // Callback after animation
+                  // Must change focus!
+                  var $target = $(target);
+                  $target.focus();
+                  if ($target.is(":focus")) { // Checking if the target was focused
+                    return false;
+                  } else {
+                    $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
+                    $target.focus(); // Set focus again
+                  };
+                });
+              }
+            }
+          });</script>
+  
 
-
-
-
+    
 <!-- <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
-
+  
 <script>
   // Initialize Firebase
   var config = {
@@ -528,34 +1356,12 @@
   firebase.initializeApp(config);
 </script> -->
 
-<script>
-      var db = firebase.database();
-      var ref = db.ref('/temperature');
-      ref.limitToLast(10).once('value', function(snapshot) {
-            if(snapshot.exists()){
-                var content = '';
-                snapshot.forEach(function(data){
-                    var val = data.val();
-                    content +='<tr>';
-                    content += '<td>' + val.time + '</td>';
-                    content += '<td>' + val.temp + '</td>';
-                    content += '<td>' + val.averagestatus + '</td>';
-                    content += '<td>' + val.upperprobe + '</td>';
-                    content += '<td>' + val.upperprobestatus + '</td>';
-                    content += '<td>' + val.lowerprobe + '</td>';
-                    content += '<td>' + val.lowerprobestatus + '</td>';
-                    content += '</tr>';
-                });
-                $('#ex-table').append(content);
-            }
-        });
-    </script>
+
+
+
 
     <!-- load the d3.js library -->
-
 <script src="https://d3js.org/d3.v4.min.js"></script>
-
-
 <!-- <script>
 
 // set the dimensions and margins of the graph
@@ -639,10 +1445,77 @@ d3.json("chartdata.json", function(error, data) {
 
 </script>
 
+<script>
+    function checkRek() {
+      document.getElementById('startClock').value = "Filler";
+      if(document.getElementById('selbox').value == "allsel") {
+         
+         var d = new Date();
+         var h = d.getHours();
+         var m = d.getMinutes();
+         var s = d.getSeconds();
+         var pl = d.getDay();
+         var pm = d.getMonth();
+         var pm2 = pm+1;
+         var pl2 = pl-1;
+         var pn = d.getFullYear();
+         var c = h + ':' + m + ':' + s;
+         var cm = (pn + '/' + pm2 + '/' + pl);
+         var cm2 = (pn + '/' + pm2 + '/' + pl2);
+         var ts = Math.round((new Date()).getTime() / 1000);
+         var tshour = ts - 86400;
+         var sd = new Date(ts*1000);
+
+         var rf = sd.getDay();
+         var rg = sd.getMonth();
+         var rg2 = rg+1;
+         var rf2 = rf-1;
+         var rh = sd.getFullYear();
+
+         var gt = (rh + '/' + rg2 + '/' + rf);
+         var gtfore = (rh + '/' + rg2 + '/' + rf2);
+
+         console.log("first " + gt)
+         console.log("prior " + gtfore)
+
+         console.log("unix " + ts)
+          
+          console.log(h + ':' + m + ':' + s)
+          console.log(pn + '/' + pm2 + '/' + pl)
+          document.getElementById('startFrom').value = gtfore;
+          document.getElementById('startClock').value = c;
+          document.getElementById('endFrom').value = gt;
+          document.getElementById('endClock').value = c;
+          mll(gtfore, c, gt, c);
+    }
+    if(document.getElementById('selbox').value == "daysel") {
+         document.getElementById('startClock').value = "24 hour";
+         
+    }
+    if(document.getElementById('selbox').value == "weeksel") {
+         document.getElementById('startClock').value = "week";
+    }
+    if(document.getElementById('selbox').value == "custsel") {
+         document.getElementById('startClock').value = "own";
+    }
+    }
+
+  //   var userInputStart = gt + " " + c;
+  //   var userInputEnd = gtfore + " " + c;
+
+  //   var userUnixStart = Math.round(new Date(userInputStart).getTime()/1000);
+  // var userUnixEnd = Math.round(new Date(userInputEnd).getTime()/1000);
+
+  // var startPoint = String(userUnixStart);
+  // var endPoint = String(userUnixEnd);
+    // mll(startPoint, endPoint);
+
+    </script>
 
 
 
 
+    
 
 
 
@@ -671,6 +1544,6 @@ d3.json("chartdata.json", function(error, data) {
 
 
 
-
+  
   </body>
 </html>

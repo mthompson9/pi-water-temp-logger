@@ -5,23 +5,116 @@
     src: local('Avenir Next LT Pro Condensed'), url('AvenirNextLTPro-Cn.woff') format('woff');
     }
 
+@font-face {
+    font-family: 'Avenir Next LT Pro Ultra Light Condensed';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Avenir Next LT Pro Ultra Light Condensed'), url('AvenirNextLTPro-UltLtCn.woff') format('woff');
+    }
+
+@font-face {
+    font-family: 'Avenir Next LT Pro Demi Condensed Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Avenir Next LT Pro Demi Condensed Italic'), url('AvenirNextLTPro-DemiCnIt.woff') format('woff');
+    }
+
+@font-face {
+    font-family: 'Avenir Next LT Pro Medium Condensed Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Avenir Next LT Pro Medium Condensed Italic'), url('AvenirNextLTPro-MediumCnIt.woff') format('woff');
+    }
+
+@font-face {
+    font-family: 'Avenir Next LT Pro Demi Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Avenir Next LT Pro Demi Italic'), url('AvenirNextLTPro-DemiIt.woff') format('woff');
+    }
+
+@font-face {
+    font-family: 'Avenir Next LT Pro Demi Condensed Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Avenir Next LT Pro Demi Condensed Italic'), url('AvenirNextLTPro-DemiCnIt.woff') format('woff');
+    }
+
+@font-face {
+    font-family: 'Avenir Next LT Pro Ultra Light Condensed Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Avenir Next LT Pro Ultra Light Condensed Italic'), url('AvenirNextLTPro-UltLtCnIt.woff') format('woff');
+    }
+
+@font-face {
+    font-family: 'Avenir Next LT Pro Condensed Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Avenir Next LT Pro Condensed Italic'), url('AvenirNextLTPro-CnIt.woff') format('woff');
+    }
+    
+
 #Example {
-        height: 50px;
-        width: 70px;
-        -moz-border-radius: 35px;
-        border-radius: 35px;
-        Background:black;
+        height: 180px;
+        width: 200px;
+        -moz-border-radius: 100px;
+        border-radius: 100px;
+        Background:#171717;
         color:white;
         text-align:center;
         padding-top:20px;
-        margin-top:80px;
-        border: thin solid white;
-        box-shadow:  0px 0px 0px 10px #171717; /* 10px box-shadow */
+        margin-left: 100px;
+        margin-top:20px;
+        border: 5px solid white;
+        box-shadow:  0px 0px 0px 20px #171717; /* 10px box-shadow */
+        /* font-family:'Avenir Next LT Pro Condensed';
+        font-size: 36px; */
+}
+
+#secoo {
+    height: 230px;
+    width: 270px;
+    -moz-border-radius: 1px;
+    border-radius: 1px;
+    Background:#171717;
+    color:white;
+    text-align:center;
+    padding-top:20px;
+    margin-left: 500px;
+    margin-top: -105px;
+    border: 5px solid white;
+    box-shadow:  0px 0px 0px 20px #171717; /* 10px box-shadow */
+    /* font-family:'Avenir Next LT Pro Condensed';
+    font-size: 36px; */
+}
+
+#jankbag {
+    height: 180px;
+    width: 200px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+    Background:#171717;
+    color:white;
+    text-align:center;
+    padding-top:20px;
+    margin-left: 980px;
+    margin-top:-261px;
+    border: 5px solid white;
+    box-shadow:  0px 0px 0px 20px #171717; /* 10px box-shadow */
+    /* font-family:'Avenir Next LT Pro Condensed';
+    font-size: 36px; */
 }
 
 #testy
 {
     font-family:'Avenir Next LT Pro Condensed';
+}
+
+#tester
+{
+    margin-top: 300px;
+    margin-left: 300px;
 }
 
 #selbox
@@ -37,6 +130,85 @@
     font-family:Courier;
     text-align-last: center;
     width: 100%;
+}
+
+#torn
+{
+    color: rgb(255, 255, 255);
+    letter-spacing:1pt;
+    word-spacing:1pt;
+    font-size:20px;
+    font-family:Avenir Next LT Pro Condensed Italic;
+    text-align:center;
+    line-height:0.65;
+    padding-bottom: 18px;
+    padding-right: 110px;
+}
+
+#xdatab
+{
+    color: rgb(255, 255, 255);
+    background-color: #2E2E2E;
+    height: 65px;
+    width: 195px;
+    letter-spacing:1pt;
+    word-spacing:1pt;
+    font-size:20px;
+    margin-left: 205px;
+    margin-top: -130px;
+    font-family:Avenir Next LT Pro Condensed Italic;
+    text-align:center;
+    line-height:0.65;
+}
+
+#xdatatt
+{
+    color: rgb(255, 255, 255);
+    letter-spacing:1pt;
+    word-spacing:1pt;
+    font-size:32px;
+    margin-left: 100px;
+    margin-top: -62px;
+    font-family:Avenir Next LT Pro Condensed Italic;
+    text-align:center;
+    line-height:0.65;
+}
+
+#rdatab
+{
+    color: rgb(255, 255, 255);
+    background-color: #2E2E2E;
+    height: 65px;
+    width: 195px;
+    letter-spacing:1pt;
+    word-spacing:1pt;
+    font-size:20px;
+    margin-left: 760px;
+    margin-top: -72px;
+    font-family:Avenir Next LT Pro Condensed Italic;
+    text-align:center;
+    line-height:0.65;
+}
+
+#rdatatt
+{
+    color: rgb(255, 255, 255);
+    letter-spacing:1pt;
+    word-spacing:1pt;
+    font-size:32px;
+    margin-left: 812px;
+    margin-top: -62px;
+    font-family:Avenir Next LT Pro Condensed Italic;
+    text-align:center;
+    line-height:0.65;
+}
+
+#tabletxt {
+    color: rgb(255, 255, 255);
+    letter-spacing:4pt;
+    word-spacing:1pt;
+    font-size:20px;
+    font-family:Avenir Next LT Pro Condensed Italic;
 }
 
 #exportCSV
@@ -63,13 +235,30 @@
     background: #171717;
     /* height:100vh; */
 
-    height: 150px;
-    border: solid #000000 2px;
-    border-radius: 5px;  
+    height: 100px;
+    /* border: solid #000000 2px;
+    border-radius: 5px;   */
 }
 
 option {
     padding-left: 50px;
+}
+
+
+
+#graph-section {
+    color: #ffffff;
+    /* background: #f53434; */
+    align-self: center;
+    align-content: center;
+    align-items: center;
+    height: 600px;
+    width: 1000px;
+    float: right;
+    /* border: solid #000000 2px;
+    border-radius: 5px;   */
+    margin-top: 120px;
+    margin-right: 200px;
 }
 
 .dl-section {
@@ -78,22 +267,23 @@ option {
     height: 500px;
     width: 500px;
     float: right;
-    border: solid #000000 2px;
-    border-radius: 5px;  
+    /* border: solid #000000 2px;
+    border-radius: 5px;   */
     margin-top: 20px;
     margin-right: 100px;
 }
 
-.temp-section {
+#temp-section {
     color: #ffffff;
     /* background: #9e9e9e; */
     height: 500px;
     width: 500px;
     float: left;
-    border: solid #000000 2px;
-    border-radius: 5px;  
-    margin-top: 20px;
+    /* border: solid #000000 2px;
+    border-radius: 5px;   */
+    margin-top: -100px;
     margin-left: 100px;
+    padding-top: 200px;
 }
 
 .chart-sect {
@@ -103,8 +293,8 @@ option {
     width: 800px;
     margin-left: 100px;
     margin-top: 550px;
-    border: solid #000000 2px;
-    border-radius: 5px;  
+    /* border: solid #000000 2px;
+    border-radius: 5px;   */
 }
 
 .newdl-sect {
@@ -114,9 +304,18 @@ option {
         float: right;
         margin-right: 100px;
         margin-top: 25px;
-        border: solid #000000 2px;
-        border-radius: 5px;  
+        /* border: solid #000000 2px;
+        border-radius: 5px;   */
 }
+
+#ex-table{
+    margin-top: 200px;
+    margin-left: 255px;
+}
+
+#ex-table:focus {outline:0;}
+#temp-section:focus {outline:0;}
+
 
 /* #apptitle
 {
