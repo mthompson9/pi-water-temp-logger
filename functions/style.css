@@ -1,0 +1,793 @@
+@font-face {
+    font-family: 'Avenir Next LT Pro Condensed';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Avenir Next LT Pro Condensed'), url('AvenirNextLTPro-Cn.woff') format('woff');
+    }
+
+@font-face {
+    font-family: 'Avenir Next LT Pro Ultra Light Condensed';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Avenir Next LT Pro Ultra Light Condensed'), url('AvenirNextLTPro-UltLtCn.woff') format('woff');
+    }
+
+@font-face {
+    font-family: 'Avenir Next LT Pro Demi Condensed Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Avenir Next LT Pro Demi Condensed Italic'), url('AvenirNextLTPro-DemiCnIt.woff') format('woff');
+    }
+
+@font-face {
+    font-family: 'Avenir Next LT Pro Medium Condensed Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Avenir Next LT Pro Medium Condensed Italic'), url('AvenirNextLTPro-MediumCnIt.woff') format('woff');
+    }
+
+@font-face {
+    font-family: 'Avenir Next LT Pro Demi Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Avenir Next LT Pro Demi Italic'), url('AvenirNextLTPro-DemiIt.woff') format('woff');
+    }
+
+@font-face {
+    font-family: 'Avenir Next LT Pro Demi Condensed Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Avenir Next LT Pro Demi Condensed Italic'), url('AvenirNextLTPro-DemiCnIt.woff') format('woff');
+    }
+
+@font-face {
+    font-family: 'Avenir Next LT Pro Ultra Light Condensed Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Avenir Next LT Pro Ultra Light Condensed Italic'), url('AvenirNextLTPro-UltLtCnIt.woff') format('woff');
+    }
+
+@font-face {
+    font-family: 'Avenir Next LT Pro Condensed Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Avenir Next LT Pro Condensed Italic'), url('AvenirNextLTPro-CnIt.woff') format('woff');
+    }
+    
+
+#Example {
+        height: 180px;
+        width: 200px;
+        -moz-border-radius: 100px;
+        border-radius: 100px;
+        Background:#171717;
+        color:white;
+        text-align:center;
+        padding-top:20px;
+        margin-left: 100px;
+        margin-top:20px;
+        border: 5px solid white;
+        box-shadow:  0px 0px 0px 20px #171717; /* 10px box-shadow */
+        /* font-family:'Avenir Next LT Pro Condensed';
+        font-size: 36px; */
+}
+
+#secoo {
+    height: 230px;
+    width: 270px;
+    -moz-border-radius: 1px;
+    border-radius: 1px;
+    Background:#171717;
+    color:white;
+    text-align:center;
+    padding-top:20px;
+    margin-left: 500px;
+    margin-top: -105px;
+    border: 5px solid white;
+    box-shadow:  0px 0px 0px 20px #171717; /* 10px box-shadow */
+    /* font-family:'Avenir Next LT Pro Condensed';
+    font-size: 36px; */
+}
+
+#jankbag {
+    height: 180px;
+    width: 200px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+    Background:#171717;
+    color:white;
+    text-align:center;
+    padding-top:20px;
+    margin-left: 980px;
+    margin-top:-261px;
+    border: 5px solid white;
+    box-shadow:  0px 0px 0px 20px #171717; /* 10px box-shadow */
+    /* font-family:'Avenir Next LT Pro Condensed';
+    font-size: 36px; */
+}
+
+#testy
+{
+    font-family:'Avenir Next LT Pro Condensed';
+}
+
+#tester
+{
+    margin-top: 300px;
+    margin-left: 300px;
+}
+
+#selbox
+{
+    /* font-family:Courier; */
+    text-align-last: center;
+    /* width: 100%; */
+    background-color: #2E2E2E;
+    height: 50px;
+    width: 50px;
+    visibility: hidden;
+    letter-spacing:1pt;
+    word-spacing:1pt;
+    font-size:20px;
+    margin-left: 192px;
+    margin-top: 100px;
+    font-family:Avenir Next LT Pro Condensed Italic;
+    text-align:center;
+    line-height:0.65;
+    position: absolute;
+    -webkit-border-radius: 5;
+    -moz-border-radius: 5;
+    border-radius: 5px;
+    -webkit-box-shadow: 1px 1px 1px #d1d1d1;
+    -moz-box-shadow: 1px 1px 1px #d1d1d1;
+    box-shadow: 1px 1px 1px #d1d1d1;
+    border: solid #b3bfc7 1px;
+    color:	rgb(189, 189, 189); /*if no support for background-clip*/
+}
+
+#startdatetxt{
+    text-shadow:3px 3px 3px rgb(22, 22, 22);
+    
+    /*make it pretty*/
+    
+    color: rgb(255, 255, 255);
+    letter-spacing:2pt;
+    word-spacing:1pt;
+    visibility: hidden;
+    font-size:24px;
+    position: absolute;
+    margin-left: -800px;
+    margin-top: 150px;
+    font-family:Avenir Next LT Pro Condensed;
+    text-align:center;
+    line-height:0.65;
+}
+
+#enddatetxt{
+    text-shadow:3px 3px 3px rgb(22, 22, 22);
+    
+    /*make it pretty*/
+    
+    color: rgb(255, 255, 255);
+    letter-spacing:2pt;
+    word-spacing:1pt;
+    font-size:24px;
+    visibility: hidden;
+    position: absolute;
+    margin-left: -795px;
+    margin-top: 255px;
+    font-family:Avenir Next LT Pro Condensed;
+    text-align:center;
+    line-height:0.65;
+}
+
+#starttimetxt{
+    text-shadow:3px 3px 3px rgb(22, 22, 22);
+    
+    /*make it pretty*/
+    
+    color: rgb(255, 255, 255);
+    letter-spacing:2pt;
+    word-spacing:1pt;
+    font-size:24px;
+    visibility: hidden;
+    position: absolute;
+    margin-left: -660px;
+    margin-top: 150px;
+    font-family:Avenir Next LT Pro Condensed;
+    text-align:center;
+    line-height:0.65;
+}
+
+#endtimetxt{
+    text-shadow:3px 3px 3px rgb(22, 22, 22);
+    
+    /*make it pretty*/
+    
+    color: rgb(255, 255, 255);
+    letter-spacing:2pt;
+    word-spacing:1pt;
+    font-size:24px;
+    visibility: hidden;
+    position: absolute;
+    margin-left: -655px;
+    margin-top: 255px;
+    font-family:Avenir Next LT Pro Condensed;
+    text-align:center;
+    line-height:0.65;
+}
+    
+
+#optt
+{
+    font-family:Avenir Next LT Pro Condensed Italic;
+    text-align-last: center;
+    width: 100%;
+}
+
+.fixitall {
+    position: fixed;
+}
+
+#locscroll
+{
+   margin-left:1130px;
+   margin-top:455px;
+   height:60px;
+   position: absolute;
+}
+
+#locscrollup
+{
+   margin-left:1130px;
+   margin-top:755px;
+   height:60px;
+   position: absolute;
+}
+
+#thorn
+{
+    color: rgb(255, 255, 255);
+    letter-spacing:1pt;
+    word-spacing:1pt;
+    font-size:20px;
+    font-family:Avenir Next LT Pro Condensed Italic;
+    text-align:center;
+    line-height:0.65;
+    padding-bottom: 18px;
+    padding-right: 110px;
+}
+
+#torn
+{
+    color: #E35050;
+    letter-spacing:1pt;
+    word-spacing:1pt;
+    font-size:20px;
+    font-family:Avenir Next LT Pro Condensed Italic;
+    text-align:center;
+    line-height:0.65;
+    padding-bottom: 18px;
+    padding-right: 110px;
+}
+
+
+
+
+
+#corn
+{
+    color: #50ecc2;
+    letter-spacing:1pt;
+    word-spacing:1pt;
+    font-size:20px;
+    font-family:Avenir Next LT Pro Condensed Italic;
+    text-align:center;
+    line-height:0.65;
+    padding-bottom: 18px;
+    padding-right: 110px;
+}
+
+#xdatab
+{
+
+    background-color: #2E2E2E;
+    height: 30px;
+    width: 195px;
+    letter-spacing:2pt;
+    word-spacing:1pt;
+    font-size:28px;
+    margin-left: -20px;
+    margin-top: -435px;
+    font-family:Avenir Next LT Pro Condensed Italic;
+    text-align:center;
+    line-height:0.65;
+    padding-top:10px;
+    position: absolute;
+    -webkit-border-radius: 5;
+    -moz-border-radius: 5;
+    border-radius: 5px;
+    -webkit-box-shadow: 1px 1px 1px #d1d1d1;
+    -moz-box-shadow: 1px 1px 1px #d1d1d1;
+    box-shadow: 1px 1px 1px #d1d1d1;
+    border: solid #b3bfc7 1px;
+    color:	rgb(189, 189, 189); /*if no support for background-clip*/
+}
+
+#inputinfo {
+    height: 30px;
+    width: 30px;
+    margin-left: 295px;
+    margin-top: 345px;
+    position: absolute;
+    visibility: hidden;
+}
+
+#helpdesc{
+    background-color: #2E2E2E;
+    height: 105px;
+    width: 750px;
+    letter-spacing:2pt;
+    word-spacing:1pt;
+    font-size:28px;
+    margin-left:300px;
+    margin-top: 175px;
+    visibility: hidden;
+    font-family:Avenir Next LT Pro Condensed Italic;
+    line-height:0.65;
+    text-align: center;
+    padding-top:10px;
+    position: absolute;
+    -webkit-border-radius: 5;
+    -moz-border-radius: 5;
+    border-radius: 5px;
+    -webkit-box-shadow: 1px 1px 1px #d1d1d1;
+    -moz-box-shadow: 1px 1px 1px #d1d1d1;
+    box-shadow: 1px 1px 1px #d1d1d1;
+    border: solid #b3bfc7 1px;
+    color:	white; /*if no support for background-clip*/
+}
+
+#xdatak
+{
+
+    background-color: #2E2E2E;
+    height: 50px;
+    width: 195px;
+    letter-spacing:2pt;
+    word-spacing:1pt;
+    font-size:28px;
+    margin-left:90px;
+    visibility: hidden;
+    margin-top: 620px;
+    font-family:Avenir Next LT Pro Condensed Italic;
+    text-align:center;
+    line-height:0.65;
+    position: absolute;
+    -webkit-border-radius: 5;
+    -moz-border-radius: 5;
+    border-radius: 5px;
+    -webkit-box-shadow: 1px 1px 1px #d1d1d1;
+    -moz-box-shadow: 1px 1px 1px #d1d1d1;
+    box-shadow: 1px 1px 1px #d1d1d1;
+    border: solid #b3bfc7 1px;
+    color:	rgb(189, 189, 189); /*if no support for background-clip*/
+}
+
+#xdataf
+{
+
+    background-color: #2E2E2E;
+    height: 30px;
+    width: 195px;
+    letter-spacing:2pt;
+    word-spacing:1pt;
+    font-size:28px;
+    visibility: hidden;
+    margin-left:-770px;
+    margin-top: -380px;
+    font-family:Avenir Next LT Pro Condensed Italic;
+    text-align:center;
+    line-height:0.65;
+    padding-top:10px;
+    position: absolute;
+    -webkit-border-radius: 5;
+    -moz-border-radius: 5;
+    border-radius: 5px;
+    -webkit-box-shadow: 1px 1px 1px #d1d1d1;
+    -moz-box-shadow: 1px 1px 1px #d1d1d1;
+    box-shadow: 1px 1px 1px #d1d1d1;
+    border: solid #b3bfc7 1px;
+    color:	rgb(189, 189, 189); /*if no support for background-clip*/
+}
+
+#allentries
+{
+
+    /* background-color: #2E2E2E; */
+    height: 20px;
+    width: 195px;
+    letter-spacing:2pt;
+    visibility: hidden;
+    word-spacing:1pt;
+    font-size:16px;
+    /* margin-left: -20px; */
+    margin-top: 300px;
+    font-family:Avenir Next LT Pro Condensed Italic;
+    text-align:center;
+    line-height:0.65;
+    padding-top:10px;
+    position: absolute;
+    /* -webkit-border-radius: 5;
+    -moz-border-radius: 5;
+    border-radius: 5px;
+    -webkit-box-shadow: 1px 1px 1px #d1d1d1;
+    -moz-box-shadow: 1px 1px 1px #d1d1d1;
+    box-shadow: 1px 1px 1px #d1d1d1;
+    border: solid #b3bfc7 1px;
+    color:	rgb(189, 189, 189); if no support for background-clip */
+}
+
+#allentriestxt
+{
+
+    /* background-color: #2E2E2E; */
+    height: 30px;
+    width: 195px;
+    letter-spacing:2pt;
+    visibility: hidden;
+    word-spacing:1pt;
+    font-size:28px;
+    margin-left: 100px;
+    margin-top: 290px;
+    font-family:Avenir Next LT Pro Condensed;
+    text-align:center;
+    line-height:0.65;
+    padding-top:10px;
+    position: absolute;
+    /* -webkit-border-radius: 5;
+    -moz-border-radius: 5;
+    border-radius: 5px;
+    -webkit-box-shadow: 1px 1px 1px #d1d1d1;
+    -moz-box-shadow: 1px 1px 1px #d1d1d1;
+    box-shadow: 1px 1px 1px #d1d1d1;
+    border: solid #b3bfc7 1px; */
+    color:	rgb(189, 189, 189); /*if no support for background-clip*/
+}
+
+#customentries
+{
+
+    /* background-color: #2E2E2E; */
+    height: 20px;
+    width: 195px;
+    letter-spacing:2pt;
+    word-spacing:1pt;
+    visibility: hidden;
+    font-size:16px;
+    /* margin-left: -20px; */
+    margin-top: 350px;
+    font-family:Avenir Next LT Pro Condensed Italic;
+    text-align:center;
+    line-height:0.65;
+    padding-top:10px;
+    position: absolute;
+    /* -webkit-border-radius: 5;
+    -moz-border-radius: 5;
+    border-radius: 5px;
+    -webkit-box-shadow: 1px 1px 1px #d1d1d1;
+    -moz-box-shadow: 1px 1px 1px #d1d1d1;
+    box-shadow: 1px 1px 1px #d1d1d1;
+    border: solid #b3bfc7 1px;
+    color:	rgb(189, 189, 189); if no support for background-clip */
+}
+
+#customentriestxt
+{
+
+    /* background-color: #2E2E2E; */
+    height: 30px;
+    width: 195px;
+    letter-spacing:2pt;
+    word-spacing:1pt;
+    font-size:28px;
+    visibility: hidden;
+    margin-left: 100px;
+    margin-top: 340px;
+    font-family:Avenir Next LT Pro Condensed;
+    text-align:center;
+    line-height:0.65;
+    padding-top:10px;
+    position: absolute;
+    /* -webkit-border-radius: 5;
+    -moz-border-radius: 5;
+    border-radius: 5px;
+    -webkit-box-shadow: 1px 1px 1px #d1d1d1;
+    -moz-box-shadow: 1px 1px 1px #d1d1d1;
+    box-shadow: 1px 1px 1px #d1d1d1;
+    border: solid #b3bfc7 1px; */
+    color:	rgb(189, 189, 189); /*if no support for background-clip*/
+}
+
+
+#expdatatxt {
+    /* text-shadow:3px 3px 3px rgb(22, 22, 22); */
+    
+    /*make it pretty*/
+    
+    color: rgb(189,189,189);
+    letter-spacing:2pt;
+    word-spacing:1pt;
+    font-size:28px;
+    position: absolute;
+    margin-left: 200px;
+    margin-top: 80px;
+    font-family:Avenir Next LT Pro Condensed Italic;
+    text-align:center;
+    line-height:0.65;
+
+}
+
+#startFrom {
+    background: transparent;
+    border-bottom: solid rgb(189, 189, 189);
+    visibility: hidden;
+    border: none;
+    border-bottom: 1px solid rgb(189, 189, 189);
+    font-family: Avenir Next LT Pro Condensed Italic;
+    font-size: 20px;
+    position: absolute;
+    margin-left: -90px;
+    margin-top: 130px;
+    text-align: center;
+    color: rgb(189, 189, 189);
+}
+
+#endFromer {
+    background: transparent;
+    border-bottom: solid rgb(189, 189, 189);
+    border: none;
+    visibility: hidden;
+    border-bottom: 1px solid rgb(189, 189, 189);
+    font-family: Avenir Next LT Pro Condensed Italic;
+    font-size: 20px;
+    position: absolute;
+    margin-left: 8px;
+    margin-top: 550px;
+    text-align: center;
+    color: rgb(189, 189, 189);
+}
+
+#startClock {
+    background: transparent;
+    border: none;
+    visibility: hidden;
+    border-bottom: 1px solid rgb(189, 189, 189);
+    font-family: Avenir Next LT Pro Condensed Italic;
+    font-size: 20px;
+    position: absolute;
+    margin-left: 85px;
+    margin-top: 130px;
+    text-align: center;
+    color: rgb(189, 189, 189);
+}
+
+#endClocker {
+    background: transparent;
+    border: none;
+    visibility: hidden;
+    border-bottom: 1px solid rgb(189, 189, 189);
+    font-family: Avenir Next LT Pro Condensed Italic;
+    font-size: 20px;
+    position: absolute;
+    margin-left: 183px;
+    margin-top: 550px;
+    text-align: center;
+    color: rgb(189, 189, 189);
+}
+
+
+#endFrom {
+    background: transparent;
+    border: none;
+    font-family: Avenir Next LT Pro Condensed Italic;
+    font-size: 20px;
+    margin-left: 20px;
+    margin-top: 300px;
+    
+}
+
+#endClock {
+    background: transparent;
+    border: none;
+    font-family: Avenir Next LT Pro Condensed Italic;
+    font-size: 20px;
+    margin-left: 20px;
+    margin-top: 400px;
+}
+
+#locscroll {
+    background: transparent;
+    
+}
+
+#xdatab:hover{
+    background-color: rgb(56, 56, 56);
+
+}
+
+#xdatak:hover{
+    background-color: rgb(56, 56, 56);
+
+}
+
+#xdataf:hover{
+    background-color: rgb(56, 56, 56);
+
+}
+
+#xdatatt
+{
+    letter-spacing:1pt;
+    word-spacing:1pt;
+    font-size:32px;
+    margin-left: -350px;
+    margin-top: 188px;
+    font-family:Avenir Next LT Pro Condensed Italic;
+    text-align:center;
+    line-height:0.65;
+    width: 200px;
+
+}
+
+#rdatab
+{
+    color: rgb(255, 255, 255);
+    background-color: #2E2E2E;
+    height: 65px;
+    width: 195px;
+    letter-spacing:1pt;
+    word-spacing:1pt;
+    font-size:20px;
+    margin-left: 760px;
+    margin-top: -72px;
+    font-family:Avenir Next LT Pro Condensed Italic;
+    text-align:center;
+    line-height:0.65;
+}
+
+#rdatatt
+{
+    color: rgb(255, 255, 255);
+    letter-spacing:1pt;
+    word-spacing:1pt;
+    font-size:32px;
+    margin-left: 812px;
+    margin-top: -62px;
+    font-family:Avenir Next LT Pro Condensed Italic;
+    text-align:center;
+    line-height:0.65;
+}
+
+#tabletxt {
+    color: rgb(255, 255, 255);
+    letter-spacing:4pt;
+    word-spacing:1pt;
+    font-size:20px;
+    font-family:Avenir Next LT Pro Condensed Italic;
+}
+
+#exportCSV
+{
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    text-shadow: 1px 2px 1px #666666;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 20px;
+    background: #9a9b9c;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+}
+
+#exportCSV:hover {
+    background: #f53434;
+    text-decoration: none;
+  }
+
+.appheader {
+    color: #ffffff;
+    background: #171717;
+    /* height:100vh; */
+
+    height: 100px;
+    /* border: solid #000000 2px;
+    border-radius: 5px;   */
+}
+
+option {
+    padding-left: 50px;
+}
+
+
+
+#graph-section {
+    color: #ffffff;
+    /* background: #f53434; */
+    align-self: center;
+    align-content: center;
+    align-items: center;
+    height: 600px;
+    width: 1000px;
+    float: right;
+    /* border: solid #000000 2px;
+    border-radius: 5px;   */
+    margin-top: 120px;
+    margin-right: 200px;
+}
+
+.dl-section {
+    color: #ffffff;
+    /* background: #f53434; */
+    height: 500px;
+    width: 500px;
+    float: right;
+    /* border: solid #000000 2px;
+    border-radius: 5px;   */
+    margin-top: 20px;
+    margin-right: 100px;
+}
+
+#temp-section {
+    color: #ffffff;
+    /* background: #9e9e9e; */
+    height: 500px;
+    width: 500px;
+    float: left;
+    /* border: solid #000000 2px;
+    border-radius: 5px;   */
+    margin-top: -100px;
+    margin-left: 100px;
+    padding-top: 200px;
+}
+
+.chart-sect {
+    color: #ffffff;
+    /* background: #f53434; */
+    height: 400px;
+    width: 800px;
+    margin-left: 100px;
+    margin-top: 550px;
+    /* border: solid #000000 2px;
+    border-radius: 5px;   */
+}
+
+.newdl-sect {
+        /* background: #f53434; */
+        height: 400px;
+        width: 300px;
+        float: right;
+        margin-right: 100px;
+        margin-top: 25px;
+        /* border: solid #000000 2px;
+        border-radius: 5px;   */
+}
+
+#ex-table{
+    margin-top: -630px;
+    margin-left: 255px;
+}
+
+#ex-table:focus {outline:0;}
+#temp-section:focus {outline:0;}
+#message {outline:0;}
+
+
+/* #apptitle
+{
+    font-size: 72px;
+    background: -webkit-linear-gradient(rgba(238, 238, 238, 0.542), rgba(220, 220, 220, 0.933));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+} */
