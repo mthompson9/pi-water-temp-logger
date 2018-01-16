@@ -1,0 +1,37 @@
+
+
+<script>
+
+var layout = {
+  title: 'Time Series with Rangeslider',
+  xaxis: {
+    autorange: true,
+    range: ['2015-02-17', '2017-02-16'],
+    rangeselector: {buttons: [
+        {
+          count: 1,
+          label: '1m',
+          step: 'month',
+          stepmode: 'backward'
+        },
+        {
+          count: 6,
+          label: '6m',
+          step: 'month',
+          stepmode: 'backward'
+        },
+        {step: 'all'}
+      ]},
+    rangeslider: {range: ['2015-02-17', '2017-02-16']},
+    type: 'date'
+  },
+  yaxis: {
+    autorange: true,
+    range: [86.8700008333, 138.870004167],
+    type: 'linear'
+  }
+};
+
+Plotly.newPlot('myDiv', data, layout);
+})
+</script>
