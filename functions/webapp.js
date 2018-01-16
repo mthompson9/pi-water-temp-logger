@@ -27,12 +27,16 @@ function clicker(startDate, startTime, endDate, endTime) {
         
         logmin = childSnapshot.val().time;
         logtemp = childSnapshot.val().temp;
-        logstatus = childSnapshot.val().status;
+        logstatus = childSnapshot.val().averagestatus;
+        logup = childSnapshot.val().upperprobe;
+        logupst = childSnapshot.val().upperprobestatus;
+        loglow = childSnapshot.val().lowerprobe;
+        loglowst = childSnapshot.val().lowerprobestatus;
         logdate = childSnapshot.val().date;
 
         
         //....    
-        var item = ('\n' + logdate + ',' + logmin + ',' + logtemp + ',' + logstatus);
+        var item = ('\n' + logdate + ',' + logmin + ',' + logtemp + ',' + logstatus + ',' + logup + ',' + logupst + ',' + loglow + ',' + loglowst);
         // push each new item to array
         getData.push(item);
    });
@@ -84,12 +88,16 @@ function alldata() {
             
             logmin = childSnapshot.val().time;
             logtemp = childSnapshot.val().temp;
-            logstatus = childSnapshot.val().status;
+            logstatus = childSnapshot.val().averagestatus;
+            logup = childSnapshot.val().upperprobe;
+            logupst = childSnapshot.val().upperprobestatus;
+            loglow = childSnapshot.val().lowerprobe;
+            loglowst = childSnapshot.val().lowerprobestatus;
             logdate = childSnapshot.val().date;
     
             
             //....    
-            var item = ('\n' + logdate + ',' + logmin + ',' + logtemp + ',' + logstatus);
+            var item = ('\n' + logdate + ',' + logmin + ',' + logtemp + ',' + logstatus + ',' + logup + ',' + logupst + ',' + loglow + ',' + loglowst);
             // push each new item to array
             getData.push(item);
        });
