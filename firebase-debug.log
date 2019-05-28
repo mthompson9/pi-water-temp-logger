@@ -1,145 +1,179 @@
-[debug] [2017-10-18T16:22:16.641Z] ----------------------------------------------------------------------
-[debug] [2017-10-18T16:22:16.643Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
-[debug] [2017-10-18T16:22:16.644Z] CLI Version:   3.13.1
-[debug] [2017-10-18T16:22:16.644Z] Platform:      darwin
-[debug] [2017-10-18T16:22:16.644Z] Node Version:  v6.11.3
-[debug] [2017-10-18T16:22:16.645Z] Time:          Wed Oct 18 2017 17:22:16 GMT+0100 (BST)
-[debug] [2017-10-18T16:22:16.645Z] ----------------------------------------------------------------------
+[debug] [2018-01-05T16:28:37.709Z] ----------------------------------------------------------------------
+[debug] [2018-01-05T16:28:37.715Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\user\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve --only functions,hosting
+[debug] [2018-01-05T16:28:37.716Z] CLI Version:   3.16.0
+[debug] [2018-01-05T16:28:37.716Z] Platform:      win32
+[debug] [2018-01-05T16:28:37.716Z] Node Version:  v8.5.0
+[debug] [2018-01-05T16:28:37.719Z] Time:          Fri Jan 05 2018 16:28:37 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-05T16:28:37.719Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2017-10-18T16:22:16.660Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2017-10-18T16:22:16.660Z] > authorizing via signed-in user
-[debug] [2017-10-18T16:22:16.663Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/temperature-monitor-pi  
- Wed Oct 18 2017 17:22:16 GMT+0100 (BST)
-[debug] [2017-10-18T16:22:17.296Z] <<< HTTP RESPONSE 200
-[debug] [2017-10-18T16:22:17.297Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/temperature-monitor-pi/tokens  
- Wed Oct 18 2017 17:22:17 GMT+0100 (BST)
-[debug] [2017-10-18T16:22:18.035Z] <<< HTTP RESPONSE 200
-[info] 2
+[debug] [2018-01-05T16:28:37.802Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-01-05T16:28:37.803Z] > authorizing via signed-in user
+[debug] [2018-01-05T16:28:37.809Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-01-05T16:28:37.810Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/1Jmq1GKhMfdgSylY3ZQlFKFlxit2DSY1IWdVtRXjbs0',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Fri Jan 05 2018 16:28:37 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-05T16:28:38.041Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-05T16:28:38.090Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/jsbase-5d117  
+  
+ Fri Jan 05 2018 16:28:38 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-05T16:28:38.749Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-05T16:28:38.750Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/jsbase-5d117/tokens  
+  
+ Fri Jan 05 2018 16:28:38 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-05T16:28:39.588Z] <<< HTTP RESPONSE 200
 [info] 
-[info] === Deploying to 'temperature-monitor-pi'...
+[info] === Serving from 'C:\Users\user\Desktop\jcloud'...
 [info] 
-[info] i  deploying functions, hosting
-[debug] [2017-10-18T16:22:19.058Z] > [functions] package.json contents: {
-  "name": "functions",
-  "description": "Cloud Functions for Firebase",
-  "dependencies": {
-    "firebase-admin": "~5.4.0",
-    "firebase-functions": "^0.7.0",
-    "gmail": "0.5.0",
-    "nodemailer": "4.2.0"
-  },
-  "private": true
-}
-[info] i  functions: ensuring necessary APIs are enabled...
-[info] i  runtimeconfig: ensuring necessary APIs are enabled...
-[debug] [2017-10-18T16:22:19.061Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/temperature-monitor-pi?view=CONSUMER_VIEW  
- Wed Oct 18 2017 17:22:19 GMT+0100 (BST)
-[debug] [2017-10-18T16:22:19.061Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/temperature-monitor-pi?view=CONSUMER_VIEW  
- Wed Oct 18 2017 17:22:19 GMT+0100 (BST)
-[debug] [2017-10-18T16:22:20.123Z] <<< HTTP RESPONSE 200
-[info] ✔  runtimeconfig: all necessary APIs are enabled
-[debug] [2017-10-18T16:22:20.129Z] <<< HTTP RESPONSE 200
-[info] ✔  functions: all necessary APIs are enabled
-[debug] [2017-10-18T16:22:20.131Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/temperature-monitor-pi  
- Wed Oct 18 2017 17:22:20 GMT+0100 (BST)
-[debug] [2017-10-18T16:22:20.132Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/temperature-monitor-pi/apiKeys  
- Wed Oct 18 2017 17:22:20 GMT+0100 (BST)
-[debug] [2017-10-18T16:22:20.846Z] <<< HTTP RESPONSE 200
-[debug] [2017-10-18T16:22:20.871Z] <<< HTTP RESPONSE 200
-[info] i  functions: preparing functions directory for uploading...
-[debug] [2017-10-18T16:22:37.143Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/temperature-monitor-pi/configs  
- Wed Oct 18 2017 17:22:37 GMT+0100 (BST)
-[debug] [2017-10-18T16:22:37.309Z] <<< HTTP RESPONSE 200
-[info] i  functions: packaged functions (1.71 KB) for uploading
-[debug] [2017-10-18T16:22:41.323Z] >>> HTTP REQUEST GET https://www.googleapis.com/storage/v1/b/staging.temperature-monitor-pi.appspot.com  
- Wed Oct 18 2017 17:22:41 GMT+0100 (BST)
-[debug] [2017-10-18T16:22:41.904Z] <<< HTTP RESPONSE 200
-[debug] [2017-10-18T16:22:41.905Z] >>> HTTP REQUEST POST https://www.googleapis.com/upload/storage/v1/b/staging.temperature-monitor-pi.appspot.com/o?uploadType=media&name=firebase-functions-source ReadStream {
-  _readableState: 
-   ReadableState {
-     objectMode: false,
-     highWaterMark: 65536,
-     buffer: BufferList { head: [Object], tail: [Object], length: 1 },
-     length: 1748,
-     pipes: null,
-     pipesCount: 0,
-     flowing: null,
-     ended: true,
-     endEmitted: false,
-     reading: false,
-     sync: false,
-     needReadable: false,
-     emittedReadable: true,
-     readableListening: false,
-     resumeScheduled: false,
-     defaultEncoding: 'utf8',
-     ranOut: false,
-     awaitDrain: 0,
-     readingMore: false,
-     decoder: null,
-     encoding: null },
-  readable: true,
-  domain: null,
-  _events: { end: [Function] },
-  _eventsCount: 1,
-  _maxListeners: undefined,
-  path: '/var/folders/1p/3q07k9rd6b376y5qd5kx1rdm0000gn/T/firebase-functions-4613r607CiDq4Ehc.zip',
-  fd: 19,
-  flags: 'r',
-  mode: 438,
-  start: undefined,
-  end: undefined,
-  autoClose: true,
-  pos: undefined,
-  bytesRead: 1748 } 
- Wed Oct 18 2017 17:22:41 GMT+0100 (BST)
-[debug] [2017-10-18T16:22:43.737Z] <<< HTTP RESPONSE 200
-[info] ✔  functions: functions folder uploaded successfully
-[info] i  hosting: preparing public directory for upload...
-[debug] [2017-10-18T16:22:43.762Z] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/temperature-monitor-pi/uploads/-KwkHja7CiWhNO0A2-rc?fileCount=2&message=  
- Wed Oct 18 2017 17:22:43 GMT+0100 (BST)
-[debug] [2017-10-18T16:22:45.189Z] <<< HTTP RESPONSE 200
-[debug] [2017-10-18T16:22:45.190Z] [hosting] .tgz uploaded successfully, waiting for extraction
-[info] ✔  hosting: 2 files uploaded successfully
-[info] i  starting release process (may take several minutes)...
-[debug] [2017-10-18T16:22:45.927Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1beta2/projects/temperature-monitor-pi/locations/us-central1/functions  
- Wed Oct 18 2017 17:22:45 GMT+0100 (BST)
-[debug] [2017-10-18T16:22:46.209Z] <<< HTTP RESPONSE 200
-[info] i  functions: updating function checkVal...
-[debug] [2017-10-18T16:22:46.214Z] Trigger is: 
-[debug] [2017-10-18T16:22:46.215Z] >>> HTTP REQUEST PUT https://cloudfunctions.googleapis.com/v1beta2/projects/temperature-monitor-pi/locations/us-central1/functions/checkVal { sourceArchiveUrl: 'gs://staging.temperature-monitor-pi.appspot.com/firebase-functions-source',
-  name: 'projects/temperature-monitor-pi/locations/us-central1/functions/checkVal',
-  entryPoint: 'checkVal',
-  timeout: '60s',
-  availableMemoryMb: 256,
-  eventTrigger: 
-   { resource: 'projects/_/instances/temperature-monitor-pi/refs/temperature/{pushID}',
-     eventType: 'providers/google.firebase.database/eventTypes/ref.create' } } 
- Wed Oct 18 2017 17:22:46 GMT+0100 (BST)
-[debug] [2017-10-18T16:22:46.547Z] <<< HTTP RESPONSE 200
-[debug] [2017-10-18T16:22:46.551Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1beta2/projects/temperature-monitor-pi/locations/us-central1/functions  
- Wed Oct 18 2017 17:22:46 GMT+0100 (BST)
-[debug] [2017-10-18T16:22:46.552Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1beta2/operations/dGVtcGVyYXR1cmUtbW9uaXRvci1waS91cy1jZW50cmFsMS9jaGVja1ZhbC93UVgyVlp3aXI3dw  
- Wed Oct 18 2017 17:22:46 GMT+0100 (BST)
-[debug] [2017-10-18T16:22:46.753Z] <<< HTTP RESPONSE 200
-[debug] [2017-10-18T16:22:47.802Z] <<< HTTP RESPONSE 200
-[debug] [2017-10-18T16:22:47.803Z] [functions] operation poll: checkVal: update operations/dGVtcGVyYXR1cmUtbW9uaXRvci1waS91cy1jZW50cmFsMS9jaGVja1ZhbC93UVgyVlp3aXI3dw is not done.
-[debug] [2017-10-18T16:44:01.203Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1beta2/operations/dGVtcGVyYXR1cmUtbW9uaXRvci1waS91cy1jZW50cmFsMS9jaGVja1ZhbC93UVgyVlp3aXI3dw  
- Wed Oct 18 2017 17:44:01 GMT+0100 (BST)
-[debug] [2017-10-18T16:44:01.206Z] [functions] failed to get status of operation: operations/dGVtcGVyYXR1cmUtbW9uaXRvci1waS91cy1jZW50cmFsMS9jaGVja1ZhbC93UVgyVlp3aXI3dw
-[debug] [2017-10-18T16:44:01.207Z] [functions] Server Error. getaddrinfo ENOTFOUND cloudfunctions.googleapis.com cloudfunctions.googleapis.com:443
-[warn] ⚠  functions: failed to get status of 1 operation(s).
-[warn] ⚠  functions: run firebase functions:log in a few minutes to ensure that your functions deployed properly.
-[debug] [2017-10-18T16:44:01.214Z] >>> HTTP REQUEST POST https://deploy.firebase.com/v1/projects/temperature-monitor-pi/releases { hosting: 
-   { public: 'public',
-     ignore: [ 'firebase.json', '**/.*', '**/node_modules/**' ],
-     rewrites: [ [Object] ],
-     version: '-KwkHja7CiWhNO0A2-rc',
-     prefix: '-KwkHja7CiWhNO0A2-rc/',
-     manifest: [] } } 
- Wed Oct 18 2017 17:44:01 GMT+0100 (BST)
-[debug] [2017-10-18T16:44:01.228Z] Error: getaddrinfo ENOTFOUND deploy.firebase.com deploy.firebase.com:443
-    at errnoException (dns.js:28:10)
-    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:76:26)
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-01-05T16:28:55.796Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/jsbase-5d117  
+  
+ Fri Jan 05 2018 16:28:55 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-05T16:28:55.798Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/jsbase-5d117/apiKeys  
+  
+ Fri Jan 05 2018 16:28:55 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-05T16:28:55.799Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/jsbase-5d117  
+  
+ Fri Jan 05 2018 16:28:55 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-05T16:28:56.900Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-05T16:28:56.900Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/941067890947/clients/_:getWebAppConfig  
+  
+ Fri Jan 05 2018 16:28:56 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-05T16:28:56.905Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-05T16:28:56.910Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-05T16:28:58.018Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: functions
+[info] +  hosting: Local server: http://localhost:5000
+
+[info] +  functions: systemDownCheck: http://localhost:5001/jsbase-5d117/us-central1/systemDownCheck
+[info] +  functions: sendText: http://localhost:5001/jsbase-5d117/us-central1/sendText
+[debug] [2018-01-08T10:03:45.956Z] Error: 101057795:error:1408F119:SSL routines:SSL3_GET_RECORD:decryption failed or bad record mac:openssl\ssl\s3_pkt.c:535:
+
 [error] 
-[error] Error: Server Error. getaddrinfo ENOTFOUND deploy.firebase.com deploy.firebase.com:443
+[error] Error: An unexpected error has occurred.
+[debug] [2018-01-08T10:03:46.036Z] Error: 101057795:error:1408F10B:SSL routines:SSL3_GET_RECORD:wrong version number:openssl\ssl\s3_pkt.c:365:
+
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2018-01-08T10:05:18.450Z] ----------------------------------------------------------------------
+[debug] [2018-01-08T10:05:18.456Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\user\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve --only functions,hosting
+[debug] [2018-01-08T10:05:18.457Z] CLI Version:   3.16.0
+[debug] [2018-01-08T10:05:18.457Z] Platform:      win32
+[debug] [2018-01-08T10:05:18.457Z] Node Version:  v8.5.0
+[debug] [2018-01-08T10:05:18.460Z] Time:          Mon Jan 08 2018 10:05:18 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-08T10:05:18.460Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-01-08T10:05:18.734Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-01-08T10:05:18.735Z] > authorizing via signed-in user
+[debug] [2018-01-08T10:05:18.741Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-01-08T10:05:18.742Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/1Jmq1GKhMfdgSylY3ZQlFKFlxit2DSY1IWdVtRXjbs0',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Mon Jan 08 2018 10:05:18 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-08T10:05:19.128Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-08T10:05:19.323Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/jsbase-5d117  
+  
+ Mon Jan 08 2018 10:05:19 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-08T10:05:20.186Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-08T10:05:20.187Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/jsbase-5d117/tokens  
+  
+ Mon Jan 08 2018 10:05:20 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-08T10:05:20.798Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Users\user\Desktop\jcloud'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-01-08T10:05:39.702Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/jsbase-5d117  
+  
+ Mon Jan 08 2018 10:05:39 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-08T10:05:39.703Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/jsbase-5d117/apiKeys  
+  
+ Mon Jan 08 2018 10:05:39 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-08T10:05:39.704Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/jsbase-5d117  
+  
+ Mon Jan 08 2018 10:05:39 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-08T10:05:40.400Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-08T10:05:40.401Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/941067890947/clients/_:getWebAppConfig  
+  
+ Mon Jan 08 2018 10:05:40 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-08T10:05:40.421Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-08T10:05:40.472Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-08T10:05:41.739Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: functions
+[info] +  hosting: Local server: http://localhost:5000
+
+[info] +  functions: systemDownCheck: http://localhost:5001/jsbase-5d117/us-central1/systemDownCheck
+[info] +  functions: sendText: http://localhost:5001/jsbase-5d117/us-central1/sendText
+[debug] [2018-01-09T07:14:47.945Z] Error: getaddrinfo ENOENT www.gstatic.com:443
+    at Object._errnoException (util.js:1026:11)
+    at errnoException (dns.js:58:15)
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:95:26)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2018-01-09T07:14:48.691Z] Error: socket hang up
+    at createHangUpError (_http_client.js:345:15)
+    at TLSSocket.socketCloseListener (_http_client.js:377:23)
+    at emitOne (events.js:120:20)
+    at TLSSocket.emit (events.js:210:7)
+    at _handle.close (net.js:545:12)
+    at TCP.done [as _onclose] (_tls_wrap.js:356:7)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2018-01-09T07:17:47.758Z] ----------------------------------------------------------------------
+[debug] [2018-01-09T07:17:47.765Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\user\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve --only functions,hosting
+[debug] [2018-01-09T07:17:47.766Z] CLI Version:   3.16.0
+[debug] [2018-01-09T07:17:47.766Z] Platform:      win32
+[debug] [2018-01-09T07:17:47.766Z] Node Version:  v8.5.0
+[debug] [2018-01-09T07:17:47.791Z] Time:          Tue Jan 09 2018 07:17:47 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-09T07:17:47.791Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-01-09T07:17:48.104Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-01-09T07:17:48.106Z] > authorizing via signed-in user
+[debug] [2018-01-09T07:17:48.112Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-01-09T07:17:48.113Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/1Jmq1GKhMfdgSylY3ZQlFKFlxit2DSY1IWdVtRXjbs0',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Tue Jan 09 2018 07:17:48 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-09T07:17:49.373Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-09T07:17:49.464Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/jsbase-5d117  
+  
+ Tue Jan 09 2018 07:17:49 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-09T07:17:50.412Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-09T07:17:50.413Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/jsbase-5d117/tokens  
+  
+ Tue Jan 09 2018 07:17:50 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-09T07:17:51.284Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Users\user\Desktop\jcloud'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-01-09T07:18:38.013Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/jsbase-5d117  
+  
+ Tue Jan 09 2018 07:18:38 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-09T07:18:38.015Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/jsbase-5d117/apiKeys  
+  
+ Tue Jan 09 2018 07:18:38 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-09T07:18:38.016Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/jsbase-5d117  
+  
+ Tue Jan 09 2018 07:18:38 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-09T07:18:39.420Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-09T07:18:39.421Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/941067890947/clients/_:getWebAppConfig  
+  
+ Tue Jan 09 2018 07:18:39 GMT+0000 (GMT Standard Time)
+[debug] [2018-01-09T07:18:39.573Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-09T07:18:39.761Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-09T07:18:40.566Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: functions
+[info] +  hosting: Local server: http://localhost:5000
+
+[info] +  functions: systemDownCheck: http://localhost:5001/jsbase-5d117/us-central1/systemDownCheck
+[info] +  functions: sendText: http://localhost:5001/jsbase-5d117/us-central1/sendText
